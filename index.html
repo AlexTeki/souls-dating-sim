@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>灰燼與誓約 II：深淵戀曲 | SOULS OF LOVE</title>
+  <title>灰燼與誓約 III：真實深淵 | SOULS OF LOVE</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-abyss: #08070a;
-      --bg-panel: #131116;
-      --bg-card: #1a171e;
-      --bg-hover: #25202c;
+      --bg-abyss: #070609;
+      --bg-panel: #121015;
+      --bg-card: #19161d;
+      --bg-hover: #241f2b;
       --border-bronze: #5c4b37;
       --border-gold: #a6895b;
-      --text-main: #e4ded5;
+      --text-main: #e6dfd5;
       --text-muted: #998f82;
       --text-gold: #d9b36c;
       --crimson: #a82424;
@@ -33,7 +33,7 @@
     body {
       background-color: var(--bg-abyss);
       background-image:
-        radial-gradient(circle at 50% 0%, rgba(120, 40, 20, 0.14) 0%, transparent 55%),
+        radial-gradient(circle at 50% 0%, rgba(125, 38, 22, 0.14) 0%, transparent 55%),
         radial-gradient(circle at 15% 85%, rgba(166, 137, 91, 0.06) 0%, transparent 45%);
       color: var(--text-main);
       font-family: var(--font-sans);
@@ -48,9 +48,9 @@
 
     /* Top HUD */
     .hud-header {
-      background: linear-gradient(180deg, #17141b 0%, #0e0c11 100%);
+      background: linear-gradient(180deg, #17141b 0%, #0d0b10 100%);
       border-bottom: 2px solid var(--border-bronze);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
       padding: 12px 20px;
       position: sticky;
       top: 0;
@@ -58,7 +58,7 @@
     }
 
     .hud-inner {
-      max-width: 1360px;
+      max-width: 1380px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
@@ -92,25 +92,17 @@
     }
 
     .stat-box {
-      background: rgba(0, 0, 0, 0.48);
+      background: rgba(0, 0, 0, 0.5);
       border: 1px solid #3a3126;
       padding: 6px 11px;
       border-radius: 4px;
-      min-width: 105px;
+      min-width: 108px;
     }
-
-    .stat-box.suspicion-box {
-      border-color: #6e2626;
-      background: rgba(65, 14, 14, 0.35);
-      display: none;
-    }
-
-    .stat-box.suspicion-box.active { display: block; }
 
     .stat-label {
       font-size: 0.68rem;
       color: var(--text-muted);
-      letter-spacing: 0.6px;
+      letter-spacing: 0.5px;
       display: flex;
       justify-content: space-between;
       gap: 6px;
@@ -128,7 +120,7 @@
 
     .bar-track {
       width: 100%;
-      height: 9px;
+      height: 8px;
       background: #1f1a1c;
       border: 1px solid #594834;
       border-radius: 2px;
@@ -160,11 +152,7 @@
       transition: width 0.4s ease;
     }
 
-    .hud-controls {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .hud-controls { display: flex; align-items: center; gap: 8px; }
 
     .time-badge {
       background: linear-gradient(135deg, #241d15 0%, #14110e 100%);
@@ -188,26 +176,20 @@
       transition: all 0.2s;
     }
 
-    .icon-btn:hover {
-      border-color: var(--text-gold);
-      color: var(--text-gold);
-      background: #27212d;
-    }
+    .icon-btn:hover { border-color: var(--text-gold); color: var(--text-gold); background: #27212d; }
 
     /* Layout */
     .main-container {
-      max-width: 1360px;
+      max-width: 1380px;
       margin: 18px auto;
       padding: 0 16px 32px;
       display: grid;
-      grid-template-columns: 420px 1fr;
+      grid-template-columns: 430px 1fr;
       gap: 18px;
       align-items: start;
     }
 
-    @media (max-width: 980px) {
-      .main-container { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 980px) { .main-container { grid-template-columns: 1fr; } }
 
     .panel {
       background: var(--bg-panel);
@@ -333,7 +315,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      max-height: 580px;
+      max-height: 590px;
       overflow-y: auto;
       padding-right: 2px;
     }
@@ -342,56 +324,79 @@
       background: var(--bg-card);
       border: 1px solid #3c3227;
       border-radius: 4px;
-      padding: 11px 12px;
+      padding: 10px 11px;
       cursor: pointer;
       transition: all 0.2s;
+      display: flex;
+      gap: 11px;
+      align-items: center;
     }
 
     .contact-card:hover { border-color: var(--text-gold); background: var(--bg-hover); }
     .contact-card.selected { border-color: var(--text-gold); box-shadow: 0 0 12px rgba(217, 179, 108, 0.22); }
-    .contact-card.dead { opacity: 0.56; border-color: #362222; background: #120e10; }
+    .contact-card.dead { opacity: 0.54; border-color: #362222; background: #120e10; }
+
+    .contact-thumb {
+      width: 48px;
+      height: 58px;
+      border-radius: 4px;
+      border: 1px solid #594834;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #0d0b10;
+    }
+
+    .contact-thumb svg { width: 100%; height: 100%; display: block; }
+
+    .contact-body { flex: 1; min-width: 0; }
 
     .contact-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
+      gap: 6px;
     }
 
     .contact-name {
       font-family: var(--font-serif);
       font-weight: 700;
-      font-size: 0.96rem;
+      font-size: 0.93rem;
       color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .status-tag {
-      font-size: 0.69rem;
-      padding: 2px 7px;
+      font-size: 0.67rem;
+      padding: 2px 6px;
       border-radius: 3px;
       font-weight: 700;
+      white-space: nowrap;
     }
 
     .tag-active { background: rgba(217, 179, 108, 0.16); color: var(--text-gold); border: 1px solid #6b5531; }
     .tag-warning { background: rgba(212, 136, 42, 0.22); color: #f5a642; border: 1px solid #8a5514; }
     .tag-dating { background: rgba(46, 139, 87, 0.25); color: #6ee7a0; border: 1px solid #2e8b57; }
     .tag-soulbound { background: rgba(157, 78, 221, 0.25); color: #d8a6ff; border: 1px solid #8c44c7; }
+    .tag-casual { background: rgba(219, 84, 97, 0.22); color: #ff99a4; border: 1px solid #9c3844; }
     .tag-blocked { background: rgba(168, 36, 36, 0.25); color: #f27979; border: 1px solid #7d2323; }
     .tag-parried { background: rgba(91, 192, 190, 0.2); color: #7ce8e6; border: 1px solid #3c8c8a; }
 
     .contact-meta {
       display: flex;
       justify-content: space-between;
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       color: var(--text-muted);
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
     /* Right Panel */
     .right-column { display: flex; flex-direction: column; gap: 18px; }
 
     .stage-panel {
-      min-height: 480px;
+      min-height: 500px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -404,13 +409,13 @@
     .bonfire-idle {
       text-align: center;
       margin: auto;
-      max-width: 560px;
-      padding: 16px 10px;
+      max-width: 580px;
+      padding: 14px 10px;
     }
 
     .bonfire-icon {
-      width: 90px;
-      height: 90px;
+      width: 88px;
+      height: 88px;
       margin: 0 auto 12px;
       filter: drop-shadow(0 0 18px rgba(224, 110, 40, 0.45));
       animation: emberPulse 2.8s infinite ease-in-out;
@@ -424,29 +429,29 @@
     .bonfire-idle h2 {
       font-family: var(--font-serif);
       color: var(--text-gold);
-      font-size: 1.4rem;
+      font-size: 1.38rem;
       margin-bottom: 10px;
       letter-spacing: 2px;
     }
 
-    .bonfire-idle p { color: var(--text-muted); font-size: 0.89rem; margin-bottom: 14px; }
+    .bonfire-idle p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 14px; }
 
     .lore-tip {
       background: rgba(0, 0, 0, 0.48);
       border: 1px solid #3c3024;
       padding: 13px 16px;
       border-radius: 4px;
-      font-size: 0.82rem;
+      font-size: 0.81rem;
       color: #c9beae;
       text-align: left;
       line-height: 1.68;
     }
 
-    /* Stage Character Header */
+    /* Stage Character Header with Realistic 4:5 Photo Frame */
     .char-header {
       display: flex;
       gap: 18px;
-      align-items: center;
+      align-items: flex-start;
       border-bottom: 1px solid #382e24;
       padding-bottom: 16px;
       margin-bottom: 16px;
@@ -454,20 +459,28 @@
     }
 
     .char-portrait {
-      width: 88px;
-      height: 88px;
+      width: 108px;
+      height: 134px;
       border-radius: 6px;
       border: 2px solid var(--border-gold);
-      background: #0d0b10;
+      background: #0b0a0e;
       flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8), inset 0 0 12px rgba(0,0,0,0.6);
       overflow: hidden;
+      position: relative;
     }
 
-    .char-info { flex: 1; min-width: 230px; }
+    .char-portrait svg { width: 100%; height: 100%; display: block; }
+
+    .char-portrait::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.55);
+      pointer-events: none;
+    }
+
+    .char-info { flex: 1; min-width: 240px; }
 
     .char-name-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
     .char-name-row h2 { font-family: var(--font-serif); color: var(--text-gold); font-size: 1.32rem; }
@@ -475,6 +488,12 @@
     .char-bio { font-size: 0.83rem; color: #c8bfb2; margin: 6px 0 10px; }
 
     .char-meters {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .meter-row {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 12px;
@@ -482,7 +501,7 @@
     }
 
     .intent-pill {
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       padding: 4px 10px;
       border-radius: 4px;
       background: #1f1a24;
@@ -491,7 +510,7 @@
     }
 
     .dialogue-box {
-      background: rgba(10, 9, 13, 0.78);
+      background: rgba(10, 9, 13, 0.8);
       border: 1px solid #403428;
       border-radius: 4px;
       padding: 18px;
@@ -614,7 +633,7 @@
     .souls-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.82);
       z-index: 200;
       display: none;
       align-items: center;
@@ -629,7 +648,7 @@
 
     .souls-banner {
       width: 100%;
-      background: linear-gradient(180deg, transparent 0%, rgba(10, 8, 10, 0.95) 20%, rgba(10, 8, 10, 0.95) 80%, transparent 100%);
+      background: linear-gradient(180deg, transparent 0%, rgba(10, 8, 10, 0.96) 20%, rgba(10, 8, 10, 0.96) 80%, transparent 100%);
       padding: 44px 20px;
       text-align: center;
     }
@@ -657,7 +676,7 @@
     .souls-sub {
       color: #d6cec2;
       font-size: 1rem;
-      max-width: 640px;
+      max-width: 650px;
       margin: 0 auto 22px;
       line-height: 1.65;
     }
@@ -683,8 +702,8 @@
   <header class="hud-header">
     <div class="hud-inner">
       <div class="brand-title">
-        <h1>SOULS OF LOVE II</h1>
-        <span class="brand-sub">灰燼與誓約：深淵戀曲（高難度版）</span>
+        <h1>SOULS OF LOVE III</h1>
+        <span class="brand-sub">灰燼與誓約：真實深淵</span>
       </div>
 
       <div class="stats-grid">
@@ -718,16 +737,6 @@
           <div class="stat-label"><span>外表 / 魅力</span></div>
           <div class="stat-value" id="hud-looks">8</div>
         </div>
-
-        <div class="stat-box suspicion-box" id="hud-suspicion-box">
-          <div class="stat-label">
-            <span style="color:#f29b9b;">劈腿懷疑度</span>
-            <span id="hud-suspicion-text" style="color:#f29b9b;">0%</span>
-          </div>
-          <div class="bar-track" style="border-color:#7d2323;">
-            <div class="bar-fill-suspicion" id="hud-suspicion-bar" style="width: 0%;"></div>
-          </div>
-        </div>
       </div>
 
       <div class="hud-controls">
@@ -751,16 +760,16 @@
       <!-- Tab 1: Explore -->
       <div class="tab-content active" id="tab-explore">
         <div id="explore-cheating-warn" class="cheating-alert" style="display:none;">
-          ⚠️ <strong>注意：</strong>你目前已有交往對象！在此狀態下使用交友軟體、搭訕或私訊其他女性，將大幅提升被發現出軌的風險。
+          ⚠️ <strong>忠誠危機：</strong>你目前已有正式交往對象！若繼續探索交友軟體或搭訕，將提升每位伴侶對你個別的「懷疑度」。
         </div>
-        <p class="section-desc">共有 10 位性格迥異的女性潛伏在都市迷霧中。初期偽裝極深，請務必小心判斷。</p>
+        <p class="section-desc">共 12 位寫實動機角色潛伏於城市中：真心尋愛、純肉體關係、仙人跳敲詐、殺豬盤與各類拉客。別輕信第一眼直覺！</p>
         <div class="action-list">
           <button class="action-btn" onclick="exploreChannel('app')">
             <div class="action-title">
               <span>📱 交友軟體（召喚印記）</span>
               <span class="action-cost">-6 HP · 1 時段</span>
             </div>
-            <div class="action-sub">右滑配對。若已有伴侶還滑軟體，極易被伴侶閨蜜截圖抓包！</div>
+            <div class="action-sub">最易遇見各類目的對象（包含獵豔、仙人跳與詐騙），已有女友時風險極高。</div>
           </button>
 
           <button class="action-btn" onclick="exploreChannel('friend')">
@@ -768,7 +777,7 @@
               <span>🤝 朋友介紹（太陽戰士引薦）</span>
               <span class="action-cost">-9 HP · 1 時段</span>
             </div>
-            <div class="action-sub">熟人牽線。安全度較高，但仍可能遇到直銷、心靈課程或強勢對象。</div>
+            <div class="action-sub">熟人牽線較少惡意設局，但仍可能遇到高標準顧問或心靈直銷。</div>
           </button>
 
           <button class="action-btn" onclick="exploreChannel('social')">
@@ -776,7 +785,7 @@
               <span>📸 社群媒體（幻影私訊）</span>
               <span class="action-cost">-6 HP · 1 時段</span>
             </div>
-            <div class="action-sub">回覆限動建立交集。高難度千金、公關與隱形詐騙皆活躍於此。</div>
+            <div class="action-sub">IG 回覆限動建立連結。極端千金、夜場網美與隱形公關活躍於此。</div>
           </button>
 
           <button class="action-btn" onclick="exploreChannel('street')">
@@ -784,7 +793,7 @@
               <span>🚶 路上偶遇（探索迷霧門）</span>
               <span class="action-cost">-10 HP · 1 時段</span>
             </div>
-            <div class="action-sub">書店、夜市或轉角偶遇，最考驗當下應對與識人眼光。</div>
+            <div class="action-sub">書店、街角咖啡廳或夜市的不期而遇，考驗臨場觀察力。</div>
           </button>
 
           <button class="action-btn" onclick="exploreChannel('approach')">
@@ -792,21 +801,21 @@
               <span>🗣️ 街頭搭訕（強行入侵世界）</span>
               <span class="action-cost">-16 HP · 1 時段</span>
             </div>
-            <div class="action-sub">極高風險。外表不足將遭到嚴重羞辱，在街上也容易被熟人目擊。</div>
+            <div class="action-sub">外表不足極易遭冷眼羞辱；已有女友時在街頭搭訕更易被熟人目擊。</div>
           </button>
         </div>
       </div>
 
       <!-- Tab 2: Camp -->
       <div class="tab-content" id="tab-camp">
-        <p class="section-desc">高難度環境下，沒有足夠的「外表」與「盧恩」，連真愛都可能拒絕你的邀約。</p>
+        <p class="section-desc">提升自身條件與判斷力。記住：每次行動消耗時段，都可能讓關係加速冷卻。</p>
         <div class="action-list">
           <button class="action-btn" onclick="campAction('work')">
             <div class="action-title">
               <span>💼 打工賺取盧恩</span>
               <span class="action-cost">+ $850~1150 · -20 HP · 1 時段</span>
             </div>
-            <div class="action-sub">現實是殘酷的，約會、送禮與改造外表都需要大量盧恩支撐。</div>
+            <div class="action-sub">累積約會、送禮與改造外表所需的資金（遇上仙人跳時更需要底氣）。</div>
           </button>
 
           <button class="action-btn" onclick="campAction('groom')">
@@ -814,15 +823,15 @@
               <span>🏋️ 健身鍛鍊與打理儀容</span>
               <span class="action-cost">- $450 · -14 HP · +2 外表</span>
             </div>
-            <div class="action-sub">提升魅力數值，才能通過高標準對象的隱性外表檢定。</div>
+            <div class="action-sub">外表魅力影響街頭搭訕、獵豔對象態度及高門檻對象的隱性評判。</div>
           </button>
 
           <button class="action-btn" onclick="campAction('study')">
             <div class="action-title">
-              <span>📜 研讀「人際心理古卷」</span>
+              <span>📜 研讀「社會生存與心理古卷」</span>
               <span class="action-cost">-6 HP · +28 EXP · 1 時段</span>
             </div>
-            <div class="action-sub">提升等級與歷練，解鎖部分對話中的成熟應對檢定。</div>
+            <div class="action-sub">提升等級與臨場抗壓性，面對突發危機或敲詐時能冷靜反制。</div>
           </button>
 
           <button class="action-btn" onclick="campAction('rest')">
@@ -830,14 +839,14 @@
               <span>🔥 在營火旁休息（回血）</span>
               <span class="action-cost">恢復 45 HP · 1 時段</span>
             </div>
-            <div class="action-sub">平復理智損傷，但時間推演會讓未聯繫對象好感度加速衰減。</div>
+            <div class="action-sub">恢復理智與健康值，但日夜交替將使未聯繫對象產生冷卻下滑。</div>
           </button>
         </div>
       </div>
 
       <!-- Tab 3: Contacts -->
       <div class="tab-content" id="tab-contacts">
-        <p class="section-desc">需達成階段考驗且好感度 ≥ 90 才能交往；交往後還需通過磨合劇情才能圓滿！</p>
+        <p class="section-desc">每位對象皆有獨立的親密度與「對你的懷疑度」。即便成為永恆誓約，仍須用心經營！</p>
         <div class="contact-list" id="contact-list">
           <div style="color: var(--text-muted); text-align: center; padding: 30px 10px; font-size: 0.86rem;">
             目前尚未與任何對象建立聯繫。<br>請先前往「探索邂逅」尋找召喚印記。
@@ -943,46 +952,219 @@
   }
 
   // ==========================================
-  // SVG Portraits
+  // Realistic 85mm Portrait SVG Engine (Photo-like lighting, anatomy, bokeh)
   // ==========================================
-  function makePortrait(bg, hair, eyes, accent, accessory = '') {
+  function makeRealisticPortrait(id, cfg) {
+    const {
+      bgDark, bgWarm, bokeh1, bokeh2,
+      skinLight, skinMid, skinShadow,
+      hairBase, hairDark, hairShine,
+      eyeColor, lipTop, lipBottom, blush,
+      outfitColor, outfitAccent, style, accessory = ''
+    } = cfg;
+
+    // Hair variants
+    let hairBack = '';
+    let hairFront = '';
+    if (style === 'bob') {
+      hairBack = `<path d="M40,42 C32,75 34,128 45,148 L155,148 C166,128 168,75 160,42 C148,14 52,14 40,42 Z" fill="url(#hair-${id})"/>`;
+      hairFront = `<path d="M46,72 C52,32 148,32 154,72 C136,46 112,44 96,58 C78,44 60,50 46,72 Z" fill="url(#hair-${id})"/>
+                   <path d="M44,68 Q38,118 52,146 C55,126 52,96 56,74 Z" fill="${hairDark}" opacity="0.85"/>
+                   <path d="M156,68 Q162,118 148,146 C145,126 148,96 144,74 Z" fill="${hairDark}" opacity="0.85"/>`;
+    } else if (style === 'wave') {
+      hairBack = `<path d="M36,48 C22,95 20,170 30,235 L170,235 C180,170 178,95 164,48 C148,12 52,12 36,48 Z" fill="url(#hair-${id})"/>`;
+      hairFront = `<path d="M44,76 C56,28 144,28 156,76 C135,44 108,42 98,54 C76,40 58,48 44,76 Z" fill="url(#hair-${id})"/>
+                   <path d="M42,70 Q28,135 46,195 Q54,150 56,82 Z" fill="${hairBase}" opacity="0.92"/>
+                   <path d="M158,70 Q172,135 154,195 Q146,150 144,82 Z" fill="${hairBase}" opacity="0.92"/>`;
+    } else if (style === 'updo') {
+      hairBack = `<ellipse cx="100" cy="36" rx="34" ry="24" fill="${hairDark}"/><path d="M48,60 C46,32 154,32 152,60 C140,86 60,86 48,60 Z" fill="url(#hair-${id})"/>`;
+      hairFront = `<path d="M48,74 C56,30 144,30 152,74 C132,44 114,44 102,52 C82,42 64,48 48,74 Z" fill="url(#hair-${id})"/>
+                   <path d="M48,68 Q40,104 48,126 Q52,102 54,76 Z" fill="${hairDark}" opacity="0.8"/>`;
+    } else if (style === 'ponytail') {
+      hairBack = `<path d="M132,52 C175,65 186,145 168,215 C154,185 148,120 128,85 Z" fill="${hairDark}"/><path d="M48,60 C48,26 152,26 152,60 Z" fill="url(#hair-${id})"/>`;
+      hairFront = `<path d="M48,72 C56,28 144,28 152,72 C132,46 105,40 94,54 C72,40 56,48 48,72 Z" fill="url(#hair-${id})"/>
+                   <path d="M148,72 Q156,112 146,138 Q144,108 142,80 Z" fill="${hairBase}" opacity="0.75"/>`;
+    } else { // hime / long straight
+      hairBack = `<path d="M38,48 C28,110 26,185 32,240 L168,240 C174,185 172,110 162,48 C148,14 52,14 38,48 Z" fill="url(#hair-${id})"/>`;
+      hairFront = `<path d="M46,66 C56,24 144,24 154,66 C134,54 66,54 46,66 Z" fill="url(#hair-${id})"/>
+                   <path d="M44,64 L40,148 L54,142 L56,74 Z" fill="${hairDark}" opacity="0.9"/>
+                   <path d="M156,64 L160,148 L146,142 L144,74 Z" fill="${hairDark}" opacity="0.9"/>`;
+    }
+
     return `
-      <svg viewBox="0 0 100 100" width="84" height="84" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 200 245" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <radialGradient id="g-${bg.replace('#','')}-${hair.replace('#','')}" cx="50%" cy="35%" r="65%">
-            <stop offset="0%" stop-color="${accent}" stop-opacity="0.35"/>
-            <stop offset="100%" stop-color="${bg}"/>
+          <linearGradient id="bg-${id}" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="${bgDark}"/>
+            <stop offset="55%" stop-color="${bgWarm}"/>
+            <stop offset="100%" stop-color="#070609"/>
+          </linearGradient>
+          <radialGradient id="skin-${id}" cx="45%" cy="38%" r="60%">
+            <stop offset="0%" stop-color="${skinLight}"/>
+            <stop offset="65%" stop-color="${skinMid}"/>
+            <stop offset="100%" stop-color="${skinShadow}"/>
           </radialGradient>
+          <linearGradient id="neck-${id}" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="${skinShadow}"/>
+            <stop offset="45%" stop-color="${skinMid}"/>
+            <stop offset="100%" stop-color="${skinShadow}"/>
+          </linearGradient>
+          <linearGradient id="hair-${id}" x1="20%" y1="0%" x2="80%" y2="100%">
+            <stop offset="0%" stop-color="${hairShine}"/>
+            <stop offset="38%" stop-color="${hairBase}"/>
+            <stop offset="100%" stop-color="${hairDark}"/>
+          </linearGradient>
+          <filter id="bokeh-${id}" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="7"/>
+          </filter>
+          <filter id="soft-${id}" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2.4"/>
+          </filter>
+          <filter id="micro-${id}" x="-10%" y="-10%" width="120%" height="120%">
+            <feGaussianBlur stdDeviation="1"/>
+          </filter>
         </defs>
-        <rect width="100" height="100" fill="url(#g-${bg.replace('#','')}-${hair.replace('#','')})"/>
-        <circle cx="50" cy="48" r="34" fill="${hair}"/>
-        <path d="M22,95 C22,68 78,68 78,95 Z" fill="#1d1822" stroke="${accent}" stroke-width="1.5"/>
-        <ellipse cx="50" cy="48" rx="19" ry="22" fill="#f2d6c3"/>
-        <path d="M28,44 C30,22 70,22 72,44 C64,33 36,33 28,44 Z" fill="${hair}"/>
-        <circle cx="42" cy="48" r="2.6" fill="${eyes}"/>
-        <circle cx="58" cy="48" r="2.6" fill="${eyes}"/>
-        <path d="M46,58 Q50,61 54,58" fill="none" stroke="#b56565" stroke-width="1.8" stroke-linecap="round"/>
+
+        <!-- 85mm Photography Background + Bokeh Lights -->
+        <rect width="200" height="245" fill="url(#bg-${id})"/>
+        <g filter="url(#bokeh-${id})" opacity="0.55">
+          <circle cx="32" cy="52" r="24" fill="${bokeh1}"/>
+          <circle cx="172" cy="44" r="20" fill="${bokeh2}"/>
+          <circle cx="155" cy="128" r="28" fill="${bokeh1}" opacity="0.5"/>
+          <circle cx="24" cy="155" r="18" fill="${bokeh2}" opacity="0.6"/>
+          <circle cx="105" cy="25" r="30" fill="${bokeh2}" opacity="0.25"/>
+        </g>
+
+        <!-- Back Hair -->
+        ${hairBack}
+
+        <!-- Neck, Clavicle & Shoulders -->
+        <path d="M22,245 C26,195 56,182 80,174 L120,174 C144,182 174,195 178,245 Z" fill="url(#skin-${id})"/>
+        <path d="M81,148 L81,182 Q100,192 119,182 L119,148 Z" fill="url(#neck-${id})"/>
+        <!-- Chin Cast Shadow -->
+        <ellipse cx="100" cy="154" rx="22" ry="9" fill="${skinShadow}" opacity="0.7" filter="url(#soft-${id})"/>
+        <!-- Collarbone subtle shadows -->
+        <path d="M64,194 Q82,202 94,196" fill="none" stroke="${skinShadow}" stroke-width="2" opacity="0.55" filter="url(#micro-${id})"/>
+        <path d="M136,194 Q118,202 106,196" fill="none" stroke="${skinShadow}" stroke-width="2" opacity="0.55" filter="url(#micro-${id})"/>
+
+        <!-- Outfit -->
+        <path d="M18,245 C24,200 54,188 78,184 Q100,208 122,184 C146,188 176,200 182,245 Z" fill="${outfitColor}"/>
+        <path d="M78,184 Q100,210 122,184" fill="none" stroke="${outfitAccent}" stroke-width="2.2"/>
+
+        <!-- Ears -->
+        <ellipse cx="52" cy="108" rx="5.5" ry="11" fill="${skinShadow}"/>
+        <ellipse cx="148" cy="108" rx="5.5" ry="11" fill="${skinShadow}"/>
+
+        <!-- Realistic Face Contour -->
+        <path d="M54,94 C54,54 146,54 146,94 C146,125 129,154 100,158 C71,154 54,125 54,94 Z" fill="url(#skin-${id})"/>
+        <!-- Cheekbone Warm Blush & Jaw Sculpting -->
+        <ellipse cx="72" cy="116" rx="13" ry="7" fill="${blush}" opacity="0.28" filter="url(#soft-${id})"/>
+        <ellipse cx="128" cy="116" rx="13" ry="7" fill="${blush}" opacity="0.28" filter="url(#soft-${id})"/>
+        <path d="M58,118 C64,140 78,152 96,156 C76,149 65,135 61,115 Z" fill="${skinShadow}" opacity="0.35" filter="url(#micro-${id})"/>
+
+        <!-- Realistic Eyes (Almond shape, Crease, Iris, Catchlight, Eyelashes) -->
+        <!-- Left Eye -->
+        <path d="M67,96 Q78,89 88,96" fill="none" stroke="${skinShadow}" stroke-width="1.3" opacity="0.85"/>
+        <path d="M66,99 Q78,92 89,99 Q78,106 66,99 Z" fill="#f7f3f0"/>
+        <circle cx="78" cy="99" r="5.3" fill="${eyeColor}"/>
+        <circle cx="78" cy="99" r="2.6" fill="#110e14"/>
+        <circle cx="76" cy="97.2" r="1.5" fill="#ffffff" opacity="0.95"/>
+        <circle cx="80" cy="100.8" r="0.7" fill="#ffffff" opacity="0.65"/>
+        <path d="M65,99 Q78,91.5 90,98.5" fill="none" stroke="#181216" stroke-width="2.1" stroke-linecap="round"/>
+
+        <!-- Right Eye -->
+        <path d="M112,96 Q122,89 133,96" fill="none" stroke="${skinShadow}" stroke-width="1.3" opacity="0.85"/>
+        <path d="M111,99 Q122,92 134,99 Q122,106 111,99 Z" fill="#f7f3f0"/>
+        <circle cx="122" cy="99" r="5.3" fill="${eyeColor}"/>
+        <circle cx="122" cy="99" r="2.6" fill="#110e14"/>
+        <circle cx="120" cy="97.2" r="1.5" fill="#ffffff" opacity="0.95"/>
+        <circle cx="124" cy="100.8" r="0.7" fill="#ffffff" opacity="0.65"/>
+        <path d="M110,98.5 Q122,91.5 135,99" fill="none" stroke="#181216" stroke-width="2.1" stroke-linecap="round"/>
+
+        <!-- Eyebrows -->
+        <path d="M64,87 Q77,82 90,87" fill="none" stroke="${hairDark}" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+        <path d="M110,87 Q123,82 136,87" fill="none" stroke="${hairDark}" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+
+        <!-- Nose Bridge & Subtle Shadow -->
+        <path d="M101,94 L103,115 Q100,119 96,117" fill="none" stroke="${skinShadow}" stroke-width="1.6" opacity="0.55" filter="url(#micro-${id})"/>
+        <line x1="99" y1="95" x2="99.5" y2="114" stroke="#ffffff" stroke-width="1.4" opacity="0.28" filter="url(#micro-${id})"/>
+        <ellipse cx="100" cy="117.5" rx="3.2" ry="1.6" fill="${skinShadow}" opacity="0.32" filter="url(#micro-${id})"/>
+
+        <!-- Realistic Lips -->
+        <path d="M87,133 Q95,129.5 100,132 Q105,129.5 113,133 Q100,135.5 87,133 Z" fill="${lipTop}"/>
+        <path d="M87,133 Q100,143.5 113,133 Q100,135.5 87,133 Z" fill="${lipBottom}"/>
+        <path d="M88,133.2 Q100,135 112,133.2" fill="none" stroke="#4a1f24" stroke-width="0.9" opacity="0.6"/>
+        <ellipse cx="100" cy="137.5" rx="5.5" ry="1.2" fill="#ffffff" opacity="0.32" filter="url(#micro-${id})"/>
+
+        <!-- Front Hair & Rim Highlight -->
+        ${hairFront}
+        <path d="M56,48 Q100,26 144,48" fill="none" stroke="${hairShine}" stroke-width="2.2" opacity="0.35" filter="url(#micro-${id})"/>
+
+        <!-- Accessories -->
         ${accessory}
+
+        <!-- Subtle Photographic Vignette -->
+        <rect width="200" height="245" fill="none" stroke="#000000" stroke-width="12" opacity="0.32" filter="url(#soft-${id})"/>
       </svg>
     `;
   }
 
   // ==========================================
-  // 10 Richly Written Characters (Ambiguous Clues + Post-Dating Arcs)
+  // Soulbound Long-Term Couple Events Pool
+  // ==========================================
+  const SOULBOUND_EVENTS = [
+    {
+      title: '平凡週末的採買與晚餐',
+      prompt: '難得休假的黃昏，她靠在廚房門口問你今晚想吃什麼，但兩人對要花時間自己煮還是叫外送有點小分歧。',
+      choices: [
+        { text: '牽她的手一起去超市挑食材，分工做一頓簡單的家常菜 ($350)', costGold: 350, aff: 8, susp: -14, hp: -4, exp: 30, reply: '雖然青菜稍微炒焦了一點，但廚房裡的笑聲讓整個屋子都充滿了家的溫度。' },
+        { text: '「我今天好累喔，你自己決定就好。」（滑起手機）', aff: -8, susp: 4, hp: -2, exp: 5, reply: '她默默放下圍裙：「……好吧，那各自叫各自的外送。」餐桌顯得有些冷清。' }
+      ]
+    },
+    {
+      title: '突如其來的前任問候簡訊',
+      prompt: '她刷手機時表情忽然僵住，主動把螢幕轉向你：「我前任剛剛突然傳訊問我最近過得好不好……你會介意嗎？」',
+      choices: [
+        { text: '「感謝你第一時間跟我說，我相信你的處理方式，封鎖不回是最省心的。」', aff: 10, susp: -16, hp: -4, exp: 35, reply: '她笑了笑當著你的面直接按下封鎖：「我只是不想讓你覺得我在隱瞞什麼。」' },
+        { text: '語帶醋意質問：「你們之前是不是還有偷偷聯絡？把聊天紀錄全部給我看！」', aff: -14, susp: 10, hp: -10, exp: 10, reply: '「我主動給你看就是因為坦蕩，你這樣懷疑真的很傷人。」氣氛瞬間僵硬。' }
+      ]
+    },
+    {
+      title: '深夜的噩夢與無聲擁抱',
+      prompt: '凌晨三點，她突然從噩夢中驚醒，額頭冒著冷汗緊緊抓住你的手臂，呼吸急促卻說不出話。',
+      choices: [
+        { text: '輕拍她的背並倒一杯溫水，靜靜陪她坐到呼吸平緩（消耗精力）', aff: 12, susp: -15, hp: -10, exp: 35, reply: '她在你懷裡慢慢重新入睡，隔天早上醒來眼神滿是依賴與安心。' },
+        { text: '迷迷糊糊說一句「沒事啦做夢而已快睡」，翻身繼續睡', aff: -10, susp: 5, hp: -2, exp: 5, reply: '隔天她起床時眼圈黑黑的，一整天都顯得有些心不在焉。' }
+      ]
+    },
+    {
+      title: '突發的家用電器維修費',
+      prompt: '住處的熱水器突然故障，維修師傅報價 $650。兩人因為最近各自花銷都不少，站在客廳面面相覷。',
+      choices: [
+        { text: '「先修要緊，這次我來付吧，生活總有這種意外開銷。」($650)', costGold: 650, aff: 10, susp: -12, hp: -4, exp: 30, reply: '「謝謝你總是扛住突發狀況……下個月換我請你吃頓好的補回來！」' },
+        { text: '皺眉抱怨：「怎麼每次都要花我的錢，你平常不能多存一點嗎？」', aff: -16, susp: 8, hp: -8, exp: 5, reply: '「我也只是想跟你商量而已，沒必要講話這麼刺吧……」她轉頭自己把錢轉給師傅。' }
+      ]
+    }
+  ];
+
+  // ==========================================
+  // 12 Realistic Female Characters (Genuine, Casual FWB, Extortion Honey-trap, Scammer, Promoter, Chatter)
   // ==========================================
   const INITIAL_CHARACTERS = () => [
-    // 1. 艾琳 (真心，但敏感容易爽約，容易被誤判為養魚純聊)
+    // 1. 艾琳 (Genuine - Bookish & Sensitive)
     {
       id: 'elaine',
       name: '艾琳 Elaine',
-      epithet: '圖書館的灰燼文青',
+      epithet: '獨立書店的守夜人',
       age: 24,
-      bio: '「獨立書店店員。喜歡雨天、黑咖啡與存在主義，但最近生活壓力有點大……」',
+      bio: '「獨立書店店員。喜歡雨天、黑咖啡與老電影，但最近家裡的租金壓力有點大。」',
       archetype: 'genuine',
       archetypeLabel: '真心尋愛（慢熱敏感型）',
       channels: ['app', 'street', 'friend'],
-      affinity: 22,
+      affinity: 20,
       decayRate: 9,
+      suspicion: 0,
+      suspicionSens: 0.95,
       stage: 0,
       datingStage: 0,
       investigated: 0,
@@ -991,90 +1173,100 @@
       metVia: '',
       daysSinceContact: 0,
       contactedToday: false,
-      portrait: makePortrait('#18141f', '#2a2026', '#4a3b52', '#a6895b', '<rect x="36" y="44" width="12" height="8" rx="2" fill="none" stroke="#a6895b" stroke-width="1.2"/><rect x="52" y="44" width="12" height="8" rx="2" fill="none" stroke="#a6895b" stroke-width="1.2"/><line x1="48" y1="48" x2="52" y2="48" stroke="#a6895b" stroke-width="1.2"/>'),
+      portrait: makeRealisticPortrait('elaine', {
+        bgDark: '#171521', bgWarm: '#2a2230', bokeh1: '#d99b52', bokeh2: '#6b7aa1',
+        skinLight: '#faece4', skinMid: '#eed3c4', skinShadow: '#caa492',
+        hairBase: '#2d2427', hairDark: '#1a1417', hairShine: '#54464b',
+        eyeColor: '#3d302c', lipTop: '#b56e6e', lipBottom: '#cf8282', blush: '#e08d8d',
+        outfitColor: '#2c353d', outfitAccent: '#827361', style: 'bob',
+        accessory: '<rect x="62" y="90" width="29" height="19" rx="4" fill="none" stroke="#b89b6a" stroke-width="1.6"/><rect x="109" y="90" width="29" height="19" rx="4" fill="none" stroke="#b89b6a" stroke-width="1.6"/><line x1="91" y1="98" x2="109" y2="98" stroke="#b89b6a" stroke-width="1.6"/>'
+      }),
       investigateHints: [
-        '她社群帳號上的貼文幾乎都是手寫筆記與冷門電影心得，追蹤者不到兩百人，沒有任何精品或炫富照。',
-        '從旁打聽得知，她確實一直在同間老書店打工兼職，最近似乎因為房東漲租而顯得焦慮。'
+        '她的個人帳號幾乎都是手寫筆記與舊書店進貨日常，追蹤數不到兩百人，從不發精緻網美照。',
+        '向書店常客打聽過，她確實常獨自輪班到打烊，最近房東漲租讓她顯得很緊繃。'
       ],
       stages: [
         {
-          prompt: '她捧著書坐在角落，抬頭看了你一眼，神情略微疲憊：「嗨……其實這陣子不太想社交，只是朋友叫我多出來走走。你平常下班都在做什麼？」',
-          clue: '【細節觀察】她的指尖有些墨水漬，手機螢幕保護貼邊角微微裂開。',
+          prompt: '她捧著書坐在微暗的靠窗角落，語氣略帶疲憊：「抱歉今天狀態不太好，剛盤點完書庫……你平常下班都怎麼消化壓力？」',
+          clue: '【細節觀察】她的指尖還沾著一點原子筆墨痕，手機保護貼邊角有些微磨損。',
           choices: [
-            { text: '分享自己最近在煩惱的小事或喜歡去的安靜去處', aff: 15, hp: -5, exp: 15, reply: '「聽起來你也不是那種每天都很亢奮的人呢……這樣相處反而比較輕鬆。」' },
-            { text: '「當然是到處吃喝玩樂啊！改天帶你去厲害的餐廳放鬆一下！」', aff: -8, hp: -5, exp: 8, reply: '「喔……謝謝你的好意，不過太熱鬧的地方我會頭痛。」' },
-            { text: '「看你好像很累，要不要我先點杯熱飲給你？不勉強聊天。」', aff: 11, costGold: 150, hp: -4, exp: 15, reply: '「啊，不用破費啦……謝謝你，這杯茶確實讓我好多了。」' }
+            { text: '「我也會累到不想講話，通常去河堤吹風或找安靜的麵攤吃頓熱食。」', aff: 14, hp: -5, exp: 16, reply: '「原來你也喜歡那種不被打擾的感覺……跟你講話不用刻意找話題，很舒服。」' },
+            { text: '「辛苦了！改天帶你去吃高級牛排配紅酒放鬆一下！」', aff: -8, hp: -5, exp: 8, reply: '「謝謝，不過太正式的地方我反而會放不開，還是不用麻煩了。」' },
+            { text: '「要不我幫你點杯熱茶，我們今天只待半小時就好，早點回去睡。」($150)', costGold: 150, aff: 12, hp: -4, exp: 16, reply: '「啊……謝謝你這麼體貼，不用一直硬撐著聊天真的鬆了一口氣。」' },
+            { text: '「工作再累也要保持微笑呀，正能量一點比較好！」', aff: -12, hp: -4, exp: 6, reply: '她勉強牽起嘴角：「嗯，說得也是。」隨後安靜地喝起水。' }
           ]
         },
         {
-          prompt: '聊了一週後，她突然傳訊：「抱歉，這個週末原本約好要去看展……但我臨時被排班加上家裡有急事，可能要改天了，真的很不好意思。」',
-          clue: '【細節觀察】她在約定前一天臨時取消見面，這句話讓你心頭微微一緊。',
+          prompt: '約好去看展的前一晚，她突然傳訊：「對不起……家裡長輩臨時住院檢查，明天我得趕回去一趟，沒辦法跟你去了。真的非常抱歉。」',
+          clue: '【細節觀察】在見面前臨時取消約定，訊息字數很多且語氣充滿自責。',
           choices: [
-            { text: '「沒關係，家裡和工作要緊，需要幫忙搬東西或跑腿再說。」', aff: 16, hp: -6, exp: 20, reply: '「謝謝你沒有生氣……前陣子有個男生就是我一改期就封鎖我了。」' },
-            { text: '追問：「是真的有事，還是其實不想跟我見面？」', aff: -14, hp: -8, exp: 10, reply: '「……如果連這點信任都沒有，我們還是別約比較好。」' },
-            { text: '冷處理只回：「好喔，有空再約。」', aff: -4, hp: -4, exp: 10, reply: '「嗯，那你忙吧。」接下來好幾天對話都變得相當客套。' }
+            { text: '「家人最重要，不用一直道歉。需要幫忙跑腿或載一程隨時跟我說。」', aff: 15, hp: -6, exp: 20, reply: '「謝謝你沒有生氣……之前遇過一次臨時改期就被對方酸言酸語的，害我很緊張。」' },
+            { text: '「沒關係，不過你方便拍張診所或車站照片報平安嗎？我擔心你一個人趕路。」', aff: -14, hp: -6, exp: 12, reply: '「……聽起來你好像不太相信我。沒事，我自己可以處理。」' },
+            { text: '「好喔，那你忙完再約。」（簡短冷靜回應）', aff: -4, hp: -4, exp: 10, reply: '「嗯……不好意思。」接下來幾天她回訊息變得更小心翼翼。' }
           ]
         },
         {
-          prompt: '你們終於約在平價麵館見面，卻遇上她接了一通催促還款的家人電話。掛斷後她強顏歡笑：「不好意思讓你看笑話了……最近手頭真的有點緊。」',
-          clue: '【細節觀察】她主動在初次長談就提起財務壓力，卻沒有向你開口。',
+          prompt: '你們終於在平價麵攤見面。吃到一半她接起一通電話，對方語氣急促，她只能低聲說「下週發薪日一定會轉過去」。掛斷後她強顏歡笑：「不好意思讓你看到狼狽的一面。」',
+          clue: '【細節觀察】她主動談到了資金週轉吃緊的困境，卻把手機收起來沒再多提。',
           choices: [
-            { text: '「每個人都會有低潮，如果只是吃飯出門不用擔心花費，平價散步也很好。」', aff: 18, hp: -5, exp: 25, reply: '艾琳鬆了一口氣：「你這句話比借我錢還讓我安心……我不喜歡欠別人。」' },
-            { text: '立刻掏錢：「差多少？我先轉三千給你週轉！」', costGold: 1000, aff: -12, hp: -8, exp: 10, reply: '她嚇了一跳把錢推回來：「不用！我又不是為了這個才跟你出來……這樣讓我覺得像被施捨。」' },
-            { text: '「那你要加油喔，早點還清比較實在。」（保持距離）', aff: -6, hp: -4, exp: 10, reply: '「嗯，我會努力的。」她低頭安靜地把麵吃完。' }
+            { text: '「每個人都有手頭緊的時候，以後我們出門散步或吃巷口小店就好，別有負擔。」', aff: 18, hp: -5, exp: 26, reply: '艾琳深深鬆了一口氣：「你懂那種不想欠人情的固執……謝謝你給我台階下。」' },
+            { text: '直接拿出手機轉帳：「別硬撐了，我先借你 $1,200 應急！」', costGold: 1200, aff: -16, hp: -8, exp: 10, reply: '她猛地按住你的手機：「不要！我跟你出來不是為了借錢，你這樣讓我覺得自尊心很難堪！」' },
+            { text: '裝作沒聽到，默默聊回剛剛電影的劇情', aff: 4, hp: -4, exp: 14, reply: '她感激你沒有追問尷尬的話題，很快也整理好情緒繼續聊天。' }
           ]
         },
         {
-          prompt: '夜晚的書店關門後，艾琳陪你走到捷運站口：「我常常覺得自己是個麻煩又無趣的人。你確定……想跟這樣的人走進更深一層的關係嗎？」',
-          clue: '【細節觀察】她眼神閃躲卻又隱隱期盼你的回答。',
+          prompt: '書店打烊後的雨夜，艾琳撐傘陪你走到巷口：「我沒辦法給出多華麗的浪漫，生活也還有很多煩人的瑣事。你確定要跟這樣的我交往嗎？」',
+          clue: '【細節觀察】她沒有華麗的辭藻，只有對現實重量的小心確認。',
           choices: [
-            { text: '「我不想要完美的幻象，我喜歡的就是真實、偶爾會脆弱的你。」（等級>=2 加成）', reqLevel: 2, aff: 24, failAff: 12, hp: -6, exp: 40, reply: '艾琳眼眶微紅，輕輕靠向你的肩膀：「那就……請你別太快放開我的手。」' },
-            { text: '「別想那麼多，先試著交往看看再說吧！」', aff: 8, hp: -5, exp: 15, reply: '「『試試看』三個字……總覺得好像隨時都能放棄一樣。」她有些猶豫。' },
-            { text: '「確實還有很多需要磨合的地方，我們再多相處一陣子。」', aff: -10, hp: -4, exp: 10, reply: '「好，那我們就維持現狀吧。」她退回安全距離。' }
+            { text: '「我從來沒在找完美無缺的幻象，我想一起走下去的就是眼前的你。」', reqLevel: 2, aff: 24, failAff: 11, hp: -6, exp: 42, reply: '艾琳眼眶微紅，伸手輕輕拉住你的外套袖口：「那就……請別輕易放手。」' },
+            { text: '「別想那麼多，先在一起試試看嘛！」', aff: 6, hp: -5, exp: 15, reply: '「『試試看』三個字……讓我有點害怕哪天你累了就會走掉。」' },
+            { text: '「其實我也很在乎生活品質，可能還需要彼此再多觀察一段時間。」', aff: -12, hp: -4, exp: 10, reply: '「嗯，慎重一點是對的。」她悄悄往後退了半步。' }
           ]
         }
       ],
       datingStages: [
         {
-          prompt: '【交往後事件 1】艾琳邀請你參加她的小型讀書會，但同場都是講話艱深、甚至對你的職業略顯輕視的文青朋友。她似乎沒察覺你的不自在。',
-          clue: '【關係考驗】第一次進入彼此的社交圈。',
+          prompt: '【交往磨合 1】艾琳帶你去她的舊書店同事聚餐，現場幾位文藝青年聊著冷門文學並隱約覺得上班族太市俗。',
+          clue: '【關係考驗】初次融入伴侶的原生圈子。',
           choices: [
-            { text: '不卑不亢展現真實的自己，聚會結束後再私下誠實告訴她自己的感受', aff: 8, hp: -8, exp: 30, reply: '「對不起！我剛剛太專注討論忘了照顧你的心情，下次我會牽緊你。」感情更加緊密！' },
-            { text: '為了討好她的朋友硬裝懂，結果講錯書名出糗', aff: -12, hp: -12, exp: 10, reply: '現場陷入尷尬的沉默，回程時兩人都有些低氣壓。' },
-            { text: '當場臉臭提前離席，讓艾琳在朋友面前下不了台', aff: -25, hp: -10, exp: 5, reply: '「你有必要這麼情緒化嗎？」你們爆發了交往後第一次大吵。' }
+            { text: '微笑傾聽不硬裝懂，聚會後私下坦誠告訴艾琳剛才自己插不上話有點孤單', aff: 10, hp: -8, exp: 32, reply: '「對不起！我剛剛太沉浸在書的話題忘了顧及你，下次我一定緊緊牽著你。」' },
+            { text: '硬是背出幾句網路名言想壓過對方，結果張冠李戴當場出糗', aff: -14, hp: -12, exp: 10, reply: '桌上突然安靜了三秒，艾琳尷尬地幫你打圓場，回程氣氛沉悶。' },
+            { text: '直接臭臉滑手機提前離場', aff: -25, hp: -10, exp: 5, reply: '「你不喜歡可以跟我說，沒必要當場給大家難看吧？」' }
           ]
         },
         {
-          prompt: '【交往後事件 2】艾琳在書店的創作計畫被退件，整個人陷入長達三天的消沉與沉默，對你的關心只回「嗯」、「沒事」。',
-          clue: '【關係考驗】面對伴侶的負能量黑洞。',
+          prompt: '【交往磨合 2】艾琳投稿的雜誌專欄連續三次被退稿，她整整三天把自己關在房間不願出門，訊息只回「沒事」。',
+          clue: '【關係考驗】如何承接伴侶的自我懷疑。',
           choices: [
-            { text: '帶一份她喜歡的熱食去她家樓下，不逼她說話，只說「我在這裡」 ($400)', costGold: 400, aff: 12, hp: -6, exp: 35, reply: '艾琳下樓緊緊抱住你哭了出來：「謝謝你沒有對我的沉默感到不耐煩……」' },
-            { text: '不斷傳長篇大道理鼓勵她振作起來', aff: -10, hp: -10, exp: 10, reply: '「我現在就是沒力氣聽大道理啊……讓我安靜一下好嗎。」' }
+            { text: '買她愛吃的熱食放到門口，傳訊「不逼你說話，想見我隨時開門」 ($400)', costGold: 400, aff: 14, hp: -6, exp: 36, reply: '過了十分鐘門打開了，她頂著亂糟糟的頭髮衝出來抱住你哭了好久。' },
+            { text: '直接打電話過去嚴肅幫她檢討文章結構哪裡有問題', aff: -12, hp: -10, exp: 10, reply: '「我現在就是需要喘口氣，不是需要第二個編輯！」' }
           ]
         },
         {
-          prompt: '【交往後事件 3】你們迎來交往紀念週，討論起未來的居住規劃。她小聲問：「如果以後房租跟生活壓力都很重，我們真的撐得過去嗎？」',
-          clue: '【終極磨合】邁向永恆誓約的最後一步。',
+          prompt: '【交往磨合 3】討論同居與未來儲蓄時，艾琳看著計算機嘆氣：「如果未來某天其中一個人失業或生病，我們真的撐得過去嗎？」',
+          clue: '【終極考驗】通往永恆誓約的最後一步。',
           choices: [
-            { text: '拿出一份實際的存錢與共同生活計畫書，牽起她的手（需金錢>=$1500 與 外表>=10）', reqLooks: 10, costGold: 800, aff: 15, hp: -5, exp: 60, reply: '看見你不只是空口承諾而是付諸行動，艾琳綻放出前所未有的安心笑容！' },
-            { text: '「船到橋頭自然直啦，別擔心那麼多！」', aff: -15, hp: -5, exp: 10, reply: '「你總是這樣一句帶過……讓我覺得未來好不確定。」' }
+            { text: '攤開這段時間為彼此存下的備用金與預算表，承諾共同分擔 ($800)', reqLooks: 10, costGold: 800, aff: 16, failAff: 6, hp: -5, exp: 60, reply: '看見實際行動而非空話，艾琳眼中綻放出無比踏實的光芒！' },
+            { text: '「想那麼遠幹嘛，開心過好今天就好啦！」', aff: -15, hp: -5, exp: 10, reply: '「你總是把嚴肅的事情笑著帶過，讓我很沒有安全感……」' }
           ]
         }
       ]
     },
 
-    // 2. 林可可 (高段位殺豬盤詐騙：前期極度正常、會聊日常與寵物，到第3-4階段才慢慢鋪陳)
+    // 2. 蕾娜 (NEW! Pure Casual / Physical Relationship - 肉體關係獵豔者)
     {
-      id: 'coco',
-      name: '林可可 Coco',
-      epithet: '溫柔的日常幻影',
-      age: 24,
-      bio: '「室內設計接案中✨ 養了一隻三花貓，喜歡週末去市場買菜自己煮飯。」',
-      archetype: 'scammer',
-      archetypeLabel: '高段位投資詐騙（殺豬盤）',
-      channels: ['app', 'social'],
-      affinity: 26,
-      decayRate: 10,
+      id: 'rena',
+      name: '蕾娜 Rena',
+      epithet: '午夜微醺的獵豔者',
+      age: 25,
+      bio: '「獨立調酒師🍸 人生苦短，只想找有默契、懂分寸的成年人享受當下，不談未來勿暈船。」',
+      archetype: 'casual',
+      archetypeLabel: '肉體關係／無承諾伴侶（忌暈船）',
+      channels: ['app', 'social', 'approach'],
+      affinity: 24,
+      decayRate: 13,
+      suspicion: 0,
+      suspicionSens: 0.5,
       stage: 0,
       investigated: 0,
       revealed: false,
@@ -1082,62 +1274,135 @@
       metVia: '',
       daysSinceContact: 0,
       contactedToday: false,
-      portrait: makePortrait('#24141c', '#d6a469', '#6e3a2d', '#f5c26b', '<circle cx="33" cy="58" r="2.5" fill="#f5c26b"/><circle cx="67" cy="58" r="2.5" fill="#f5c26b"/>'),
+      portrait: makeRealisticPortrait('rena', {
+        bgDark: '#190c14', bgWarm: '#331424', bokeh1: '#e04f70', bokeh2: '#f29f67',
+        skinLight: '#f6e1d3', skinMid: '#e3bfa9', skinShadow: '#bd8f76',
+        hairBase: '#24181c', hairDark: '#120b0e', hairShine: '#5e3d47',
+        eyeColor: '#4f2c24', lipTop: '#9c2d3b', lipBottom: '#bf3b4c', blush: '#d96b78',
+        outfitColor: '#1a1116', outfitAccent: '#b83b5e', style: 'wave',
+        accessory: '<circle cx="52" cy="121" r="3" fill="none" stroke="#e6c173" stroke-width="1.3"/><circle cx="148" cy="121" r="3" fill="none" stroke="#e6c173" stroke-width="1.3"/>'
+      }),
       investigateHints: [
-        '她的生活照光線極為完美，但仔細看照片裡的插座規格與街景，似乎偶爾出現不像本地的細節。',
-        '她總是恰好在深夜才回覆密集，且當你提議即時視訊通話時，總會有家人或貓咪打翻東西的理由推託。'
+        '她確實是知名地下酒吧的調酒師，下班後常約不同的男生小酌，從不索取金錢或禮物，但最討厭黏人的對象。',
+        '圈內人透露她的原則很明確：「今晚可以像戀人般親密，明早出門互不相欠。」'
       ],
       stages: [
         {
-          prompt: '她傳來一張自家貓咪趴在設計圖上的照片，語氣自然親切：「忙了一整天剛交圖～看你簡介寫喜歡探索美食，這附近有推薦的宵夜嗎？」',
-          clue: '【細節觀察】聊天的節奏很舒服，完全沒有提及任何金錢或敏感話題。',
+          prompt: '凌晨兩點她剛下班，語氣慵懶帶著笑意：「剛收完吧台好無聊喔～看你還沒睡，平常晚上都怎麼打發時間？」',
+          clue: '【細節觀察】她的回覆充滿性張力與試探，卻對你的收入工作隻字不提。',
           choices: [
-            { text: '熱情推薦自己的口袋愛店並聊聊寵物日常', aff: 16, hp: -4, exp: 15, reply: '「筆記筆記！你講得好生動喔，改天一定要去吃吃看～」' },
-            { text: '好奇問她接案收入穩不穩定', aff: 8, hp: -4, exp: 12, reply: '「接案本來就看淡旺季呀，所以自己要懂得理財規劃嘛，哈哈不聊工作的事了！」' },
-            { text: '試探約她這週直接出來喝咖啡', aff: 6, hp: -5, exp: 15, reply: '「這週剛好要趕一個台中的案子耶，下週回市區再看看喔！」' }
+            { text: '「剛好也在想找個安靜的地方喝一杯，聊點不用動腦的話題。」', reqLooks: 10, aff: 18, failAff: 8, hp: -5, exp: 18, reply: '「不錯喔，夠直接。我喜歡不扭捏的男生～」' },
+            { text: '「這麼晚還沒睡對身體不好喔，早點休息明天還要上班！」', aff: -12, hp: -4, exp: 8, reply: '「哈哈你好健康喔……像我老爸一樣，晚安囉。」' },
+            { text: '「你剛下班一定很累吧？我們明天白天約吃早午餐聊聊彼此的家庭！」', aff: -18, hp: -4, exp: 8, reply: '「呃……我白天都在補眠，而且我不太聊家裡的事耶。」' }
           ]
         },
         {
-          prompt: '某天下午她貼心提醒你降溫記得多穿衣服，順口提到：「今天業主臨時改稿氣死人了，幸好前陣子表哥帶我做的外匯避險剛入帳一筆，才不用看業主臉色。」',
-          clue: '【細節觀察】話題像朋友閒聊般順帶提及副業獲利，語氣平淡毫不推銷。',
+          prompt: '約在她調酒的小吧台見面（消費 $500）。幾杯酒下肚後，她身體微傾靠近你耳邊低語：「你身上的味道很好聞耶……等一下想不想換個更安靜的地方？」',
+          clue: '【細節觀察】距離急速拉近，她正在觀察你的反應與分寸感。',
           choices: [
-            { text: '附和稱讚：「現在斜槓很重要耶，你真有頭腦！」', aff: 15, hp: -4, exp: 15, reply: '「哪有啦，也是剛好遇到貴人指點～你平常有在研究什麼投資嗎？」' },
-            { text: '只安慰她業主很煩，完全略過副業話題', aff: 8, hp: -4, exp: 18, reply: '「對啊超煩的！幸好有你在聽我抱怨，感覺好多了～」' },
-            { text: '「我也想學，改天請你吃飯教教我？」', aff: 18, hp: -5, exp: 12, reply: '「好呀！不過這個看緣分跟時機的，等我們熟一點再分享給你～」' }
+            { text: '從容微笑碰杯：「正有此意，但今晚就單純享受氣氛，不聊明天。」($500)', costGold: 500, reqLooks: 12, aff: 20, failAff: 6, hp: -10, exp: 25, reply: '她眼神亮了起來：「你真的很懂規矩……走吧。」（你們度過了微醺曖昧的一夜）' },
+            { text: '握住她的手認真告白：「蕾娜，其實我對你是認真的，我想當你男朋友！」', aff: -30, hp: -8, exp: 10, reply: '她立刻抽回手退開半步：「抱歉，我簡介寫得很清楚不談感情，別越線。」' },
+            { text: '緊張推辭：「還是先去吃個宵夜聊聊天再回家吧？」', aff: -8, hp: -4, exp: 10, reply: '「好吧，看來我們頻率不太一樣。」她興致缺缺地喝完最後一口酒。' }
           ]
         },
         {
-          prompt: '你們聊得極為投機，她甚至主動在線上叫外送請你喝了杯咖啡。「其實最近覺得跟你很有話聊……對了，下週有個內部數據窗口，你要不要用小額 $500 試水溫看看，就當幫自己加薪？」',
-          clue: '【細節觀察】她之前真的請過你喝咖啡建立好感，如今只建議「小額試水溫」。',
+          prompt: '隔天午後醒來，她已經穿好衣服準備離開，臨走前在鏡子前塗著口紅：「昨晚很開心。對了，我下週會去南部衝浪幾天，這幾天不用特別傳訊息查勤喔。」',
+          clue: '【細節觀察】她在測試你是否會「暈船」並試圖控制她的生活。',
           choices: [
-            { text: '既然都花過錢請我喝咖啡了，投 $500 試試看也不痛不癢', costGold: 500, aff: 20, hp: -5, exp: 15, reply: '隔天帳面上竟然真的顯示「獲利 $650」並成功提領到你帳戶！你對她的信任度大增。（實際獲得 $650）', bonusGold: 650 },
-            { text: '「心領了，但我對不熟悉的平台真的不會碰，我們聊別的吧。」', aff: -8, hp: -4, exp: 25, reply: '「唉唷，我也是為你好嘛，你怎麼防備心這麼重呀……」她語氣有些微妙的轉冷。' },
-            { text: '「這該不會是養套殺的前奏吧？再見！」', triggerParry: true, exp: 50, reply: '你沒被前面那杯咖啡與假甜頭迷惑！當場揭穿後，對方秒刪帳號消失在迷霧中！' }
+            { text: '慵懶揮手：「玩得開心，回來想喝一杯再敲我就好。」', aff: 20, hp: -4, exp: 28, reply: '蕾娜回頭給了你一個飛吻：「就愛你這份俐落，下週見。」' },
+            { text: '「去衝浪跟誰去？為什麼不能每天傳訊息？」', aff: -32, hp: -10, exp: 10, reply: '「哈，開始管東管西了嗎？那昨晚就當作最後一次吧。」她拉開門頭也不回地走了。' },
+            { text: '「我出錢陪你一起去南部玩好不好！」($900)', costGold: 900, aff: -18, hp: -6, exp: 10, reply: '「我喜歡獨自旅行，不需要金主跟班，謝謝。」' }
           ]
         },
         {
-          prompt: '「親愛的！表哥說今晚有十年難遇的大行情，這波跟上就能存到我們一起出國的基金！我已經投了二十萬進去，你快把身邊能動用的 $2,500 匯進平台，錯過就沒機會了！」',
-          clue: '【細節觀察】前面的一切鋪墊，終於來到了最關鍵的時刻。',
+          prompt: '幾週後她再度在深夜約你見面，靠在陽台吹風：「我們這樣沒有負擔、只分享荷爾蒙跟快樂的關係挺好的，對吧？只要你別愛上我，我們可以一直這樣。」',
+          clue: '【細節觀察】這段關係的本質即將定型。',
           choices: [
-            { text: '「為了我們的未來，我馬上匯 $2,500 進去！」', scamGold: 2500, hp: -38, exp: 5, reply: '資金轉入瞬間，系統顯示「帳戶違規遭凍結」，林可可也把你全平台封鎖……慘遭收割！' },
-            { text: '「真正愛我的人不會逼我把積蓄押在來路不明的平台，到此為止！」', triggerParry: true, exp: 65, reply: '極限盾反！你識破了層層偽裝的長線殺豬盤，完好無損地守住荷包！' }
+            { text: '「說好了，互不干涉彼此生活，只享受屬於夜晚的默契。」', reqLooks: 13, aff: 22, failAff: 10, hp: -8, exp: 40, reply: '蕾娜笑著將酒杯遞給你，你們建立了危險卻迷人的非排他親密關係！' },
+            { text: '「抱歉，我發現自己還是沒辦法只停留在肉體關係，我想找的是真愛。」', triggerParry: true, exp: 45, reply: '「誠實是好事，那祝你早日找到對的人。」你們體面道別，你守住了尋找真愛的原則！' }
           ]
         }
       ]
     },
 
-    // 3. 凱莉 (真心，但前期酷似拜金或高傲女，極容易被多疑玩家誤殺)
+    // 3. 蜜雪兒 (NEW! Honey-Trap / 仙人跳設局敲詐!)
+    {
+      id: 'michelle',
+      name: '蜜雪兒 Michelle',
+      epithet: '霓虹套房的設局者',
+      age: 24,
+      bio: '「網拍模特兒✨ 剛結束一段糟糕的感情，現在只想找人陪我喝一杯忘掉煩惱。」',
+      archetype: 'extortion',
+      archetypeLabel: '仙人跳設局勒索（桃色陷阱）',
+      channels: ['app', 'social', 'approach'],
+      affinity: 28,
+      decayRate: 12,
+      suspicion: 0,
+      suspicionSens: 0.5,
+      stage: 0,
+      investigated: 0,
+      revealed: false,
+      status: 'unmet',
+      metVia: '',
+      daysSinceContact: 0,
+      contactedToday: false,
+      portrait: makeRealisticPortrait('michelle', {
+        bgDark: '#160d18', bgWarm: '#2f1636', bokeh1: '#d147a3', bokeh2: '#6b8cff',
+        skinLight: '#fcf0ea', skinMid: '#f0d7cc', skinShadow: '#c7a194',
+        hairBase: '#593b2e', hairDark: '#362119', hairShine: '#9c715c',
+        eyeColor: '#422c24', lipTop: '#bd3f56', lipBottom: '#dc556d', blush: '#e67c8e',
+        outfitColor: '#1f1624', outfitAccent: '#d98a9b', style: 'wave',
+        accessory: '<path d="M84,185 Q100,192 116,185" fill="none" stroke="#e6c173" stroke-width="1.3"/><circle cx="100" cy="190" r="2.2" fill="#e6c173"/>'
+      }),
+      investigateHints: [
+        '她自稱網拍模特兒，但社群上幾乎沒有品牌標籤，反而經常半夜出沒在幾間特定商旅與私人招待所附近。',
+        '有網友在匿名論壇隱晦提過，曾有男生被一位姓陳的網美約進私人套房後，莫名被衝進門的男子索賠遮口費。'
+      ],
+      stages: [
+        {
+          prompt: '配對沒多久她就傳來極具誘惑力的語音：「剛跟渣男分手心情超爛的……我看你照片蠻順眼的耶，今晚有空嗎？我想找人陪我喝酒發洩一下～」',
+          clue: '【細節觀察】進度飛快，且刻意強調剛失戀需要尋求安慰與酒精。',
+          choices: [
+            { text: '「正好有空，我們約在鬧區亮堂一點的連鎖咖啡廳聊聊吧。」', aff: -8, hp: -4, exp: 20, reply: '「哎呀喝咖啡多無聊啦～晚上就是要喝酒才有氣氛嘛，你該不會很膽小吧？」' },
+            { text: '「陪美女喝酒當然沒問題！你想去哪裡喝？」', aff: 18, hp: -5, exp: 12, reply: '「就知道你夠乾脆～等等我傳我熟的私人會館包廂給你喔！」' },
+            { text: '「剛分手先冷靜幾天比較好吧？別拿酒精麻痺自己。」', aff: -14, hp: -3, exp: 15, reply: '「吼你好掃興喔，不想陪就直說嘛！」' }
+          ]
+        },
+        {
+          prompt: '見面後她沒點幾口酒就故意貼近你挽住手臂：「外面人好多好吵喔……我朋友剛好有一間很安靜的私人套房借我休息，我們買瓶紅酒上去單獨聊好不好？我其實對你很有好感💕」',
+          clue: '【細節觀察】剛見面不到一小時，她極力促成前往「她指定」的封閉私密空間。',
+          choices: [
+            { text: '精蟲衝腦答應上去！買一瓶紅酒跟她走進那間陌生套房 ($600)', costGold: 600, aff: 24, hp: -8, exp: 10, reply: '房間燈光昏暗，她笑著幫你倒了兩杯酒並刻意脫下外套……突然走廊傳來急促的腳步聲！', enterTrap: true },
+            { text: '「太快了，要喝的話去大家常去的大型連鎖KTV或公開酒吧就好。」', aff: -12, hp: -4, exp: 25, reply: '她眼神閃過一絲不耐：「去大廳很貴又沒隱私耶，算了我看你根本沒誠意！」' },
+            { text: '察覺這完全符合新聞報導的仙人跳套路，藉口接電話直接閃人封鎖！', triggerParry: true, exp: 55, reply: '你冷靜識破了桃色陷阱！離開巷口時恰好瞥見兩個抽菸的壯漢正盯著那棟樓的入口……好險！' }
+          ]
+        },
+        {
+          prompt: '【危機降臨】剛喝完一杯酒，房門突然被猛力踹開！兩名神色兇惡的刺青男子拿著手機錄影衝進來大吼：「好啊！竟然趁我老婆心情不好拐她來開房間！你今天不拿 $4,500 出來和解，我就報警讓你在公司社死！」蜜雪兒則躲在床角假裝哭泣。',
+          clue: '【細節觀察】真正的仙人跳收網現場！對方人多勢眾並拿手機對著你拍。',
+          choices: [
+            { text: '害怕鬧大影響工作，乖乖打開手機轉帳或領錢賠 $4,500 息事寧人', scamGold: 4500, hp: -42, exp: 5, reply: '拿到錢後他們狠狠踹了你一腳警告不准報警便揚長而去。你身心受創、盧恩幾乎歸零……' },
+            { text: '深呼吸穩住氣場，直接按下報警鍵並高舉手機錄影：「來！所有約見面紀錄都在這，正好請警察來查誰設局恐嚇取財！」', reqLevel: 3, triggerParry: true, failTrapGold: 1600, hp: -15, exp: 75, reply: '看到你不但沒慌張還真的接通 110 且全程留存對話證據，幾名歹徒臉色一變互看一眼，罵了一句髒話拔腿就跑！' },
+            { text: '試圖硬闖奪門而出！', hp: -35, scamGold: 1800, exp: 15, reply: '在走廊推擠間你挨了幾拳並被搶走身上現金 $1,800，狼狽逃出大樓！' }
+          ]
+        }
+      ]
+    },
+
+    // 4. 凱莉 (Genuine - High-standard Corporate Consultant)
     {
       id: 'kylie',
       name: '凱莉 Kylie',
       epithet: '鋼鐵聖堂的女騎士',
       age: 28,
-      bio: '「外商策略顧問。沒時間陪玩感情遊戲，請先確認自己具備足夠的實力與誠意。」',
+      bio: '「外商策略顧問。沒時間陪玩感情遊戲，請先確認自己具備足夠的實力與格局。」',
       archetype: 'genuine',
       archetypeLabel: '真心尋愛（高門檻菁英型）',
       channels: ['friend', 'street'],
       affinity: 18,
       decayRate: 11,
+      suspicion: 0,
+      suspicionSens: 1.25,
       stage: 0,
       datingStage: 0,
       investigated: 0,
@@ -1146,87 +1411,166 @@
       metVia: '',
       daysSinceContact: 0,
       contactedToday: false,
-      portrait: makePortrait('#14171c', '#1c1a24', '#8c6d3b', '#c7a463', '<polygon points="50,24 53,29 50,34 47,29" fill="#c7a463"/>'),
+      portrait: makeRealisticPortrait('kylie', {
+        bgDark: '#10141c', bgWarm: '#1d2432', bokeh1: '#d9b36c', bokeh2: '#6b94c7',
+        skinLight: '#f7eae0', skinMid: '#e8ccb8', skinShadow: '#bd9c88',
+        hairBase: '#18181f', hairDark: '#0b0b10', hairShine: '#46485c',
+        eyeColor: '#2d2622', lipTop: '#9e4747', lipBottom: '#b85a5a', blush: '#cf7c7c',
+        outfitColor: '#1b1d24', outfitAccent: '#b89b6a', style: 'updo',
+        accessory: '<circle cx="52" cy="119" r="3" fill="#e6dcd3"/><circle cx="148" cy="119" r="3" fill="#e6dcd3"/>'
+      }),
       investigateHints: [
-        '介紹人再三保證她是貨真價實的知名外商顧問，只是過去遇過太多想靠她人脈佔便宜的男生，才變得極端防備。',
-        '她的行程表滿到發慌，但從沒向任何人推銷過商品或借過一毛錢。'
+        '介紹人再三保證她是貨真價實的頂尖顧問，只是過去遇過太多軟飯男才習慣一開場就用現實問題篩人。',
+        '她從不向異性借錢或推銷任何產品，甚至經常主動AA或搶先買單。'
       ],
       stages: [
         {
-          prompt: '見面第一句她就直切重點：「介紹人說你還不錯，但我習慣把條件攤開講。你目前的職涯規劃、經濟狀況與對伴侶的期待是什麼？」',
-          clue: '【細節觀察】她語氣像面試官般直接談論經濟與條件，絲毫不像普通約會。',
+          prompt: '她目光銳利地直視你的雙眼：「我習慣先把醜話說前頭。你目前的職涯目標、財務規劃與對伴侶的期待是什麼？別講空話。」',
+          clue: '【細節觀察】像高階面試官般嚴肅，一絲多餘的客套都沒有。',
           choices: [
-            { text: '不卑不亢條理分明地說明現況與規劃（外表>=12 效果加倍）', reqLooks: 12, aff: 18, failAff: 6, hp: -8, exp: 20, reply: '「邏輯清晰且不迴避現實問題，這點比多數只會講甜言蜜語的人強多了。」' },
-            { text: '「為什麼一上來就問錢？你是只看重物質的人嗎？」', aff: -18, hp: -6, exp: 10, reply: '「連面對現實問題都覺得被冒犯，那我們確實沒必要浪費彼此時間。」' },
-            { text: '謙虛討好：「我還在努力啦，但我一定會對你很好的！」', aff: -10, hp: -6, exp: 10, reply: '「『對你好』是最廉價也最沒保證的承諾。」她冷靜地抿了一口黑咖啡。' }
+            { text: '平靜且具體地說明自己的現況、理財原則與長期方向', reqLooks: 11, aff: 18, failAff: 6, hp: -8, exp: 20, reply: '「條理清晰、沒有迴避現實也不卑不亢。你比我遇過八成的人都靠譜。」' },
+            { text: '「為什麼一開始就要談錢和條件？感情不該這麼功利吧？」', aff: -18, hp: -6, exp: 10, reply: '「連面對現實都覺得刺耳，代表我們生活維度差太遠了。」' },
+            { text: '「只要你願意給我機會，我一定會加倍努力賺錢配得上你！」', aff: -10, hp: -6, exp: 10, reply: '「我要的是並肩的伴侶，不是來當別人的精神導師。」' }
           ]
         },
         {
-          prompt: '她約在一家氣氛不錯的精緻餐廳（消費 $750），結帳時她主動拿出信用卡：「這家我常來有優惠，這次我請，下次換你挑一間不輸這裡的店，如何？」',
-          clue: '【細節觀察】她搶先買單，卻也設下了下一次約會的隱性門檻。',
+          prompt: '她在一家質感不錯的餐廳搶先刷卡買單：「這間我有會員折扣，這次算我的。下次換你挑一間水準相當的餐廳請我，沒問題吧？」',
+          clue: '【細節觀察】看似體貼請客，實則設下了對等品味的隱形測試。',
           choices: [
-            { text: '大方接受並笑著回應：「沒問題，下次換我訂位，保證不會讓你失望。」', aff: 16, hp: -5, exp: 25, reply: '「好，我期待你的品味。」她眼中閃過一絲難得的讚賞。' },
-            { text: '堅持搶著把 $750 付掉展現男人氣概', costGold: 750, aff: 4, hp: -5, exp: 15, reply: '「不必這麼拘泥於形式，下次別再搶單了，顯得太刻意。」' },
-            { text: '「我平時比較常吃路邊攤耶，這種高級店我負荷不來。」', aff: -16, hp: -6, exp: 10, reply: '「消費觀差距過大是很難走遠的，謝謝你今天的誠實。」' }
+            { text: '「沒問題，下次換我安排，保證符合你的品味。」', aff: 16, hp: -5, exp: 25, reply: '「好，我期待你的表現。」她難得露出一抹淡淡笑意。' },
+            { text: '堅持轉帳一半或搶著當場付現 ($750)', costGold: 750, aff: 2, hp: -5, exp: 14, reply: '「不用這麼刻意算得清清楚楚，顯得有點生分。」' },
+            { text: '「其實我平常吃得很隨便，這麼高檔的我怕自己不習慣……」', aff: -16, hp: -6, exp: 10, reply: '「價值觀不同是很難長久的，謝謝你的坦白。」' }
           ]
         },
         {
-          prompt: '兌現約定的高階餐酒館之夜（需花費 $950）。席間服務生不小心弄髒她的外套，她卻異常冷靜地看你會如何處理這場突發狀況。',
-          clue: '【細節觀察】她在觀察你的應變與情緒穩定度。',
+          prompt: '兌現約定的餐酒館之夜 ($950)。席間服務生不小心把酒灑到她的手提包旁，凱莉沒有生氣，只是安靜看你怎麼處理。',
+          clue: '【細節觀察】她在測試你面對突發小事的情緒控管與教養。',
           choices: [
-            { text: '先禮貌體恤慌張的服務生，再從容協助清理並買單不失風度 ($950)', costGold: 950, aff: 22, hp: -6, exp: 30, reply: '「遇事不慌、對弱者保有餘裕，對強者不卑不亢……你通過了我的考驗。」' },
-            { text: '要求餐廳主管出來賠償乾洗費並打折', costGold: 700, aff: -18, hp: -8, exp: 10, reply: '「計較這點小錢而毀掉整晚氣氛，實在太失格局了。」' }
+            { text: '先禮貌安撫緊張的服務生沒關係，再遞紙巾幫凱莉清理並大方買單 ($950)', costGold: 950, aff: 22, hp: -6, exp: 30, reply: '「遇事沉著、對基層保持善意，這比會點紅酒重要多了。」' },
+            { text: '立刻找經理出來要求免除服務費與賠償包包的清潔費', costGold: 700, aff: -20, hp: -8, exp: 10, reply: '「為了一點小擦傷大動肝火，實在太失風度了。」' }
           ]
         },
         {
-          prompt: '深夜辦公室外的露台，凱莉罕見地有些疲憊：「其實外面很多人說我難搞又現實。你跟了我這麼久……難道不覺得我很麻煩嗎？」',
-          clue: '【細節觀察】女騎士在強硬的盔甲下，第一次流露出一絲動搖。',
+          prompt: '深夜露台，凱莉罕見地有些卸下防備：「圈子裡都說我像塊冰冷的石頭。跟了我這麼久，你不覺得跟我相處很累嗎？」',
+          clue: '【細節觀察】高冷的外殼下第一次透出微弱的真實溫度。',
           choices: [
-            { text: '「你的高標準是為了篩選掉不認真的人。我想當能與你並肩作戰的戰友。」（等級>=3 額外加成）', reqLevel: 3, aff: 26, failAff: 15, hp: -6, exp: 45, reply: '凱莉徹底卸下心防，輕輕握住你的手：「說好了，從今以後我們就是同一陣線的盟友。」' },
-            { text: '「不會啊，我覺得你超酷的，以後我都聽你的就好！」', aff: -10, hp: -5, exp: 10, reply: '「我找的是伴侶，不是跟班。」她失望地收回目光。' }
+            { text: '「你的防備只是為了保護自己。我不需要你變成溫順的小貓，我們並肩站著就好。」', reqLevel: 3, aff: 26, failAff: 14, hp: -6, exp: 45, reply: '凱莉輕輕扣住你的手指：「好，我的盟友。今後請多指教。」' },
+            { text: '「怎麼會累！以後我都聽你的安排就好，你說了算。」', aff: -12, hp: -5, exp: 10, reply: '「聽話跟依附不是我要的愛情。」' }
           ]
         }
       ],
       datingStages: [
         {
-          prompt: '【交往後事件 1】凱莉連續一週被派往海外出差，每天只回短短兩行字。朋友私下酸你：「她那麼優秀，該不會在國外早就找到更好的了吧？」',
-          clue: '【關係考驗】高強度遠距與外界閒言碎語。',
+          prompt: '【交往磨合 1】凱莉連續出差一週只回幾句簡訊，朋友提醒你小心她眼界太高早就變心。',
+          clue: '【關係考驗】對高強度職場伴侶的信任。',
           choices: [
-            { text: '信任她的專業，傳簡短不打擾的問候並專注提升自己', aff: 10, hp: -8, exp: 35, reply: '出差回國那天，凱莉第一時間衝來見你：「謝謝你沒在我最忙的時候鬧脾氣！」' },
-            { text: '每天奪命連環叩要求她報備行程與拍照證明', aff: -22, hp: -14, exp: 10, reply: '「連基本信任都沒有，這段關係只會拖垮我！」凱莉怒氣衝衝掛斷電話。' }
+            { text: '不打擾她的工作節奏，睡前傳一句輕鬆的關心並專心過好自己日常', aff: 10, hp: -8, exp: 35, reply: '回國那天她直接提著禮物來找你：「謝謝你沒在我焦頭爛額時逼我安撫你。」' },
+            { text: '每天追問行蹤要求視訊查勤', aff: -22, hp: -14, exp: 10, reply: '「懷疑跟內耗會毀掉一切！」她掛斷了電話。' }
           ]
         },
         {
-          prompt: '【交往後事件 2】凱莉帶你出席商界朋友的私人派對，某位多金男伴語帶挑釁地問你的年收與背景，現場氣氛微妙。',
-          clue: '【關係考驗】外貌與氣場的終極試煉。',
+          prompt: '【交往磨合 2】商業酒會上，某位多金男士刻意打聽你的背景並語帶輕蔑。凱莉就在你身旁。',
+          clue: '【關係考驗】氣場與自尊的正面交鋒。',
           choices: [
-            { text: '微笑自嘲並把焦點優雅帶回專業與生活態度（外表>=14 成功震懾全場）', reqLooks: 14, aff: 14, failAff: -4, hp: -8, exp: 40, reply: '你的從容與氣場贏得眾人尊重，凱莉挽著你的手臂露出驕傲的笑容！' },
-            { text: '當場翻臉跟對方嗆聲', aff: -18, hp: -12, exp: 10, reply: '場面變得極度難看，凱莉不得不替你向主人道歉收場。' }
+            { text: '微笑自嘲一句並淡定把話題轉回行業洞見，不卑不亢', reqLooks: 14, aff: 14, failAff: -4, hp: -8, exp: 40, reply: '你的體面與談吐反而襯托出對方的淺薄，凱莉驕傲地挽緊了你的手！' },
+            { text: '當場怒拍桌子回嗆對方', aff: -18, hp: -12, exp: 10, reply: '場面鬧僵，凱莉不得不替你向主辦方致歉。' }
           ]
         },
         {
-          prompt: '【交往後事件 3】凱莉收到外商總部的升遷調職機會，她望著你：「如果我留下來會錯過機會，但如果我走……你願意相信我們的未來嗎？」',
-          clue: '【終極磨合】通往永恆誓約的選擇。',
+          prompt: '【交往磨合 3】凱莉獲得新加坡總部的調職升遷機會，她盯著你：「我不想犧牲事業，但我也不想失去你。你怎麼想？」',
+          clue: '【終極考驗】跨過現實阻礙的永恆誓約。',
           choices: [
-            { text: '「去追逐你的巔峰，我也有能力調整腳步去任何有你的地方。」（等級>=4 加成）', reqLevel: 4, aff: 15, failAff: 6, hp: -5, exp: 60, reply: '凱莉眼角閃爍著淚光吻了你：「有你這句話，這世上沒有我不敢去的地方。」' },
-            { text: '要求她為了愛情放棄升遷留下來', aff: -20, hp: -8, exp: 10, reply: '「我以為你懂我的野心……原來你也想把我困住。」' }
+            { text: '「勇敢去飛，我也有足夠能力規劃調動或遠距陪伴，一起扛！」', reqLevel: 4, aff: 16, failAff: 6, hp: -5, exp: 60, reply: '凱莉眼眶泛淚吻了你：「有你這句話，這世上沒有我們跨不過去的難關。」' },
+            { text: '要求她為了你放棄升遷留下來', aff: -20, hp: -8, exp: 10, reply: '「我以為你懂我……」她沉默地低下了頭。' }
           ]
         }
       ]
     },
 
-    // 4. 夏娜 (新型苦情借錢詐騙：不搞投資、約會吃路邊攤甚至請客，後期用家人急病借錢)
+    // 5. 林可可 (Real-world Pig Butchering Scammer - 長線殺豬盤)
+    {
+      id: 'coco',
+      name: '林可可 Coco',
+      epithet: '黃金彼岸的溫柔幻影',
+      age: 24,
+      bio: '「室內設計接案中✨ 養了一隻三花貓，喜歡自己煮晚餐，希望能遇到一起努力的人。」',
+      archetype: 'scammer',
+      archetypeLabel: '高段位殺豬盤詐騙',
+      channels: ['app', 'social'],
+      affinity: 24,
+      decayRate: 10,
+      suspicion: 0,
+      suspicionSens: 0.5,
+      stage: 0,
+      investigated: 0,
+      revealed: false,
+      status: 'unmet',
+      metVia: '',
+      daysSinceContact: 0,
+      contactedToday: false,
+      portrait: makeRealisticPortrait('coco', {
+        bgDark: '#1c1215', bgWarm: '#332024', bokeh1: '#f0b86e', bokeh2: '#e67e8a',
+        skinLight: '#fff2ea', skinMid: '#f2d8ca', skinShadow: '#cca495',
+        hairBase: '#7a543b', hairDark: '#472e1e', hairShine: '#b58463',
+        eyeColor: '#4f3526', lipTop: '#c7686c', lipBottom: '#e08084', blush: '#ed959a',
+        outfitColor: '#2e2220', outfitAccent: '#e6c173', style: 'wave',
+        accessory: '<circle cx="52" cy="118" r="2.5" fill="#f5d07a"/><circle cx="148" cy="118" r="2.5" fill="#f5d07a"/>'
+      }),
+      investigateHints: [
+        '她發的精緻家居照偶爾能看見外國規格的電源插座，但定位卻總寫在本地市中心。',
+        '每次你提議臨時打電話或見面吃頓便飯，她總恰巧有業主改稿或出差行程推託。'
+      ],
+      stages: [
+        {
+          prompt: '她傳來三花貓趴在畫圖桌上的照片，語氣溫柔自然：「今天被業主改了三次圖好崩潰喔～看你簡介喜歡美食，有沒有推薦治癒一點的宵夜？」',
+          clue: '【細節觀察】極度正常的日常交流，毫無推銷感。',
+          choices: [
+            { text: '熱情分享巷口愛店與聊起寵物話題', aff: 15, hp: -4, exp: 15, reply: '「筆記下來了！跟你聊天好放鬆喔，感覺我們很合拍～」' },
+            { text: '試探約她明天中午出來喝咖啡', aff: 6, hp: -4, exp: 15, reply: '「哎呀這週要跑外縣市監工耶，下週回市區一定補約！」' }
+          ]
+        },
+        {
+          prompt: '連續關心你早晚天氣好幾天後，她才像閒聊般提到：「幸好這幾年有跟在金融業的表哥學了一點外匯短線，偶爾賺點零用錢才不用受業主氣。」',
+          clue: '【細節觀察】一句輕描淡寫的帶過，完全沒要求你加入。',
+          choices: [
+            { text: '只安慰她工作辛苦，完全不接投資話題', aff: 8, hp: -4, exp: 20, reply: '「對嘛有人懂真好，反正錢夠用就好啦～你今天吃晚餐沒？」' },
+            { text: '好奇問：「真的假的？現在這麼好賺喔？」', aff: 16, hp: -4, exp: 12, reply: '「也不是天天賺啦，要看表哥那邊的數據通知～改天有機會再跟你說！」' }
+          ]
+        },
+        {
+          prompt: '她甚至叫外送請你喝了杯飲料，接著笑著說：「表哥今晚剛好有個小額測試單，我自己放一點，你要不要拿 $500 跟著玩一單試試看，當作幫自己加菜？」',
+          clue: '【細節觀察】剛收到她請的飲料，此刻她只提了一個無傷大雅的小額數字。',
+          choices: [
+            { text: '拿 $500 試試水溫，真有問題也才五百塊', costGold: 500, aff: 20, hp: -5, exp: 15, bonusGold: 680, reply: '操作不到十分鐘竟然真的入帳 $680 並順利提領到你戶頭！你忍不住開始懷疑她是不是真有門路……' },
+            { text: '「謝謝你的好意，但我對不熟悉的平台真的不會碰。」', aff: -8, hp: -4, exp: 25, reply: '「好吧，看你這麼謹慎就算囉～」她語氣微冷。' },
+            { text: '「先給點小甜頭養套殺？我不玩這套，再見。」', triggerParry: true, exp: 55, reply: '識破真實殺豬盤劇本！你沒掉進「先贏後輸」的心理陷阱！' }
+          ]
+        },
+        {
+          prompt: '「寶貝！表哥說這波十年一遇的數據窗口開了，我把積蓄都放進去了！你快把身邊能湊到的 $2,800 投進來，賺完這筆我們週末就飛去度假！」',
+          clue: '【細節觀察】前面建立的所有親密感，在此刻化作催促匯款的壓力。',
+          choices: [
+            { text: '上次真的有提領成功！決定信任她一把匯入 $2,800！', scamGold: 2800, hp: -40, exp: 5, reply: '系統顯示「獲利翻倍」卻無法提領，客服要求再補十萬保證金，而林可可的帳號隔天成了幽靈空白……' },
+            { text: '「真正想跟我去度假的人不會逼我把積蓄押在來路不明的網站，掰！」', triggerParry: true, exp: 65, reply: '極限盾反！你親手捏碎了長線殺豬盤的黃金幻象！' }
+          ]
+        }
+      ]
+    },
+
+    // 6. 夏娜 (Real-world Sob-Story Loan Scammer)
     {
       id: 'shana',
       name: '夏娜 Shana',
       epithet: '深夜急診的苦情幽靈',
       age: 25,
-      bio: '「努力在餐飲業存錢的平凡女生。不喜歡拜金虛榮，只希望能遇到腳踏實地的伴。」',
+      bio: '「努力打工存錢的平凡女生。不喜歡虛榮拜金，只想找個腳踏實地的好人。」',
       archetype: 'scammer',
       archetypeLabel: '苦情借貸詐騙（放長線吸金）',
-      channels: ['app', 'street', 'approach'],
-      affinity: 25,
+      channels: ['app', 'street'],
+      affinity: 24,
       decayRate: 9,
+      suspicion: 0,
+      suspicionSens: 0.5,
       stage: 0,
       investigated: 0,
       revealed: false,
@@ -1234,303 +1578,68 @@
       metVia: '',
       daysSinceContact: 0,
       contactedToday: false,
-      portrait: makePortrait('#1a1514', '#422d26', '#5e433a', '#c9886b', '<path d="M38,65 Q50,72 62,65" fill="none" stroke="#c9886b" stroke-width="1.5"/>'),
+      portrait: makeRealisticPortrait('shana', {
+        bgDark: '#171312', bgWarm: '#29201d', bokeh1: '#cf9678', bokeh2: '#6b757d',
+        skinLight: '#f5e4da', skinMid: '#e2c5b4', skinShadow: '#b89482',
+        hairBase: '#382a24', hairDark: '#1f1613', hairShine: '#695248',
+        eyeColor: '#3b2b25', lipTop: '#b56e65', lipBottom: '#cc8279', blush: '#d4877d',
+        outfitColor: '#2d3136', outfitAccent: '#998b7c', style: 'ponytail'
+      }),
       investigateHints: [
-        '她說自己在連鎖餐廳打工，但你經過她說的那條街時，卻發現那家店早在半年前就倒閉了。',
-        '她的通話紀錄似乎總是異常忙碌，且每次見面都挑選離她住處極遠、不讓人送回家的地點。'
+        '她說自己在某連鎖餐廳工作，但實際去那條街看過卻發現該店早已歇業半年。',
+        '每次約見面都離她自稱的住處極遠，從不讓任何人知道她的真實身分證字號或住址。'
       ],
       stages: [
         {
-          prompt: '第一次見面，夏娜主動約在平價夜市，甚至搶著付了 $120 的飲料錢：「平常打工好辛苦，今天能吃路邊攤聊聊天就覺得好幸福了～」',
-          clue: '【細節觀察】她表現得節儉又懂事，完全沒有一般拜金女的樣子。',
+          prompt: '初次見面她在夜市點了一碗乾麵，還搶著付了 $120 的飲料錢：「平常打工好辛苦，能跟你在路邊攤聊聊天就覺得很知足了～」',
+          clue: '【細節觀察】簡樸、不貪小便宜，讓人瞬間放下戒心。',
           choices: [
-            { text: '讚賞她的樸實懂事，並塞回去零錢不讓她吃虧', aff: 16, hp: -4, exp: 15, reply: '「你好體貼喔！跟那些只會炫富的男生完全不一樣～」' },
-            { text: '順口問她平常在哪間店上班、住哪一區', aff: 6, hp: -4, exp: 18, reply: '她眼神閃爍了一下才含糊報了個大概的地名：「哎呀服務業都很操啦，不說這個了！」' }
+            { text: '覺得她非常難能可貴，回請她吃夜市甜點', costGold: 150, aff: 18, hp: -4, exp: 15, reply: '「你好溫柔喔！跟那些愛炫富的男生完全不一樣！」' },
+            { text: '順口細問她工作分店的店長跟班表狀況', aff: 6, hp: -4, exp: 18, reply: '她停頓半秒才含糊帶過：「哎呀餐飲業都這樣嘛，下班就不想聊上班的事了～」' }
           ]
         },
         {
-          prompt: '這天她神情低落傳訊：「對不起……原本答應你明天休假要出去，可是媽媽突然進醫院做檢查，我現在在趕過去的路上，可能沒辦法陪你了。」',
-          clue: '【細節觀察】和普通忙碌取消不同，她提到了突發的家庭醫療狀況。',
+          prompt: '這天深夜她語帶哽咽傳訊：「對不起……本來明天要見面，可是媽媽突然在家昏倒送急診，我現在一個人在醫院走廊好害怕。」',
+          clue: '【細節觀察】語音背景確實聽起來有些嘈雜，讓人心生憐憫。',
           choices: [
-            { text: '「別道歉，家人身體最重要！有任何需要搭把手的地方儘管講。」', aff: 18, hp: -5, exp: 15, reply: '「謝謝你這麼善良……認識你真的是我這陣子唯一的好事了。」' },
-            { text: '「哪間醫院？我剛好在附近，順便買點水果過去探望？」', aff: -8, hp: -5, exp: 25, reply: '她秒回拒絕：「不用不用！！醫院管制很嚴又亂，你千萬不要過來！」' }
+            { text: '「別慌！告訴我在哪間醫院，我現在買熱飲搭車過去陪你！」', aff: -8, hp: -6, exp: 25, reply: '她秒回拒絕：「千萬不要！！急診不能隨便進來，而且我弟等一下會來，你快睡！」' },
+            { text: '「太突然了……伯母吉人天相一定沒事的，你有需要幫忙再說。」', aff: 16, hp: -4, exp: 15, reply: '「謝謝你願意聽我哭……現在只能先把檢查費湊出來。」' }
           ]
         },
         {
-          prompt: '隔天她傳來一張模糊的醫院掛號單截圖，語帶哽咽：「急診押金跟自費項目加起來還差 $1,800，店長又還沒發薪……我真的不知道該怎麼辦了，發薪日馬上還你好嗎？」',
-          clue: '【細節觀察】金額不算天文數字，照片卻有點模糊且刻意遮掉了關鍵資訊。',
+          prompt: '隔天她發來一張邊角模糊的繳費單：「自費藥劑跟押金差 $1,900，離發薪還差三天……我真的走投無路了，發薪日一定一毛不少還你！」',
+          clue: '【細節觀察】金額設計在讓人「猶豫一下好像救得起」的區間。',
           choices: [
-            { text: '看她平常這麼樸實一定不是壞人，立刻轉帳 $1,800 幫她度過難關', scamGold: 1800, hp: -32, exp: 5, reply: '收到錢後她千恩萬謝，然而兩天後當你想關心伯母狀況時，卻發現電話已是空號、訊息再也發不出去！' },
-            { text: '「既然這麼急，我們一起去醫院櫃檯我直接幫你刷卡繳費吧！」', triggerParry: true, exp: 55, reply: '對方聽到「親自陪同繳費」瞬間惱羞成怒：「不借就算了幹嘛查勤！」隨後秒封鎖——你識破了苦情借貸陷阱！' },
-            { text: '「我最近也很緊，只能借你一點點……算了我也沒辦法。」', aff: -24, hp: -6, exp: 20, reply: '「喔，原來平常說關心都是假的，算我看錯人了。」她的溫柔瞬間消失殆盡。' }
+            { text: '不忍心看一個樸實女孩走投無路，轉帳 $1,900 幫她度過難關', scamGold: 1900, hp: -34, exp: 5, reply: '匯款後她發了十幾個感謝貼圖；三天後到了發薪日，你的訊息變成永久的未讀單勾……' },
+            { text: '「這關係到救命，你把醫院繳費機條碼拍清楚給我，我直接線上幫你繳給醫院！」', triggerParry: true, exp: 58, reply: '「我借個錢還要被你當賊查嗎！！」對方突然翻臉爆粗口並封鎖你——完美避開苦情借貸詐騙！' },
+            { text: '「抱歉我這個月也剛好卡死，真的借不出來……」', aff: -24, hp: -6, exp: 15, reply: '「原來平時說關心都是假的，算我看錯人了。」' }
           ]
         },
         {
-          prompt: '見你上次沒上鉤，她換了策略：「其實……我之前被前男友拖累背了一點債，不想讓你知道是怕你嫌棄。只要再湊 $2,400 就能結清，以後我們就能好好在一起了！」',
-          clue: '【細節觀察】情緒勒索與畫大餅同時出現。',
+          prompt: '她又試著傳訊說之前其實被前任拖累欠了一筆小額高利貸，差 $2,300 就能徹底脫離苦海。',
+          clue: '【細節觀察】債務黑洞永遠填不滿。',
           choices: [
-            { text: '「過去的債應該自己承擔，感情不該建立在借貸上，我們結束吧。」', triggerParry: true, exp: 60, reply: '完美止損！你成功從情感綁架的泥沼中抽身！' },
-            { text: '心軟決定替她還清 $2,400 換取未來', scamGold: 2400, hp: -40, exp: 5, reply: '錢一入帳，這場名為「苦情純愛」的戲碼立刻殺青，你成了她名單上的下一位冤大頭。' }
+            { text: '徹底清醒封鎖：「各自的債務各自承擔，到此為止。」', triggerParry: true, exp: 60, reply: '你沒成為別人的無底洞提款機！' },
+            { text: '咬牙幫她還清 $2,300', scamGold: 2300, hp: -38, exp: 5, reply: '錢匯出去的瞬間，這段苦情戲碼立刻劃下休止符。' }
           ]
         }
       ]
     },
 
-    // 5. 薇薇安 (隱形公關／醫美直銷拉客：先當正常傾聽者陪去平價咖啡廳，中期才順水推舟推銷)
-    {
-      id: 'vivian',
-      name: '薇薇安 Vivian',
-      epithet: '霓虹深淵的魅影顧問',
-      age: 26,
-      bio: '「美容造型顧問。喜歡觀察人的氣質變化，想找個能一起享受都市夜色的夥伴🥂」',
-      archetype: 'promoter',
-      archetypeLabel: '隱形業績拉客（公關／醫美推銷）',
-      channels: ['social', 'approach', 'app'],
-      affinity: 24,
-      decayRate: 11,
-      stage: 0,
-      investigated: 0,
-      revealed: false,
-      status: 'unmet',
-      metVia: '',
-      daysSinceContact: 0,
-      contactedToday: false,
-      portrait: makePortrait('#1c0f1d', '#4d1935', '#c9386b', '#e05697', '<path d="M40,34 L45,28 L50,34 L55,28 L60,34" fill="none" stroke="#e05697" stroke-width="1.5"/>'),
-      investigateHints: [
-        '她IG限時動態雖然很生活化，但每隔幾天就會出現幾張「客人變帥／變美前後對比」的轉發，且總有幾位同樣風格的姊妹互相按讚留言。',
-        '她對你的穿搭和膚況特別敏銳，每次見面話題總能無縫切換到「形象管理投資」。'
-      ],
-      stages: [
-        {
-          prompt: '第一場見面出乎意料地正常，她陪你在平價咖啡廳聊了兩小時，還細心幫你整理了一下衣領：「其實你五官很不錯耶，只是平時比較沒在打理對吧？」',
-          clue: '【細節觀察】她完全沒提去高消費場所，反而給了你相當實用的造型建議。',
-          choices: [
-            { text: '開心請教她更多穿搭與保養建議', aff: 16, hp: -4, exp: 15, reply: '「沒問題呀！看得出你是個願意讓自己更好的人，很有魅力喔～」' },
-            { text: '「你該不會待會要推銷我買保養品吧？」（直接試探）', aff: -14, hp: -4, exp: 18, reply: '她笑著輕拍你手臂：「想太多啦～我下班時間才懶得聊工作呢，純粹覺得你很順眼！」' }
-          ]
-        },
-        {
-          prompt: '過了幾天，她邀你晚上去朋友開的微醺小酒吧小聚：「那裡調酒超好喝，我剛好也想介紹幾個朋友讓你認識，不會太貴啦～」',
-          clue: '【細節觀察】氣氛曖昧，但指定了她「熟識的店家」。',
-          choices: [
-            { text: '赴約小酌放鬆，點基礎調酒共度微醺夜晚 ($600)', costGold: 600, aff: 16, hp: -8, exp: 15, reply: '整晚氣氛相當熱絡，她的幾個朋友也拼命誇你很紳士，讓她很有面子。' },
-            { text: '提議改去你挑選的餐廳或戶外夜景散步', aff: -6, hp: -4, exp: 20, reply: '「哎呀晚上吹風頭髮會亂嘛，下次再散步啦～」她微微露出一絲不耐。' }
-          ]
-        },
-        {
-          prompt: '在某次單獨約會時，她看似無奈地嘆氣：「其實我們美學沙龍這個月要衝年度評比，就差兩組 $2,600 的基礎護膚療程……如果你剛好想變帥，能不能當作支持我一次？我會好好感謝你的💋」',
-          clue: '【細節觀察】所有的讚美與親近，此刻終於標上了明確的價格。',
-          choices: [
-            { text: '「既然能變帥又能幫到你，我刷卡支持一組 $2,600！」', scamGold: 2600, hp: -28, exp: 10, reply: '簽完單後她熱情的訊息在一週內銳減，每次約見面都說「店裡忙著帶新客戶」，你成了她的業績分母。' },
-            { text: '「我喜歡你不是因為我是你的客戶，談業績就太傷感情了。」', triggerParry: true, exp: 55, reply: '她臉上的微笑瞬間凍結：「少在那邊裝清高，浪費我這麼多時間陪你演戲！」你成功擋下消費陷阱！' },
-            { text: '「最近資金比較緊，過一陣子再說吧。」', aff: -22, hp: -5, exp: 15, reply: '「好喔，那你先忙吧。」她的熱情以肉眼可見的速度降溫。' }
-          ]
-        },
-        {
-          prompt: '見你猶豫，她壓低聲音靠近你：「只要今天簽下 VIP 方案（$3,200），下班後我整晚都留給你，去哪裡都可以喔……」',
-          clue: '【細節觀察】最後的誘惑與收割。',
-          choices: [
-            { text: '徹底清醒，轉身離去：「把親密關係拿來換業績，恕不奉陪。」', triggerParry: true, exp: 60, reply: '完美盾反！你沒有為了虛幻的溫柔付出高昂代價！' },
-            { text: '理智斷線，掏出 $3,200 買單！', scamGold: 3200, hp: -35, exp: 5, reply: '當晚她以「突發生理痛」爽約，從此你在她的聯絡名單裡只剩「已結案客戶」四個字。' }
-          ]
-        }
-      ]
-    },
-
-    // 6. 米拉 (心靈成長／宗教課程拉客)
-    {
-      id: 'mira',
-      name: '米拉 Mira',
-      epithet: '地下室的星辰導師',
-      age: 27,
-      bio: '「身心靈療癒師。相信每一次相遇都是宇宙的安排，傾聽你內心深處的聲音。」',
-      archetype: 'promoter',
-      archetypeLabel: '心靈課程拉客（直銷／高價工作坊）',
-      channels: ['friend', 'social'],
-      affinity: 25,
-      decayRate: 10,
-      stage: 0,
-      investigated: 0,
-      revealed: false,
-      status: 'unmet',
-      metVia: '',
-      daysSinceContact: 0,
-      contactedToday: false,
-      portrait: makePortrait('#111820', '#2b3d4f', '#5a8f9e', '#88d4ab', '<circle cx="50" cy="24" r="4" fill="none" stroke="#88d4ab" stroke-width="1.5"/>'),
-      investigateHints: [
-        '她總是把「能量頻率」、「靈魂覺醒」、「清理業力」掛在嘴邊，身邊的社群圈極度封閉且互相吹捧。',
-        '有前同事曾私下提醒，那個「宇宙能量學院」的三階課程學費高達數萬元。'
-      ],
-      stages: [
-        {
-          prompt: '她說話輕柔彷彿能看穿人心：「我感覺得出來，你最近在感情與生活裡累積了很多疲憊對吧？不用壓抑，你可以把脆弱交給我。」',
-          clue: '【細節觀察】她的傾聽能力極強，讓人忍不住卸下防備傾訴。',
-          choices: [
-            { text: '誠實傾吐最近的迷茫與壓力', aff: 16, hp: 5, exp: 15, reply: '「謝謝你的信任，你的靈魂其實很純粹，只是被世俗的雜訊困住了。」（短暫感到了療癒）' },
-            { text: '保持理性禮貌：「還好啦，普通人生活難免有點壓力。」', aff: 6, hp: -3, exp: 15, reply: '「沒關係，人往往最難對自己誠實，我會慢慢陪你打開心門。」' }
-          ]
-        },
-        {
-          prompt: '「這週六我們有個免費的『城市靜心茶會』，大家都很溫暖喔，要不要來感受一下不同的磁場？我特別幫你留了一個位子。」',
-          clue: '【細節觀察】免費茶會，聽起來沒有任何金錢風險。',
-          choices: [
-            { text: '去看看也無妨，反正免費還能多了解她', aff: 16, hp: -10, exp: 15, reply: '現場大家異常熱情地擁抱你、輪流讚美你，米拉牽著你的手說「你跟大家頻率好合」，讓你感到一絲奇異的溫暖……與怪異。' },
-            { text: '「我比較不習慣團體聚會，還是我們兩個單獨喝咖啡吧。」', aff: -8, hp: -4, exp: 20, reply: '「只有跳脫舒適圈，宇宙才會給你真正的緣分喔。」她微笑著卻顯得有些疏離。' }
-          ]
-        },
-        {
-          prompt: '茶會過後她神情肅穆地聯絡你：「老師看過你的能量場，說你前世累積了阻礙感情的課題！只要報名下週 $2,800 的『突破重生營』，就能徹底改變人生，我已經幫你先墊名額了！」',
-          clue: '【細節觀察】先製造焦慮，再端出高價「解藥」。',
-          choices: [
-            { text: '「我的問題我自己解決，不需要透過付費課程來覺醒！」', triggerParry: true, exp: 55, reply: '「真是愚昧！你會繼續在紅塵裡受苦的！」她氣急敗壞掛斷電話，你成功避開靈性洗腦拉客！' },
-            { text: '聽信她的話繳交 $2,800 報名費！', scamGold: 2800, hp: -35, exp: 5, reply: '課程中他們不斷逼你拉更多親友入會，米拉也只關心你何時升級下一階十萬元課程……人財兩失！' }
-          ]
-        },
-        {
-          prompt: '最後的勸說：「如果你連這點投資自己靈魂的勇氣都沒有，以後怎麼給我幸福呢？只要 $2,200 就能一起共修喔。」',
-          clue: '【細節觀察】將愛情綁定在入會門檻上。',
-          choices: [
-            { text: '斷然拒絕並封鎖：「別用宇宙跟愛情當你拉業績的遮羞布。」', triggerParry: true, exp: 60, reply: '完美盾反！你斬斷了虛偽的精神操控！' },
-            { text: '掏錢妥協 ($2,200)', scamGold: 2200, hp: -35, exp: 5, reply: '你成為了組織最底層的學員，而她早已把目光投向下一位迷途的羊羔。' }
-          ]
-        }
-      ]
-    },
-
-    // 7. 蘇菲 (純聊天情緒吸血鬼：偶爾假裝關心你，卻永遠在重要關頭放鳥)
-    {
-      id: 'sophie',
-      name: '蘇菲 Sophie',
-      epithet: '寂寞高塔的灰燼公主',
-      age: 25,
-      bio: '「心情好容易受影響的雙魚座🥺 喜歡聊天分享日常，但好像還沒準備好談戀愛。」',
-      archetype: 'chatter',
-      archetypeLabel: '純聊天（情緒價值吸血鬼）',
-      channels: ['friend', 'app', 'social'],
-      affinity: 24,
-      decayRate: 14,
-      stage: 0,
-      investigated: 0,
-      revealed: false,
-      status: 'unmet',
-      metVia: '',
-      daysSinceContact: 0,
-      contactedToday: false,
-      portrait: makePortrait('#161824', '#5c4b43', '#496580', '#8da9c4', '<circle cx="43" cy="53" r="1.5" fill="#8da9c4"/>'),
-      investigateHints: [
-        '她同時跟四五個男生維持著「好朋友」般的深夜語音通話，卻沒有任何一個約得出來超過兩次。',
-        '每當對方表態想更進一步，她就會搬出「還需要時間忘記前任」當作永遠的免死金牌。'
-      ],
-      stages: [
-        {
-          prompt: '她難得主動關心你今天累不累，聊了十幾分鐘後話題突然一轉：「對了……我前任剛剛又發限動了，看到他好像過得很好我心好痛喔，你陪我聊聊好不好？」',
-          clue: '【細節觀察】前面的關心彷彿只是情緒傾倒前的暖身。',
-          choices: [
-            { text: '「別看他的動態了，我陪你聊點開心的分散注意力。」（耗費不少心力）', aff: 15, hp: -14, exp: 15, reply: '「有你真好～每次跟你講完話都覺得被拯救了呢！」（聊了兩小時她沒問你半句近況）' },
-            { text: '「一直回頭看只會讓自己停在原地，該封鎖就封鎖吧。」', aff: -8, hp: -6, exp: 15, reply: '「說得容易……感情哪有這麼簡單就能割捨嘛。」' }
-          ]
-        },
-        {
-          prompt: '你提出週末想約她吃頓飯正式認識彼此，她傳來可愛的貼圖：「我也好想見你喔！可是這幾天突然好累不想化妝出門耶～不然你幫我點個下午茶外送，我們開語音吃好不好？🥺」',
-          clue: '【細節觀察】既不拒絕你的示好，卻也不肯付出實際見面的成本。',
-          choices: [
-            { text: '花 $300 點外送哄她開心並陪語音', costGold: 300, aff: 14, hp: -10, exp: 12, reply: '「哇你超寵我的！以後誰當你女朋友一定超幸福～」（暗示她是例外）' },
-            { text: '「我比較想真實見面相處，不想一直只隔著螢幕聊天。」', aff: -10, hp: -5, exp: 20, reply: '「幹嘛給人這麼大壓力啦，當朋友慢慢來不行嗎？」' },
-            { text: '察覺自己只是免費的陪聊工具人，果斷封鎖止損', triggerParry: true, exp: 45, reply: '漂亮抽身！你不再把時間與精力奉獻給永遠不會開啟的迷霧門！' }
-          ]
-        },
-        {
-          prompt: '好幾週過去，她依舊每天傳來早安晚安與各種撒嬌抱怨，甚至偶爾說「如果以後都沒人要我，我們就在一起好不好」——但只要你認真約見面，她總有新藉口。',
-          clue: '【細節觀察】她不斷拋出模糊的希望釣著你，卻始終沒有下一步。',
-          choices: [
-            { text: '「我是認真想發展關係，不想只當深夜限定樹洞，祝好。」', triggerParry: true, exp: 55, reply: '你清醒地斬斷了曖昧魚塘！理智值成功守住！' },
-            { text: '心軟選擇繼續等她準備好的那天', aff: 8, hp: -20, exp: 10, reply: '她發了一顆愛心貼圖給你，然後轉頭去跟別的男生繼續抱怨今天好無聊。' }
-          ]
-        },
-        {
-          prompt: '深夜三點，她再度打來哭訴失眠，卻絕口不提昨天又放你鴿子的事。',
-          clue: '【細節觀察】沒有終點的消耗循環。',
-          choices: [
-            { text: '掛斷電話直接拉黑，終止單向情緒供養', triggerParry: true, exp: 50, reply: '你徹底走出了寂寞高塔的幻覺！' },
-            { text: '繼續當個好人安撫她到天亮', aff: 4, hp: -25, exp: 5, reply: '天亮了，你的眼皮沉重無比，好感度卻依然無法跨越那道無形的牆。' }
-          ]
-        }
-      ]
-    },
-
-    // 8. 莉亞 (免單飯票／自由靈魂旅伴：幽默風趣但拒絕承諾且巧妙讓你買單)
-    {
-      id: 'lia',
-      name: '莉亞 Lia',
-      epithet: '流浪的免單吟遊者',
-      age: 23,
-      bio: '「美食獵人＆探店狂熱者🍷 人生苦短及時行樂，不喜歡被標籤跟關係綁住！」',
-      archetype: 'chatter',
-      archetypeLabel: '免單飯票／拒絕承諾型',
-      channels: ['app', 'social', 'approach'],
-      affinity: 24,
-      decayRate: 12,
-      stage: 0,
-      investigated: 0,
-      revealed: false,
-      status: 'unmet',
-      metVia: '',
-      daysSinceContact: 0,
-      contactedToday: false,
-      portrait: makePortrait('#1c141c', '#9e3b48', '#522230', '#f28482', '<circle cx="50" cy="40" r="2" fill="#f28482"/>'),
-      investigateHints: [
-        '她每週都能去吃人均兩千的高級餐廳打卡，但從未見她發過任何工作或付錢的畫面。',
-        '一旦男生試圖確認「我們現在算什麼關係」，她就會立刻用「你太嚴肅了」把話題帶過甚至失聯。'
-      ],
-      stages: [
-        {
-          prompt: '莉亞講話超級幽默風趣，氣氛一流：「哈哈你也太好笑了吧！對了，聽說東區新開了一家超厲害的居酒屋，今晚有空一起去踩點嗎？」',
-          clue: '【細節觀察】她主動約出門見面，完全不像不肯見面的純聊天族！',
-          choices: [
-            { text: '爽快答應一起去探店吃美食 ($700)', costGold: 700, aff: 18, hp: -5, exp: 15, reply: '整晚笑聲不斷！結帳時她剛好去補妝，回來後嘴甜地說「謝謝帥哥請客～下次換我請喝飲料！」' },
-            { text: '「這家有點超出預算，我們改去吃平價拉麵吧？」', aff: -10, hp: -4, exp: 18, reply: '「拉麵好普通喔……我最近在控制澱粉啦，下次再說～」' }
-          ]
-        },
-        {
-          prompt: '週末她又主動傳來一間網美早午餐店的連結：「這家的舒芙蕾看起來超讚！可惜我這幾天剛買新包包吃土中……你應該不會忍心看我餓肚子吧？😝」',
-          clue: '【細節觀察】半開玩笑地撒嬌要你買單。',
-          choices: [
-            { text: '寵她一次去吃早午餐 ($650)', costGold: 650, aff: 15, hp: -6, exp: 12, reply: '她拍了半小時食物美照打卡後吃兩口就說飽了，留下一句「跟你出門最開心了！」' },
-            { text: '「我們各付各的吃簡單一點就好，不然我也快吃土了。」', aff: -14, hp: -5, exp: 22, reply: '「哈哈你好幽默喔～那我再看看其他朋友要不要去好了！」' },
-            { text: '發現自己似乎只是她的長期飯票，直接拆穿抽身', triggerParry: true, exp: 50, reply: '你拒絕成為高級餐廳的免費結帳機，帥氣退場！' }
-          ]
-        },
-        {
-          prompt: '相處多次後你鼓起勇氣問她對彼此關係的看法，莉亞收起笑容聳聳肩：「幹嘛急著貼標籤啊？我們現在這樣吃吃喝喝、開開心心不好嗎？談戀愛太累了啦。」',
-          clue: '【細節觀察】她徹底表態拒絕任何名分與責任。',
-          choices: [
-            { text: '「既然目標不同，我就不浪費彼此的時間與金錢了。」', triggerParry: true, exp: 55, reply: '你冷靜抽身，沒在無止盡的免費飯局中越陷越深！' },
-            { text: '接受開放式關係繼續請客陪玩 ($800)', costGold: 800, aff: 6, hp: -15, exp: 10, reply: '你們又吃了一頓大餐，但你知道自己永遠走不進她的未來。' }
-          ]
-        },
-        {
-          prompt: '又到月底，她再度傳來高檔燒肉店訂位成功的截圖。',
-          clue: '【細節觀察】熟悉的劇本再次上演。',
-          choices: [
-            { text: '封鎖並停止當免費飯票', triggerParry: true, exp: 50, reply: '清醒之刃揮下，荷包終於獲得救贖！' },
-            { text: '默默赴約買單 ($1,100)', costGold: 1100, aff: 4, hp: -18, exp: 5, reply: '燒肉很香，你的荷包與理智卻在哭泣。' }
-          ]
-        }
-      ]
-    },
-
-    // 9. 小夏 (真心，但有前任創傷與急性子)
+    // 7. 小夏 (Genuine - Energetic, Straightforward, Ex-cheating Trauma)
     {
       id: 'natsu',
       name: '小夏 Natsu',
       epithet: '朝陽廣場的太陽戰士',
       age: 22,
-      bio: '「熱愛爬山衝浪跟熱血美食☀️ 討厭扭扭捏捏跟滿嘴藉口的人！」',
+      bio: '「健身教練／戶外控☀️ 喜歡坦率行動派，對支支吾吾或搞曖昧的人過敏！」',
       archetype: 'genuine',
-      archetypeLabel: '真心尋愛（直球急性子）',
+      archetypeLabel: '真心尋愛（陽光直球型）',
       channels: ['approach', 'street', 'friend'],
-      affinity: 24,
+      affinity: 22,
       decayRate: 10,
+      suspicion: 0,
+      suspicionSens: 1.15,
       stage: 0,
       datingStage: 0,
       investigated: 0,
@@ -1539,85 +1648,93 @@
       metVia: '',
       daysSinceContact: 0,
       contactedToday: false,
-      portrait: makePortrait('#241812', '#8f4722', '#4f311c', '#f08a3c', '<path d="M35,32 Q50,24 65,32" fill="none" stroke="#f08a3c" stroke-width="2.5"/>'),
+      portrait: makeRealisticPortrait('natsu', {
+        bgDark: '#1c130d', bgWarm: '#3b2416', bokeh1: '#f5a142', bokeh2: '#ffd478',
+        skinLight: '#f5dcc8', skinMid: '#e0bc9f', skinShadow: '#b88c6c',
+        hairBase: '#783c1e', hairDark: '#47210e', hairShine: '#b5673b',
+        eyeColor: '#4a2c18', lipTop: '#c4665c', lipBottom: '#de7c71', blush: '#e08575',
+        outfitColor: '#262b30', outfitAccent: '#e68a3e', style: 'ponytail'
+      }),
       investigateHints: [
-        '她確實是朋友眼中直爽單純的運動系女孩，只是過去曾經被劈腿過，所以對行蹤不明或曖昧不明的人極為敏感。',
-        '每次出去都是各付各的或輪流請客，完全不會讓男生單方面吃虧。'
+        '朋友圈公認的熱血直爽女生，以前曾被前任無縫接軌劈腿過，所以極度重視專一與透明度。',
+        '從不占男生便宜，每次吃飯都會堅持AA或搶著付飲料錢。'
       ],
       stages: [
         {
-          prompt: '小夏剛跑完步臉頰紅撲撲的，看著你的眼神充滿好奇：「哈囉！看你精神不錯耶，平常休假會去戶外流汗嗎，還是宅在家？」',
-          clue: '【細節觀察】充滿活力的提問，不喜歡拖泥帶水。',
+          prompt: '小夏擦著額頭汗水笑著看向你：「哈哈你很有膽量耶！平常有在運動嗎？還是休假只想在床上當馬鈴薯？」',
+          clue: '【細節觀察】毫無架子的陽光笑容，眼神很直接。',
           choices: [
-            { text: '大方笑著回應並約她下次一起挑戰辣味拉麵或郊山（外表>=10 加成）', reqLooks: 10, aff: 18, failAff: 10, hp: -6, exp: 18, reply: '「讚啦！我就喜歡有行動力的人，一言為定喔！」' },
-            { text: '含糊應付：「看心情啦，有時候懶得出門。」', aff: -10, hp: -5, exp: 10, reply: '「喔喔……好吧，那你自己在家慢慢休息。」' }
+            { text: '「有在動！改天一起去爬象山或吃超辣拉麵比賽啊！」', reqLooks: 10, aff: 18, failAff: 10, hp: -6, exp: 18, reply: '「就等你這句！說好了不准放鴿子喔！」' },
+            { text: '「平常工作太累了，不太愛流汗啦……」', aff: -10, hp: -4, exp: 10, reply: '「喔喔～好吧，看來我們生活習慣差蠻多的！」' }
           ]
         },
         {
-          prompt: '週末清晨的五公里階梯步道挑戰！走到一半你已經氣喘吁吁，小夏回頭拉了你一把：「喂～才到半山腰就不行啦？還撐得住嗎？」',
-          clue: '【細節觀察】體力與意志力的雙重考驗。',
+          prompt: '週末郊山五公里階梯挑戰！爬到一半你雙腿發軟，她回頭向你伸出手：「喂～才到半山腰就想投降啦？還行嗎？」',
+          clue: '【細節觀察】考驗體力與不服輸的態度。',
           choices: [
-            { text: '咬牙撐住並開玩笑反擊：「怎麼可能輸給妳，山頂見！」（消耗較多體力）', aff: 20, hp: -18, exp: 25, reply: '「哈哈這才像話嘛！」登頂後她遞給你一瓶冰水，笑得比太陽還耀眼。' },
-            { text: '氣喘吁吁抱怨：「這裡路也太爛了吧，我們直接下山吃飯啦。」', aff: -16, hp: -8, exp: 10, reply: '「欸……好吧，那先下山好了。」她的興致明顯掉了一半。' }
+            { text: '抓緊她的手咬牙衝上山頂：「怎麼可能輸給妳！」', aff: 20, hp: -18, exp: 26, reply: '在山頂迎著風，她開心地和你擊掌：「超帥的好嗎！這瓶運動飲料請你！」' },
+            { text: '喘著氣提議：「太累了啦，我們原地折返去吹冷氣吃飯吧！」', aff: -16, hp: -8, exp: 10, reply: '「好吧……我自己上去打卡好了，掰掰。」' }
           ]
         },
         {
-          prompt: '大雨打亂了海邊單車行程，小夏坐在騎樓下突然安靜下來，苦笑著說：「以前的前任只要計畫被打亂就會發脾氣怪我不看天氣……我是不是很掃興啊？」',
-          clue: '【細節觀察】陽光女孩在突發挫敗時意外流露出曾受過的傷。',
+          prompt: '大雨打斷海邊行程，小夏坐在騎樓下眼神突然暗了一拍：「前任每次遇到這種天氣就遷怒我不會看預報……我是不是很帶賽啊？」',
+          clue: '【細節觀察】樂觀開朗的人偶爾漏出的脆弱裂縫。',
           choices: [
-            { text: '「計畫趕不上變化才有趣啊！附近有室內手作跟熱湯店，走吧！」($550)', costGold: 550, aff: 22, hp: -6, exp: 30, reply: '「你跟那個人完全不一樣耶……謝謝你，瞬間覺得下雨也超棒！」' },
-            { text: '「他那樣太過分了，不過下次出門我們確實要先看預報。」', aff: -8, hp: -5, exp: 12, reply: '「嗯……說得也是啦。」她把頭轉向雨幕。' }
+            { text: '「跟對的人在一起淋雨也是故事！走，我找好附近的室內攀岩跟熱湯店了！」($550)', costGold: 550, aff: 22, hp: -6, exp: 32, reply: '「哇你連雨天備案都查好了？！跟你出門根本滿分！」' },
+            { text: '「他脾氣太差了啦，不過以後出門前我也會幫忙多注意天氣。」', aff: 6, hp: -5, exp: 15, reply: '「嗯，謝謝你～」她輕輕點頭但情緒還需要一點時間消化。' }
           ]
         },
         {
-          prompt: '黃昏的操場邊，小夏突然停下來轉身雙手插腰盯著你：「每次約你你都真的衝出來！老實說，你是不是早就喜歡我了？」',
-          clue: '【細節觀察】直球對決時刻！',
+          prompt: '夕陽下小夏雙手插腰站在你面前：「認識這陣子你每次約都超挺我！老實交代，是不是早就在暗戀我了？」',
+          clue: '【細節觀察】零緩衝的正面直球！',
           choices: [
-            { text: '「對啊！跟你在一起每天都像充飽電一樣，當我女朋友吧！」', aff: 24, hp: -5, exp: 45, reply: '「哈哈等這句好久啦！走，去慶祝吃大餐！」' },
-            { text: '害羞閃躲：「哪、哪有，就大家是好朋友嘛……」', aff: -18, hp: -6, exp: 10, reply: '「切，膽小鬼！當我沒問過！」她頭也不回地跑開了。' }
+            { text: '「沒錯！我想光明正大牽你的手，當我女朋友吧！」', aff: 24, hp: -5, exp: 45, reply: '「哈哈等超久的好嗎！走，慶祝去吃肉！」' },
+            { text: '「沒有啦哈哈，就是很欣賞你這個朋友！」（下意識閃避）', aff: -20, hp: -6, exp: 10, reply: '「切，木頭！那以後就純當兄弟吧！」' }
           ]
         }
       ],
       datingStages: [
         {
-          prompt: '【交往後事件 1】小夏跟一群認識十年的大學社團男生朋友去衝浪聚餐到很晚才回訊息，你心裡有些在意。',
-          clue: '【關係考驗】對伴侶異性交友圈的信任與溝通。',
+          prompt: '【交往磨合 1】小夏跟認識多年的社團男球友去吃消夜到凌晨才回訊息，你心裡有點不是滋味。',
+          clue: '【關係考驗】溝通方式決定感情走向。',
           choices: [
-            { text: '不無理取鬧，等她回家後平靜表達「太晚聯絡會擔心」', aff: 10, hp: -6, exp: 35, reply: '「對不起啦我玩瘋了！以後去哪裡都會先跟你報備，不讓你擔心！」' },
-            { text: '陰陽怪氣質問：「跟別的男生玩得很開心嘛，還要我幹嘛？」', aff: -20, hp: -12, exp: 10, reply: '「我最討厭不信任我的醋罈子！你這樣跟控制狂有什麼兩樣！」' }
+            { text: '等她回家後抱著她平靜說：「玩得開心就好，但太晚沒消沒息我會擔心。」', aff: 12, hp: -6, exp: 35, reply: '「對不起嘛！下次我一定隨時傳訊息報備不讓你掛心！」' },
+            { text: '冷嘲熱諷：「跟別人玩這麼晚乾脆住他家算了！」', aff: -22, hp: -12, exp: 10, reply: '「講話有必要這麼難聽嗎？最討厭猜忌了！」' }
           ]
         },
         {
-          prompt: '【交往後事件 2】兩人規劃的兩天一夜小旅行，結果訂房出包又遇上車拋錨，在異鄉雨夜裡飢寒交迫 ($700 緊急處理費)。',
-          clue: '【關係考驗】狼狽逆境中的感情成色。',
+          prompt: '【交往磨合 2】小旅行訂房出包又遇上暴雨車子故障，兩人在荒郊野外的超商苦等拖吊車。',
+          clue: '【關係考驗】高壓逆境下的夥伴默契。',
           choices: [
-            { text: '冷靜解決住宿與拖吊問題，還買熱關東煮逗她笑 ($700)', costGold: 700, aff: 12, hp: -10, exp: 40, reply: '「這種爛狀況都能被你變成好笑的回憶，跟你在一起我什麼都不怕！」' },
-            { text: '當場暴躁抱怨行程全毀了', aff: -20, hp: -14, exp: 10, reply: '整趟旅程在冷戰與互相埋怨中草草結束。' }
+            { text: '冷靜聯絡客服改訂民宿並買熱關東煮陪她苦中作樂 ($700)', costGold: 700, aff: 14, hp: -10, exp: 40, reply: '「哈哈連災難都能被你搞成露營，跟你在一起真的好安心！」' },
+            { text: '忍不住全程碎念旅途全毀了', aff: -20, hp: -14, exp: 10, reply: '兩人在雨聲中陷入漫長的沉默冷戰。' }
           ]
         },
         {
-          prompt: '【交往後事件 3】小夏想辭掉穩定工作，去嘗試開一間結合戶外運動與輕食的小工作室，充滿風險卻眼神發亮地徵詢你的意見。',
-          clue: '【終極磨合】支持夢想與面對現實。',
+          prompt: '【交往磨合 3】小夏想辭掉穩定工作自創運動輕食品牌，充滿風險卻眼神熾熱地問你意見。',
+          clue: '【終極考驗】成為彼此最堅實的後盾。',
           choices: [
-            { text: '「我們一起算過風險與備用金，只要你想衝，我當你的後盾！」（等級>=3 加成）', reqLevel: 3, aff: 15, failAff: 6, hp: -5, exp: 60, reply: '小夏興奮地跳起來抱住你：「這就是我最愛你的地方——熱血又有擔當！」' },
-            { text: '「太不穩定了啦，乖乖領死薪水比較安全。」', aff: -14, hp: -6, exp: 10, reply: '「原來你跟其他人一樣只會澆冷水……」她失落地低頭。' }
+            { text: '「我們一起估算備用金與半年停損點，只要計畫妥當，我全力支持你！」', reqLevel: 3, aff: 16, failAff: 6, hp: -5, exp: 60, reply: '小夏激動抱住你：「有你在背後撐著，我什麼難關都不怕！」' },
+            { text: '「現在景氣這麼差別衝動，乖乖上班比較實在。」', aff: -14, hp: -6, exp: 10, reply: '「……好吧，看來你對我的夢想也沒什麼信心。」' }
           ]
         }
       ]
     },
 
-    // 10. 雪乃 (高難度病嬌千金：真心尋愛但佔有慾極強、對出軌嫌疑零容忍)
+    // 8. 雪乃 (Genuine - Extreme Yandere / Possessive Heiress)
     {
       id: 'yukino',
       name: '雪乃 Yukino',
       epithet: '深淵溫室的病嬌千金',
       age: 21,
-      bio: '「藝術系研究生。一旦認定了誰，就希望對方的世界裡只剩下我一個人。」',
+      bio: '「藝術系研究生。一旦認定了誰，就容不下一粒沙子。你不准騙我喔。」',
       archetype: 'genuine',
-      archetypeLabel: '真心尋愛（極限佔有慾型）',
-      channels: ['social', 'street', 'approach'],
-      affinity: 20,
+      archetypeLabel: '真心尋愛（極端佔有慾型）',
+      channels: ['social', 'street'],
+      affinity: 18,
       decayRate: 15,
+      suspicion: 0,
+      suspicionSens: 1.65,
       stage: 0,
       datingStage: 0,
       investigated: 0,
@@ -1626,69 +1743,351 @@
       metVia: '',
       daysSinceContact: 0,
       contactedToday: false,
-      portrait: makePortrait('#110d1a', '#161426', '#9d4edd', '#c77dff', '<path d="M40,22 L50,15 L60,22" fill="none" stroke="#c77dff" stroke-width="1.5"/>'),
+      portrait: makeRealisticPortrait('yukino', {
+        bgDark: '#0e0a17', bgWarm: '#221436', bokeh1: '#9d4edd', bokeh2: '#6a4c93',
+        skinLight: '#fff3f5', skinMid: '#f2dae0', skinShadow: '#c7a4b0',
+        hairBase: '#181524', hairDark: '#090710', hairShine: '#4b456e',
+        eyeColor: '#5b3a82', lipTop: '#ab3b59', lipBottom: '#c94c6d', blush: '#d9738c',
+        outfitColor: '#16131f', outfitAccent: '#b88ce6', style: 'hime',
+        accessory: '<path d="M84,185 L116,185" stroke="#110e17" stroke-width="5"/><circle cx="100" cy="185" r="3" fill="#c77dff"/>'
+      }),
       investigateHints: [
-        '她確實是知名畫廊家族的小女兒，但聽說她的上一任因為沒接電話兩小時，畫室的畫全被她割破了……',
-        '她對感情極端專一且願意付出全部，前提是你絕對不能有任何劈腿或敷衍的跡象。'
+        '她確實是知名畫廊集團的小女兒，但上一任因為未接電話兩小時，畫室畫作全被她劃破……',
+        '她願意傾盡所有去愛唯一的那個人，但只要嗅到一絲背叛或劈腿味道便會徹底毀滅關係。'
       ],
       stages: [
         {
-          prompt: '她的目光死死鎖定著你，嘴角微微勾起：「你回訊息的速度慢了三分鐘呢……剛才是在跟別的女生說話嗎？」',
-          clue: '【細節觀察】極具壓迫感的試探，語氣輕柔卻帶著寒意。',
+          prompt: '她緊盯著螢幕回覆：「你剛才整整四分鐘沒有回訊息呢……是在跟別的女生講話嗎？」',
+          clue: '【細節觀察】禮貌的問句背後帶著讓人呼吸微滯的壓迫感。',
           choices: [
-            { text: '溫柔且堅定地安撫她：「只是在忙手邊的事，現在全心陪著你。」（外表>=11 加成）', reqLooks: 11, aff: 18, failAff: 8, hp: -10, exp: 20, reply: '「真的嗎……那你要說話算話喔，我很容易記仇的。」她的眼神柔和下來。' },
-            { text: '「我們才剛認識，你管太多了吧？」', aff: -22, hp: -8, exp: 10, reply: '「……對不起，是我越界了。但你不喜歡被在乎嗎？」氣氛瞬間冰冷。' }
+            { text: '溫柔而明確地安撫：「剛才在忙正事，現在我的時間完全屬於你。」', reqLooks: 11, aff: 18, failAff: 8, hp: -10, exp: 20, reply: '「真的嗎……那要說到做到喔，我可是很會記住細節的。」' },
+            { text: '「才四分鐘而已，有必要管得這麼緊嗎？」', aff: -22, hp: -8, exp: 10, reply: '「對不起，原來被我放在心上讓你覺得很煩嗎……」她語氣冷了下去。' }
           ]
         },
         {
-          prompt: '在美術館前約會，她突然挽住你的手臂不肯放開，買了一對昂貴的手工銀戒遞給你：「戴上它好不好？這樣大家就知道你是有主的人了。」',
-          clue: '【細節觀察】進度極端濃烈，宛如要將你鎖進她的世界。',
+          prompt: '美術館約會後她買了一對昂貴手工銀戒遞給你：「戴上吧，這樣所有靠近你的人都會知道你已經有歸屬了。」',
+          clue: '【細節觀察】極高濃度的佔有欲，宛如提前套上的枷鎖。',
           choices: [
-            { text: '毫不猶豫戴上戒指並回送她一頓精緻晚餐 ($800)', costGold: 800, aff: 22, hp: -8, exp: 25, reply: '「太好了……戒指很襯你。從今以後你的視線不能離開我喔。」' },
-            { text: '「這個太貴重了，等正式交往後再戴比較合適吧。」', aff: -14, hp: -8, exp: 15, reply: '「你是不是……還想留著機會認識別人？」她緊緊盯著你的指尖。' },
-            { text: '感到一陣脊背發涼，決定主動斬斷這段窒息的關係', triggerParry: true, exp: 30, reply: '雖然她是真心的，但你自認承受不住這份沉重的愛意，選擇在深淵前及時止步。' }
+            { text: '大方戴上戒指並請她吃一頓安靜的燭光晚餐 ($800)', costGold: 800, aff: 22, hp: -8, exp: 26, reply: '「好襯你……從今以後你的視線裡不能出現別人喔。」' },
+            { text: '「太貴重了，等正式確立關係再收吧。」', aff: -14, hp: -8, exp: 14, reply: '「你還在猶豫什麼？是不是還在騎驢找馬？」' },
+            { text: '感到這份愛過於沉重窒息，主動提早斬斷這場危險緣分', triggerParry: true, exp: 32, reply: '雖她是真心，但你自知無力承接這座黃金牢籠，選擇平靜退場。' }
           ]
         },
         {
-          prompt: '雪乃深夜拿著手機出現在你家巷口，表情蒼白卻笑得動人：「剛才路過這附近……我就想看看你是不是一個人乖乖在家。你不會覺得我可怕吧？」',
-          clue: '【細節觀察】極端黏人的舉動背後，藏著強烈的不安全感。',
+          prompt: '深夜雪乃突然出現在你住處樓下，臉色蒼白卻微笑著：「我剛才經過這裡，只是想親眼確認你是不是一個人乖乖在家……不會覺得我瘋了吧？」',
+          clue: '【細節觀察】極端舉動的背後是深深的不安。',
           choices: [
-            { text: '遞給她一杯熱可可並溫柔抱住她：「下次想見我就直接打給我，別一個人在夜裡吹風。」', aff: 24, hp: -12, exp: 35, reply: '雪乃把臉深深埋進你懷裡：「只有你……沒有推開這樣的我。」' },
-            { text: '嚴厲斥責：「這樣跟跟蹤狂有什麼兩樣！立刻回家！」', aff: -30, hp: -14, exp: 10, reply: '「……我知道了，再也不會出現在你面前煩你了。」她的眼神徹底死去。' }
+            { text: '遞上熱飲緊緊抱住她：「下次想我直接打給我，別一個人在夜裡淋風。」', aff: 24, hp: -12, exp: 35, reply: '她把頭埋進你頸窩低泣：「只有你……沒有把這樣的我當成怪物。」' },
+            { text: '嚴肅制止：「未經同意跑來樓下太越界了！快點回家！」', aff: -32, hp: -14, exp: 10, reply: '「……我知道了，再也不會出現礙你的眼。」' }
           ]
         },
         {
-          prompt: '畫室裡擺滿了你的素描畫像，雪乃握著你的雙手低聲問：「只要你答應我永遠不背叛、不欺騙我，我的一切都是你的。敢不敢跟我締結這場無法回頭的誓約？」',
-          clue: '【細節觀察】病嬌千金的最終契約（若有其他曖昧對象請極度小心！）。',
+          prompt: '畫室裡掛滿了你的素描肖像，雪乃握住你的雙手低語：「發誓永遠只看著我、永遠不背叛我。你敢跟我簽下這份永不回頭的誓約嗎？」',
+          clue: '【細節觀察】一旦答應，任何背叛的代價都將是毀滅性的。',
           choices: [
-            { text: '「我發誓我的世界只容納你一人，來締結這場誓約吧。」（外表>=13 加成）', reqLooks: 13, aff: 26, failAff: 16, hp: -10, exp: 50, reply: '雪乃露出了傾國傾城卻又令人戰慄的幸福微笑：「太好了……你已經逃不掉了呢。」' },
-            { text: '「永遠不背叛這種誓言太沉重了，我不敢輕易承諾。」', aff: -20, hp: -8, exp: 15, reply: '「不敢承諾，就代表你心裡還留著逃跑的出口吧……」' }
+            { text: '「我發誓此心只屬於你一人，來締結這場誓約吧。」', reqLooks: 13, aff: 26, failAff: 15, hp: -10, exp: 50, reply: '雪乃綻放出絕美而危險的笑容：「太好了……你已經完全屬於我了。」' },
+            { text: '「永遠不變這種話太沉重了，我不敢隨便許諾。」', aff: -22, hp: -8, exp: 15, reply: '「不敢許諾，就代表心裡早就留著背叛的退路對吧……」' }
           ]
         }
       ],
       datingStages: [
         {
-          prompt: '【交往後事件 1】雪乃某天突然伸手要求查看你的手機通訊軟體與瀏覽紀錄：「我只是想確認裡面沒有不乾淨的灰塵而已，你沒做虧心事吧？」',
-          clue: '【極限考驗】病嬌的查勤時刻！',
+          prompt: '【交往磨合 1】雪乃半夜突然坐起身盯著你的手機：「解鎖給我看好不好？我只是想確認裡面沒有不乾淨的灰塵。」',
+          clue: '【極限考驗】若你對她懷疑度過高，這裡會直接引爆！',
           choices: [
-            { text: '坦然解鎖交給她看，並輕撫她的頭髮安撫焦慮', aff: 10, hp: -12, exp: 40, reply: '「對不起……我控制不住自己胡思亂想。謝謝你這麼包容我。」（若懷疑度過高可能現場引爆！）', checkSuspicion: true },
-            { text: '護住手機拒絕：「這是我個人隱私，你不該這樣侵犯！」', aff: -26, hp: -15, exp: 10, reply: '「隱私？你果然藏了別的女人對吧！！」關係瞬間陷入崩潰邊緣！' }
+            { text: '坦蕩解鎖交給她並輕撫她的背安撫情緒', aff: 10, hp: -12, exp: 40, checkSuspicion: true, reply: '確認完乾乾淨淨後她愧疚地吻了你：「對不起……我太害怕失去你了。」' },
+            { text: '死守手機拒絕：「這是隱私，我不喜歡被審問！」', aff: -28, hp: -16, exp: 10, reply: '「隱私？裡面果然藏了見不得人的女人對吧！！」' }
           ]
         },
         {
-          prompt: '【交往後事件 2】雪乃的家族長輩得知你們交往，私下約見你並冷酷嘲諷你門不當戶不對，想用一張支票打發你離開她。',
-          clue: '【極限考驗】面對豪門長輩的尊嚴試煉（考驗等級與外表）。',
+          prompt: '【交往磨合 2】雪乃家族長輩私下約你見面，冷冷拿出一張支票想逼你離開她。',
+          clue: '【極限考驗】尊嚴與實力的正面試煉。',
           choices: [
-            { text: '挺直腰桿拒絕支票，展現自身實力與決心（需外表>=15 且 等級>=3）', reqLooks: 15, reqLevel: 3, aff: 16, failAff: -10, hp: -12, exp: 55, reply: '雪乃衝進會客室緊緊挽住你的手：「他是我唯一的選擇！」家族長輩終究默默退讓了一步。' },
-            { text: '被長輩氣勢壓倒，唯唯諾諾不敢反駁', aff: -22, hp: -15, exp: 10, reply: '雪乃失望地看著低頭不語的你：「連你都要把我推回他們身邊嗎……」' }
+            { text: '禮貌推回支票，不亢不卑展現自身實力與守護她的決心', reqLooks: 15, reqLevel: 3, aff: 16, failAff: -10, hp: -12, exp: 55, reply: '雪乃趕到現場緊握你的手：「他是我唯一的選擇！」家族長輩最終沉默退步。' },
+            { text: '被豪門氣場嚇住低頭不敢吭聲', aff: -22, hp: -15, exp: 10, reply: '雪乃看著懦弱的你流露出一絲絕望的失望。' }
           ]
         },
         {
-          prompt: '【交往後事件 3】雪乃搬出來與你同居的夜晚，她點燃香氛蠟燭靠在你胸口：「就算世界毀滅，我們也要永遠鎖在一起喔。」',
-          clue: '【終極磨合】深淵之愛的最終歸宿。',
+          prompt: '【交往磨合 3】搬進新居的夜晚，雪乃靠在你懷裡輕聲問：「如果有一天我變得連自己都討厭，你還會留下來嗎？」',
+          clue: '【終極考驗】鎖死深淵的永恆誓約。',
           choices: [
-            { text: '為她戴上象徵永恆的訂製對戒 ($1,200)', costGold: 1200, aff: 15, hp: -5, exp: 70, reply: '你們締結了超越生死的暗黑永恆誓約！' },
-            { text: '開玩笑說「別講這麼恐怖的話啦」試圖緩和氣氛', aff: -10, hp: -6, exp: 15, reply: '「我是認真的喔，親愛的……」她幽幽地看著你。' }
+            { text: '拿出事先準備的訂製對戒套上她的無名指 ($1,200)', costGold: 1200, aff: 16, hp: -5, exp: 70, reply: '暗黑而深情的永恆誓約正式鑄成！' },
+            { text: '敷衍笑著說「別亂想啦快睡覺」', aff: -10, hp: -6, exp: 15, reply: '「不要敷衍我嘛……」她徹夜睜著眼盯著你。' }
+          ]
+        }
+      ]
+    },
+
+    // 9. 薇薇安 (Invisible Promoter - 美容公關拉客)
+    {
+      id: 'vivian',
+      name: '薇薇安 Vivian',
+      epithet: '霓虹深淵的魅影顧問',
+      age: 26,
+      bio: '「形象造型顧問。喜歡觀察人的氣質變化，想找個懂得享受夜色與生活的人🥂」',
+      archetype: 'promoter',
+      archetypeLabel: '隱形業績拉客（醫美／酒水推銷）',
+      channels: ['social', 'approach', 'app'],
+      affinity: 24,
+      decayRate: 11,
+      suspicion: 0,
+      suspicionSens: 0.5,
+      stage: 0,
+      investigated: 0,
+      revealed: false,
+      status: 'unmet',
+      metVia: '',
+      daysSinceContact: 0,
+      contactedToday: false,
+      portrait: makeRealisticPortrait('vivian', {
+        bgDark: '#1c0f1b', bgWarm: '#381a34', bokeh1: '#e05697', bokeh2: '#f2b880',
+        skinLight: '#fbece8', skinMid: '#eccbc3', skinShadow: '#c29991',
+        hairBase: '#4d1935', hairDark: '#290a1b', hairShine: '#8a3863',
+        eyeColor: '#452232', lipTop: '#a6264b', lipBottom: '#cc3561', blush: '#de6b8c',
+        outfitColor: '#1f121a', outfitAccent: '#e08eb5', style: 'updo',
+        accessory: '<circle cx="52" cy="120" r="3.5" fill="none" stroke="#e6c173" stroke-width="1.3"/><circle cx="148" cy="120" r="3.5" fill="none" stroke="#e6c173" stroke-width="1.3"/>'
+      }),
+      investigateHints: [
+        '她社群雖然常發生活美食，但每隔幾天就必定出現「幫朋友做形象改造大變身」的業配對比圖。',
+        '她對你的經濟承受度與消費習慣異常敏銳。'
+      ],
+      stages: [
+        {
+          prompt: '初次約在平價咖啡廳，她細心幫你調整衣領笑著說：「其實你底子超好耶！就是平常太低調沒在打理，稍微整理一下一定很搶手～」',
+          clue: '【細節觀察】聊得非常投機，且完全沒推銷任何東西。',
+          choices: [
+            { text: '虛心請教她的穿搭與保養看法', aff: 16, hp: -4, exp: 15, reply: '「交給我呀，我看人最準了！下次有空再教你幾招～」' },
+            { text: '戒備反問：「你該不會是做直銷或醫美拉客的吧？」', aff: -14, hp: -4, exp: 18, reply: '她翻了個可愛的白眼：「吼！我下班時間才不想談工作呢，純粹覺得你順眼嘛！」' }
+          ]
+        },
+        {
+          prompt: '晚上她邀你去朋友經營的高級餐酒館聚會：「那裡氣氛超棒，我跟店長超熟可以打折，順便介紹幾個好玩的朋友給你認識～」',
+          clue: '【細節觀察】引導進入她掌控的主場環境。',
+          choices: [
+            { text: '赴約小酌體驗微醺夜生活 ($650)', costGold: 650, aff: 16, hp: -8, exp: 15, reply: '她的朋友們輪流誇獎你氣質非凡，讓她笑得合不攏嘴。' },
+            { text: '「晚上去酒吧太吵了，我們去河濱公園散步吃路邊小吃就好！」', aff: -8, hp: -4, exp: 20, reply: '「哎呀風吹得頭髮會亂掉啦，下次吧～」她嘴角笑容淡了一點。' }
+          ]
+        },
+        {
+          prompt: '某次單獨聊天她苦著臉撒嬌：「唉，我們沙龍這個月衝評比，就差一組 $2,600 的男生煥膚療程……如果你剛好想變帥，能不能捧場支持我一次？做完我請你吃宵夜💋」',
+          clue: '【細節觀察】溫柔的鋪墊終於接上了明確的價格。',
+          choices: [
+            { text: '刷卡買單 $2,600 支持她的業績！', scamGold: 2600, hp: -28, exp: 10, reply: '療程結束後她推說店裡臨時開會取消宵夜，之後訊息越回越慢……' },
+            { text: '「我喜歡你不是為了當你的客戶，拿關係換業績太勉強了。」', triggerParry: true, exp: 55, reply: '她收起假笑：「真小氣，浪費我這麼多時間經營你！」你完美識破業績公關套路！' }
+          ]
+        },
+        {
+          prompt: '最後試探：「只要補開 VIP 會員 ($3,200)，下班後整晚時間都是你的喔……」',
+          clue: '【細節觀察】赤裸的商業交換。',
+          choices: [
+            { text: '直接拉黑拒絕成為提款機', triggerParry: true, exp: 60, reply: '漂亮格擋！守住錢包與尊嚴！' },
+            { text: '暈船刷卡 $3,200', scamGold: 3200, hp: -36, exp: 5, reply: '刷完卡隔天她就換了新的目標繼續陪笑喝咖啡。' }
+          ]
+        }
+      ]
+    },
+
+    // 10. 米拉 (Spiritual / LGAT Course Promoter)
+    {
+      id: 'mira',
+      name: '米拉 Mira',
+      epithet: '地下室的星辰導師',
+      age: 27,
+      bio: '「身心靈療癒師。相信每一次相遇都是宇宙共振，傾聽你內在的聲音。」',
+      archetype: 'promoter',
+      archetypeLabel: '高價心靈成長課程拉客',
+      channels: ['friend', 'social'],
+      affinity: 24,
+      decayRate: 10,
+      suspicion: 0,
+      suspicionSens: 0.5,
+      stage: 0,
+      investigated: 0,
+      revealed: false,
+      status: 'unmet',
+      metVia: '',
+      daysSinceContact: 0,
+      contactedToday: false,
+      portrait: makeRealisticPortrait('mira', {
+        bgDark: '#0f161c', bgWarm: '#192a36', bokeh1: '#88d4ab', bokeh2: '#63a4ff',
+        skinLight: '#f6ebe1', skinMid: '#e6cfc0', skinShadow: '#bd9e8c',
+        hairBase: '#2a3742', hairDark: '#161f26', hairShine: '#597287',
+        eyeColor: '#2d4b59', lipTop: '#b56e75', lipBottom: '#cf848b', blush: '#db8c93',
+        outfitColor: '#28333b', outfitAccent: '#88d4ab', style: 'bob'
+      }),
+      investigateHints: [
+        '她身邊的社交圈高度同質化，永遠在轉發同一位「宇宙覺醒導師」的語錄。',
+        '曾有學員抱怨所謂的三階進階班收費高達數萬元且鼓勵拉下線。'
+      ],
+      stages: [
+        {
+          prompt: '她語氣空靈溫柔：「我看得出你背負了許多城市的疲憊……不用逞強，把那些不安都說給我聽吧。」',
+          clue: '【細節觀察】像心理諮商師般無條件接納，讓人倍感放鬆。',
+          choices: [
+            { text: '傾吐最近在生活與感情裡的迷惘', aff: 16, hp: 4, exp: 15, reply: '「你的靈魂其實非常渴望純粹的愛，只是被舊能量困住了。」' },
+            { text: '禮貌回應：「還好啦，每個人生活都有高低起伏。」', aff: 6, hp: -3, exp: 15, reply: '「人往往最難面對真實的自己，我會慢慢陪你覺醒。」' }
+          ]
+        },
+        {
+          prompt: '「這週六我們有個完全免費的城市靜心茶會，裡面都是很正面溫暖的夥伴，來感受一下高頻磁場吧！」',
+          clue: '【細節觀察】免費體驗活動。',
+          choices: [
+            { text: '抱著交朋友的心態參加免費茶會', aff: 16, hp: -10, exp: 15, reply: '全場十幾人輪流給你溫暖擁抱與狂熱讚美，米拉含淚看著你說「終於找到同頻的人」，讓你既感動又隱約覺得太過刻意。' },
+            { text: '「我比較不適應團體分享，我們單獨喝杯咖啡吧。」', aff: -8, hp: -4, exp: 20, reply: '「只有願意走進群體的人，宇宙才會開啟禮物給你喔。」' }
+          ]
+        },
+        {
+          prompt: '茶會隔天她神情嚴肅告訴你：「導師看出你感情卡關是因為原生業力！只要報名 $2,800 的突破工作坊就能徹底翻轉命運，我先幫你卡位了！」',
+          clue: '【細節觀察】用焦慮感與「名額有限」推動高價付費。',
+          choices: [
+            { text: '「我的人生不用靠付費工作坊來突破，謝謝。」', triggerParry: true, exp: 55, reply: '「冥頑不靈！你會繼續在迷霧中受苦的！」你成功擋下了心靈直銷洗腦！' },
+            { text: '被她的誠懇說動，刷卡 $2,800 報名！', scamGold: 2800, hp: -35, exp: 5, reply: '上課後老師不斷逼迫學員買十萬元領袖班並拉身邊親友參加，米拉也只關心你的拉人進度……' }
+          ]
+        },
+        {
+          prompt: '「如果你連 $2,200 都不願意投資在我們共同的靈性成長上，我們不同頻率怎麼走下去？」',
+          clue: '【細節觀察】以愛之名綁架消費。',
+          choices: [
+            { text: '果斷封鎖拒絕精神控制', triggerParry: true, exp: 60, reply: '清醒盾反！守住理智與存款！' },
+            { text: '花 $2,200 妥協入會', scamGold: 2200, hp: -36, exp: 5, reply: '荷包失血，而她早已去尋找下一位需要「被療癒」的對象。' }
+          ]
+        }
+      ]
+    },
+
+    // 11. 蘇菲 (Chatter / Emotional Vampire)
+    {
+      id: 'sophie',
+      name: '蘇菲 Sophie',
+      epithet: '寂寞高塔的灰燼公主',
+      age: 25,
+      bio: '「容易多愁善感的雙魚座🥺 喜歡聊天分享日常，只是還沒準備好走進下一段關係。」',
+      archetype: 'chatter',
+      archetypeLabel: '純聊天（情緒垃圾桶／養魚）',
+      channels: ['friend', 'app', 'social'],
+      affinity: 24,
+      decayRate: 14,
+      suspicion: 0,
+      suspicionSens: 0.5,
+      stage: 0,
+      investigated: 0,
+      revealed: false,
+      status: 'unmet',
+      metVia: '',
+      daysSinceContact: 0,
+      contactedToday: false,
+      portrait: makeRealisticPortrait('sophie', {
+        bgDark: '#121521', bgWarm: '#1e2538', bokeh1: '#8da9c4', bokeh2: '#b8a9c9',
+        skinLight: '#faf0ec', skinMid: '#edd6cd', skinShadow: '#c7a79b',
+        hairBase: '#5c4b43', hairDark: '#362a24', hairShine: '#8f786d',
+        eyeColor: '#405366', lipTop: '#c47c80', lipBottom: '#de9599', blush: '#e69ea3',
+        outfitColor: '#252936', outfitAccent: '#a5b8cc', style: 'wave'
+      }),
+      investigateHints: [
+        '她同時與四五名男生保持深夜「好朋友」通話，卻從來不與任何一位真正單獨約會。',
+        '每當對方表露真心，她就會亮出「還沒走出前任陰影」這張萬用免死金牌。'
+      ],
+      stages: [
+        {
+          prompt: '她貼心問你吃飽沒，十秒後話題急轉直下：「對了……我前任剛剛發限動好像交新女友了，我心好痛喔，你陪我講電話好不好？」',
+          clue: '【細節觀察】暖場結束，情緒傾倒正式開始。',
+          choices: [
+            { text: '「別看了，我陪你聊聊分散注意力。」（耗費大量精力）', aff: 15, hp: -15, exp: 15, reply: '「只有你對我最好了～講完舒服多了，我先睡囉！」（完全沒問過你的疲憊）' },
+            { text: '「一直偷看只會內耗，封鎖對彼此都好。」', aff: -8, hp: -6, exp: 15, reply: '「你講得好冷血喔，感情哪能說斷就斷嘛。」' }
+          ]
+        },
+        {
+          prompt: '約她出來吃飯，她傳來哭臉貼圖：「我也想見你呀！但今天突然好懶得出門化妝……你可以幫我點一杯手搖跟炸雞外送，我們語音邊吃邊聊嗎？🥺」',
+          clue: '【細節觀察】永遠只願意停留在線上索取陪伴與小確幸。',
+          choices: [
+            { text: '花 $320 點外送哄她並陪聊', costGold: 320, aff: 14, hp: -10, exp: 12, reply: '「哇你超貼心的！以後誰當你女友一定超幸福～」' },
+            { text: '「我想真正見面認識你，不想只當螢幕裡的聲音。」', aff: -10, hp: -5, exp: 20, reply: '「幹嘛給這麼大壓力啦，慢慢來不行嗎？」' },
+            { text: '意識到自己只是免費樹洞，果斷拉黑止損', triggerParry: true, exp: 48, reply: '漂亮斬斷單向消耗！你把時間留給了真正值得的人！' }
+          ]
+        },
+        {
+          prompt: '幾週過去，她依舊每天早安晚安甚至偶爾說「等我準備好了我們試試看」，但約見面永遠臨時失約。',
+          clue: '【細節觀察】無限延期的空頭支票。',
+          choices: [
+            { text: '「祝你早日走出過去，我不會再原地等一個不見面的人了。」', triggerParry: true, exp: 55, reply: '清醒破局！你徹底走出了養魚池！' },
+            { text: '心軟繼續留在她身邊聽她抱怨前任', aff: 5, hp: -22, exp: 10, reply: '又是熬夜陪聊到天亮的一晚，關係依舊毫無進展。' }
+          ]
+        },
+        {
+          prompt: '凌晨三點，她再度打來哭訴失眠。',
+          clue: '【細節觀察】無盡消耗的迴圈。',
+          choices: [
+            { text: '直接掛斷並拉黑終止內耗', triggerParry: true, exp: 50, reply: '你重獲了寶貴的睡眠與理智！' },
+            { text: '再度拿起手機當她的情緒衛生紙', aff: 2, hp: -25, exp: 5, reply: '天亮了，你的精神瀕臨極限。' }
+          ]
+        }
+      ]
+    },
+
+    // 12. 莉亞 (Meal Ticket / Freeloader)
+    {
+      id: 'lia',
+      name: '莉亞 Lia',
+      epithet: '流浪的免單吟遊者',
+      age: 23,
+      bio: '「美食探店狂熱者🍷 及時行樂不喜歡被關係與標籤綁架！」',
+      archetype: 'chatter',
+      archetypeLabel: '高級飯票／拒絕承諾型',
+      channels: ['app', 'social', 'approach'],
+      affinity: 24,
+      decayRate: 12,
+      suspicion: 0,
+      suspicionSens: 0.5,
+      stage: 0,
+      investigated: 0,
+      revealed: false,
+      status: 'unmet',
+      metVia: '',
+      daysSinceContact: 0,
+      contactedToday: false,
+      portrait: makeRealisticPortrait('lia', {
+        bgDark: '#1c1218', bgWarm: '#331d29', bokeh1: '#f28482', bokeh2: '#f6bd60',
+        skinLight: '#faebe3', skinMid: '#ebd0c1', skinShadow: '#c49d8c',
+        hairBase: '#8f3442', hairDark: '#521922', hairShine: '#cc5e6e',
+        eyeColor: '#4f222a', lipTop: '#b83b48', lipBottom: '#d64b5a', blush: '#e67e88',
+        outfitColor: '#241820', outfitAccent: '#f28482', style: 'bob'
+      }),
+      investigateHints: [
+        '她每週打卡人均兩千的高檔餐廳，但出門從來不帶錢包只帶手機拍照。',
+        '只要男方想確認關係或提AA制，她隔天就會迅速冷掉找下一位「探店夥伴」。'
+      ],
+      stages: [
+        {
+          prompt: '莉亞講話超有梗笑聲清脆：「哈哈跟你聊好開心喔！聽說微風那邊新開一家超讚的無菜單日料，今晚要不要一起去踩點？」',
+          clue: '【細節觀察】非常大方爽快約見面，讓人誤以為彼此很有戲。',
+          choices: [
+            { text: '「走啊！一起去探店吃美食！」($750)', costGold: 750, aff: 18, hp: -5, exp: 15, reply: '整晚氣氛超嗨！結帳時她剛好說去洗手間補妝，回來後嘴甜說「謝謝大餐～下次換我請你喝珍奶！」' },
+            { text: '「這家單價太高了，我們改去吃平價小火鍋吧？」', aff: -12, hp: -4, exp: 18, reply: '「小火鍋味道好重喔衣服會臭……下次有空再約好囉！」' }
+          ]
+        },
+        {
+          prompt: '週末她又丟來一家高檔法式甜點早午餐：「這家超難訂位耶！可惜這幾天剛刷完機票吃土中……你應該不會忍心讓美女餓肚子吧？😝」',
+          clue: '【細節觀察】用撒嬌把買單變成你的默認責任。',
+          choices: [
+            { text: '花 $650 請她吃法式早午餐', costGold: 650, aff: 15, hp: -6, exp: 12, reply: '她修圖打卡發完限動，甜點只吃兩口就放著了。' },
+            { text: '「那我們這週先各自吃土，下個月發薪再吃！」', aff: -16, hp: -5, exp: 22, reply: '「哈哈你好實際喔～那我問問看我乾哥要不要去吃好了！」' },
+            { text: '察覺自己只是免費提款飯票，果斷抽身！', triggerParry: true, exp: 50, reply: '你沒再當免費攝影師兼結帳機，帥氣離開！' }
+          ]
+        },
+        {
+          prompt: '你終於忍不住問她我們算不算在交往，莉亞笑著聳肩：「哎呀幹嘛這麼嚴肅貼標籤啦，現在這樣吃吃喝喝不好嗎？談戀愛太負重了啦！」',
+          clue: '【細節觀察】徹底攤牌只要好處不要責任。',
+          choices: [
+            { text: '「既然方向不同，以後各自探店吧，祝你玩得開心。」', triggerParry: true, exp: 55, reply: '完美止損！你拒絕了無底洞飯票關係！' },
+            { text: '吞下委屈繼續請客換取陪伴 ($800)', costGold: 800, aff: 4, hp: -16, exp: 10, reply: '牛排很嫩，但你的內心卻覺得空蕩蕩的。' }
+          ]
+        },
+        {
+          prompt: '月底她再度丟來人均破千的高級和牛燒肉連結。',
+          clue: '【細節觀察】熟悉的節奏。',
+          choices: [
+            { text: '封鎖並停止當免費ATM', triggerParry: true, exp: 50, reply: '荷包得救！' },
+            { text: '再次買單 ($1,150)', costGold: 1150, aff: 2, hp: -20, exp: 5, reply: '這頓和牛吃得索然無味。' }
           ]
         }
       ]
@@ -1714,14 +2113,14 @@
       },
       day: 1,
       phaseIdx: 0,
-      suspicion: 0, // Infidelity suspicion when dating >= 1 girl
       characters: INITIAL_CHARACTERS(),
       activeCharId: null,
       inDialogue: false,
+      inSoulboundEvent: null, // holds event index
       cheatingCrisis: false,
       logs: []
     };
-    addLog('你踏入了難度更嚴苛的情場深淵。請善用「暗中試探」，切勿輕信表面溫柔，更別輕易劈腿！', 'gold');
+    addLog('你踏入寫實而殘酷的情場迷霧。小心分辨「肉體關係」、「仙人跳」與「殺豬盤」，切勿輕信表面！', 'gold');
     renderAll();
     renderIdleStage();
   }
@@ -1733,7 +2132,7 @@
   function addLog(msg, type = '') {
     const timeStr = `D${state.day}·${PHASES[state.phaseIdx]}`;
     state.logs.unshift({ msg: `[${timeStr}] ${msg}`, type });
-    if (state.logs.length > 50) state.logs.pop();
+    if (state.logs.length > 55) state.logs.pop();
   }
 
   function gainExp(amount) {
@@ -1774,17 +2173,16 @@
     let decayMessages = [];
     const datingGirls = getDatingGirls();
 
-    // Two-timing passive suspicion increase!
+    // Two-timing passive suspicion per girlfriend!
     if (datingGirls.length >= 2) {
-      state.suspicion = Math.min(100, state.suspicion + 18);
-      addLog(`⚠️ 同時周旋於多名伴侶之間，劈腿懷疑度自然上升至 ${state.suspicion}%！`, 'bad');
-    } else if (datingGirls.length === 1 && state.suspicion > 0) {
-      // Loyal behavior slowly cools suspicion
-      state.suspicion = Math.max(0, state.suspicion - 6);
+      datingGirls.forEach(g => {
+        g.suspicion = Math.min(100, g.suspicion + Math.round(14 * g.suspicionSens));
+      });
+      addLog(`⚠️ 腳踏多條船使所有伴侶的個別懷疑度同時上升！`, 'bad');
     }
 
     state.characters.forEach(c => {
-      if (c.status === 'active') {
+      if (c.status === 'active' || c.status === 'casual_bond') {
         if (c.contactedToday) {
           c.contactedToday = false;
           c.daysSinceContact = 1;
@@ -1794,27 +2192,40 @@
           const drop = Math.round(c.decayRate * mult);
           c.affinity = Math.max(0, c.affinity - drop);
           if (c.affinity <= 0) {
-            c.status = 'blocked';
-            decayMessages.push(`${c.name} 因長期遭冷落，已將你封鎖！`);
-            addLog(`💔 ${c.name} 好感度歸零，已讀封鎖了你！`, 'bad');
+            c.status = c.status === 'casual_bond' ? 'cut_off' : 'blocked';
+            decayMessages.push(`${c.name} 因長期遭冷落，已斷絕聯繫！`);
+            addLog(`💔 ${c.name} 好感度歸零，徹底封鎖了你！`, 'bad');
           } else {
-            addLog(`⏳ 你忽略了 ${c.name}（${c.daysSinceContact} 天未聯繫），好感度 -${drop}。`, 'bad');
+            addLog(`⏳ 忽略了 ${c.name}（${c.daysSinceContact} 天未聯），好感度 -${drop}。`, 'bad');
           }
         }
-      } else if (c.status === 'dating') {
+      } else if (c.status === 'dating' || c.status === 'soulbound') {
         if (c.contactedToday) {
           c.contactedToday = false;
           c.daysSinceContact = 1;
+          // Loyal contact cools individual suspicion slightly
+          if (datingGirls.length === 1 && c.suspicion > 0) {
+            c.suspicion = Math.max(0, c.suspicion - 6);
+          }
         } else {
           c.daysSinceContact += 1;
-          const drop = c.id === 'yukino' ? 8 : 5;
-          c.affinity = Math.max(0, c.affinity - drop);
-          if (c.affinity <= 25) {
+          const baseDrop = c.status === 'soulbound' ? (c.id === 'yukino' ? 6 : 4) : (c.id === 'yukino' ? 8 : 5);
+          c.affinity = Math.max(0, c.affinity - baseDrop);
+
+          // Missing contact makes jealous partners slightly more suspicious
+          if (c.daysSinceContact >= 2) {
+            c.suspicion = Math.min(100, c.suspicion + Math.round(5 * c.suspicionSens));
+          }
+
+          if (c.status === 'soulbound' && c.affinity < 75) {
+            c.status = 'dating';
+            addLog(`⚠️ 警訊！你對永恆誓約伴侶 ${c.name} 疏於維繫，關係出現裂痕退回一般交往！`, 'bad');
+          } else if (c.affinity <= 25) {
             c.status = 'blocked';
-            decayMessages.push(`交往中的 ${c.name} 忍受不了你的長期冷暴力，決定分手封鎖！`);
-            addLog(`💔 ${c.name} 因感受不到關心而提出分手並封鎖你！`, 'bad');
+            decayMessages.push(`交往中的 ${c.name} 忍受不了你的長期冷落，決定分手封鎖！`);
+            addLog(`💔 ${c.name} 因感受不到愛與維繫而提出分手並封鎖你！`, 'bad');
           } else {
-            addLog(`⏳ 交往中的 ${c.name} 抱怨你整天沒聯絡（好感度 -${drop}）。`, 'bad');
+            addLog(`⏳ ${c.status === 'soulbound' ? '永恆伴侶' : '伴侶'} ${c.name} 抱怨你整天沒聯絡（好感度 -${baseDrop}）。`, 'bad');
           }
         }
       }
@@ -1827,52 +2238,59 @@
   }
 
   // ==========================================
-  // Cheating / Infidelity Detection Engine
+  // Individual Suspicion & Infidelity System
   // ==========================================
-  function increaseSuspicion(amount, sourceDesc) {
+  function increaseIndividualSuspicion(baseAmount, sourceDesc) {
     const datingGirls = getDatingGirls();
-    if (datingGirls.length === 0) {
-      state.suspicion = 0;
-      return false;
-    }
-    const hasYukino = datingGirls.some(g => g.id === 'yukino');
-    const actualAmount = hasYukino ? Math.round(amount * 1.35) : amount;
-    state.suspicion = Math.min(100, state.suspicion + actualAmount);
-    addLog(`👁️ 伴侶敏感察覺異常（${sourceDesc}），劈腿懷疑度 +${actualAmount}%（目前 ${state.suspicion}%）！`, 'bad');
+    if (datingGirls.length === 0) return false;
 
-    // Roll for getting caught!
-    if (state.suspicion >= 90 || (state.suspicion >= 40 && Math.random() * 105 < state.suspicion)) {
-      triggerCheatingCaught(sourceDesc);
+    let triggeredGirls = [];
+
+    datingGirls.forEach(gf => {
+      // Different variance per personality so each girl's suspicion evolves independently!
+      const jitter = 0.85 + Math.random() * 0.3;
+      const gain = Math.round(baseAmount * gf.suspicionSens * jitter);
+      gf.suspicion = Math.min(100, gf.suspicion + gain);
+      addLog(`👁️ ${gf.name} 對你的懷疑度上升 +${gain}%（目前 ${gf.suspicion}% · 原因：${sourceDesc}）`, 'bad');
+
+      if (gf.suspicion >= 90 || (gf.suspicion >= 42 && Math.random() * 105 < gf.suspicion)) {
+        triggeredGirls.push(gf);
+      }
+    });
+
+    if (triggeredGirls.length > 0) {
+      triggerCheatingCaught(triggeredGirls, sourceDesc);
       return true;
     }
     return false;
   }
 
-  function triggerCheatingCaught(triggerSource) {
-    const datingGirls = getDatingGirls();
-    if (datingGirls.length === 0) return;
+  function triggerCheatingCaught(triggeredGirls, triggerSource) {
+    const allPartners = getDatingGirls();
+    if (allPartners.length === 0) return;
 
     playCue('died');
     state.inDialogue = false;
+    state.inSoulboundEvent = null;
 
-    if (datingGirls.length >= 2) {
-      // Double-timing disaster! Instant double dump!
-      const names = datingGirls.map(g => g.name).join(' 與 ');
-      datingGirls.forEach(g => {
+    if (allPartners.length >= 2) {
+      // Multi-timing caught! Total catastrophe!
+      const names = allPartners.map(g => g.name).join(' 與 ');
+      allPartners.forEach(g => {
         g.status = 'blocked';
         g.affinity = 0;
+        g.suspicion = 100;
       });
-      const penaltyGold = Math.min(state.player.gold, 1000);
+      const penaltyGold = Math.min(state.player.gold, 1200);
       state.player.gold -= penaltyGold;
       state.player.looks = Math.max(1, state.player.looks - 1);
-      state.suspicion = 0;
-      addLog(`💥 修羅場大爆發！你同時腳踏多條船的事被 ${names} 當場抓包！雙雙分手封鎖，損失 $${penaltyGold} 與 1 點外表聲譽！`, 'bad');
-      const died = changeHp(-45);
+      addLog(`💥 修羅場全面引爆！腳踏多船被 ${names} 同時拆穿！雙雙斷絕關係，損失 $${penaltyGold} 與外表 -1！`, 'bad');
+      const died = changeHp(-48);
       renderAll();
       if (!died) {
         showOverlay(
           'BETRAYAL EXPOSED',
-          `地獄修羅場！${names} 在街頭撞見並揭穿了你的劈腿行為！兩人當場翻臉分手，你名譽掃地（外表 -1、損失 $${penaltyGold}、HP -45）！`,
+          `地獄修羅場！${names} 串連對質揭穿了你的劈腿行徑！兩人大怒分手封鎖，你聲譽掃地（外表 -1、損失 $${penaltyGold}、HP -48）！`,
           'red'
         );
         renderIdleStage();
@@ -1880,14 +2298,14 @@
       return;
     }
 
-    // Single girlfriend caught you cheating -> Crisis Confrontation!
-    const gf = datingGirls[0];
+    // Specific single girlfriend caught you!
+    const gf = triggeredGirls[0] || allPartners[0];
     state.cheatingCrisis = true;
     state.activeCharId = gf.id;
     renderAll();
     showOverlay(
       'BETRAYAL EXPOSED',
-      `東窗事發！${gf.name} 因為「${triggerSource}」發現了你背著她與其他女性曖昧的證據！`,
+      `東窗事發！${gf.name}（懷疑度 ${gf.suspicion}%）因「${triggerSource}」掌握了你對她不忠的證據！`,
       'red',
       () => {
         renderCheatingCrisisStage(gf, triggerSource);
@@ -1902,59 +2320,54 @@
 
     if (choice === 'apologize') {
       if (gf.id === 'yukino') {
-        // Yukino has zero tolerance for cheating!
         gf.status = 'blocked';
         gf.affinity = 0;
-        state.suspicion = 0;
         playCue('died');
-        addLog(`🔪 雪乃無法容忍任何背叛！她冷笑著剪碎合照並徹底封鎖了你！`, 'bad');
-        const died = changeHp(-40);
+        addLog(`🔪 雪乃絕不原諒任何背叛！她冷笑著封鎖了你的一切！`, 'bad');
+        const died = changeHp(-42);
         renderAll();
-        if (!died) renderCharacterStage(gf.id, false, '「我說過……背叛我的人只有死路一條。再見，騙子。」');
+        if (!died) renderCharacterStage(gf.id, false, '「我警告過你不准騙我……背叛者沒有第二次機會，滾吧。」');
         return;
       }
-      // Other girlfriends: cut off all active side girls, huge affinity & HP loss
       state.characters.forEach(c => {
-        if (c.status === 'active') c.status = 'cut_off';
+        if (c.status === 'active' || c.status === 'casual_bond') c.status = 'cut_off';
       });
       gf.affinity = Math.max(0, gf.affinity - 42);
       if (gf.status === 'soulbound') gf.status = 'dating';
-      state.suspicion = 15;
-      addLog(`💔 你當場跪地認錯並刪光所有曖昧對象。${gf.name} 含淚勉強給最後一次機會（好感 -42）。`, 'bad');
+      gf.suspicion = 25;
+      addLog(`💔 你刪光所有異性並誠懇認錯。${gf.name} 含淚給你最後機會（好感 -42）。`, 'bad');
       const died = changeHp(-28);
       if (gf.affinity < 35) {
         gf.status = 'blocked';
-        state.suspicion = 0;
-        addLog(`但好感度跌破底線，${gf.name} 最終還是心死離開了你。`, 'bad');
+        addLog(`但信任已完全碎裂，${gf.name} 最終還是心死分手封鎖。`, 'bad');
       }
       renderAll();
-      if (!died) renderCharacterStage(gf.id, false, gf.status === 'blocked' ? '「原諒你？我做不到每天活在懷疑裡。分手吧。」' : '「這是最後一次……如果再被我發現任何異樣，我們就徹底結束。」');
+      if (!died) renderCharacterStage(gf.id, false, gf.status === 'blocked' ? '「我做不到每天活在懷疑裡……分手吧。」' : '「這是最後一次底線。下次再被我抓到，我們直接老死不相往來。」');
     } else if (choice === 'lie') {
       if (Math.random() < 0.72) {
         gf.status = 'blocked';
         gf.affinity = 0;
-        state.suspicion = 0;
         playCue('bad');
-        addLog(`🤥 你的拙劣藉口被 ${gf.name} 當場拆穿，對方憤怒封鎖分手！`, 'bad');
-        const died = changeHp(-32);
+        addLog(`🤥 你的狡辯被 ${gf.name} 當場戳破，對方憤怒分手封鎖！`, 'bad');
+        const died = changeHp(-34);
         renderAll();
-        if (!died) renderCharacterStage(gf.id, false, '「把我當傻瓜耍嗎？滾出我的視線！」');
+        if (!died) renderCharacterStage(gf.id, false, '「證據都在這裡還敢嘴硬？滾出我的人生！」');
       } else {
         gf.affinity = Math.max(30, gf.affinity - 20);
-        state.suspicion = 45;
+        gf.suspicion = 55;
         playCue('good');
-        addLog(`🎭 你憑藉極限話術暫時矇混過關，但 ${gf.name} 的懷疑並未完全消除……`, 'bad');
+        addLog(`🎭 你硬著頭皮勉強圓謊過關，但 ${gf.name} 依然對你留有高度戒心（懷疑度 55%）……`, 'bad');
         renderAll();
-        renderCharacterStage(gf.id, false, '「……好吧，我就姑且相信你一次。但你最近最好安分點。」');
+        renderCharacterStage(gf.id, false, '「……我就暫時信你這一次。最近給我安分一點。」');
       }
     } else if (choice === 'breakup') {
       gf.status = 'cut_off';
-      state.suspicion = 0;
+      gf.suspicion = 0;
       playCue('bad');
-      addLog(`💔 你選擇坦白並主動結束與 ${gf.name} 的戀愛關係。`, 'bad');
+      addLog(`💔 你決定坦然面對並結束與 ${gf.name} 的關係。`, 'bad');
       const died = changeHp(-18);
       renderAll();
-      if (!died) renderCharacterStage(gf.id, false, '「至少你最後還算坦白……祝你玩得開心。」');
+      if (!died) renderCharacterStage(gf.id, false, '「至少你最後還敢承認……祝你以後玩得開心。」');
     }
   };
 
@@ -1979,6 +2392,7 @@
   function triggerYouDied() {
     playCue('died');
     state.inDialogue = false;
+    state.inSoulboundEvent = null;
     state.cheatingCrisis = false;
     state.activeCharId = null;
     const lostGold = Math.floor(state.player.gold * 0.25);
@@ -2003,41 +2417,37 @@
   window.exploreChannel = function(channel) {
     playCue('click');
     const channelConfig = {
-      app:      { name: '交友軟體', hpCost: -6,  suspicion: 28, desc: '她的閨蜜滑交友軟體看到你的檔案' },
-      friend:   { name: '朋友介紹', hpCost: -9,  suspicion: 14, desc: '共同好友無意間向她提起你在找新對象' },
-      social:   { name: '社群媒體', hpCost: -6,  suspicion: 22, desc: '你私訊其他女生的按讚與通知露餡' },
-      street:   { name: '路上偶遇', hpCost: -10, suspicion: 10, desc: '熟人在街角看見你與陌生女子相談甚歡' },
-      approach: { name: '街頭搭訕', hpCost: -16, suspicion: 25, desc: '你在街頭搭訕女生時正好被路過的熟人目擊' }
+      app:      { name: '交友軟體', hpCost: -6,  suspicion: 26, desc: '她的朋友滑交友軟體看到你的帳號' },
+      friend:   { name: '朋友介紹', hpCost: -9,  suspicion: 14, desc: '熟人之間傳來你在私下打聽新對象的消息' },
+      social:   { name: '社群媒體', hpCost: -6,  suspicion: 20, desc: '你在別人限動留言與私訊紀錄引起注意' },
+      street:   { name: '路上偶遇', hpCost: -10, suspicion: 10, desc: '路人看見你與陌生女性相談甚歡' },
+      approach: { name: '街頭搭訕', hpCost: -16, suspicion: 25, desc: '街頭搭訕時剛好被熟人目擊' }
     }[channel];
 
     if (changeHp(channelConfig.hpCost)) { renderAll(); return; }
     advanceTime(1);
 
-    // Check cheating risk first if already dating!
     if (getDatingGirls().length > 0) {
-      if (increaseSuspicion(channelConfig.suspicion, channelConfig.desc)) {
-        return; // Caught!
-      }
+      if (increaseIndividualSuspicion(channelConfig.suspicion, channelConfig.desc)) return;
     }
 
-    // Cold approach check
     if (channel === 'approach' && Math.random() * 18 > state.player.looks) {
       playCue('bad');
       const extraDamage = -10;
-      addLog(`街頭搭訕失敗！對方一臉厭惡加快腳步走開（額外理智 ${extraDamage}）。`, 'bad');
+      addLog(`街頭搭訕失敗！對方一臉嫌惡直接快步走開（額外理智 ${extraDamage}）。`, 'bad');
       if (!changeHp(extraDamage)) {
         renderAll();
         renderEventResultStage(
-          '入侵遭拒：無情冷眼',
-          '你在街頭上前搭話，對方卻像躲避怪人般閃開並投來嫌惡眼神，周圍路人的目光令你倍感煎熬。',
-          '💡 提示：外表越高，搭訕成功率越高（建議外表 ≥ 12）。'
+          '入侵遭拒：冷眼斬擊',
+          '你在街頭鼓起勇氣開口搭訕，對方卻連耳機都沒摘下，皺眉說了句「不需要」便快步離去。',
+          '💡 建議前往「營火整備」提升外表與魅力後再嘗試搭訕。'
         );
       }
       return;
     }
 
     const candidates = state.characters.filter(c => c.status === 'unmet' && c.channels.includes(channel));
-    const triggerRandom = candidates.length === 0 || Math.random() < 0.20;
+    const triggerRandom = candidates.length === 0 || Math.random() < 0.18;
 
     if (!triggerRandom && candidates.length > 0) {
       const chosen = candidates[Math.floor(Math.random() * candidates.length)];
@@ -2063,26 +2473,26 @@
   function triggerRandomWorldEvent(channelName) {
     const events = [
       {
-        title: '精修網圖的幻影帳號',
-        text: `你在【${channelName}】遇見一位說話像客服機器人的帳號，對方秒傳一串可疑連結。你直接關閉視窗。`,
+        title: '精修網圖的假帳號',
+        text: `你在【${channelName}】遇見一位頭像極美卻要求先加奇怪群組看照片的帳號。你察覺異常直接關閉視窗。`,
         tip: '經驗值 +15',
         fn: () => { gainExp(15); playCue('good'); }
       },
       {
-        title: '健身前輩的傳火指導',
-        text: `在【${channelName}】沒遇見心儀對象，倒是在路上被造型師路人抓去當免費髮型示範，意外變得更體面了。`,
+        title: '街頭型男改造企劃',
+        text: `在【${channelName}】沒遇見對象，倒是遇到服飾店店員熱情幫你搭配穿搭示範，意外學到了幾招顯高技巧。`,
         tip: '外表 +1 · 經驗值 +12',
         fn: () => { state.player.looks += 1; gainExp(12); playCue('good'); }
       },
       {
-        title: '便利商店的孤獨泡麵',
-        text: `你在【${channelName}】逛了一整圈一無所獲，最後坐在超商窗邊看著雨景，反而讓思緒沉澱了下來。`,
+        title: '超商深夜的寂靜關東煮',
+        text: `在【${channelName}】忙了一圈沒什麼收穫，獨自坐在超商窗邊喝了碗熱湯，心情意外平靜下來。`,
         tip: 'HP +10',
         fn: () => { changeHp(10); playCue('good'); }
       },
       {
-        title: '石沉大海的招呼',
-        text: `在【${channelName}】發出的訊息全部顯示已讀未回，城市的夜色顯得格外冷清。`,
+        title: '已讀不回的深淵迴響',
+        text: `在【${channelName}】送出的訊息全都石沉大海，夜色顯得特別安靜。`,
         tip: '無特殊變化',
         fn: () => {}
       }
@@ -2106,7 +2516,7 @@
       gainExp(12);
       playCue('good');
       addLog(`💼 打工結束，賺取了 $${earned} 盧恩！`, 'good');
-      renderEventResultStage('辛勤勞作的報酬', `你在深夜加班與兼職中換取了生存所需的盧恩，距離攻略高難度對象又近了一步。`, `💰 獲得 $${earned} · EXP +12`);
+      renderEventResultStage('辛勤勞作的報酬', `你在加班與兼職中累積了足夠應對都市約會與突發狀況的盧恩。`, `💰 獲得 $${earned} · EXP +12`);
     } else if (type === 'groom') {
       if (state.player.gold < 450) {
         playCue('bad');
@@ -2120,39 +2530,40 @@
       advanceTime(1);
       gainExp(15);
       playCue('good');
-      addLog(`🏋️ 完成體態訓練與穿搭升級！外表提升至 ${state.player.looks}。`, 'good');
-      renderEventResultStage('鍛鍊與蛻變', '儀容與氣質顯著提升，現在你更能應對高標準對象的審視了。', `✨ 外表 +2（目前 ${state.player.looks}）· EXP +15`);
+      addLog(`🏋️ 完成重訓與穿搭改造！外表提升至 ${state.player.looks}。`, 'good');
+      renderEventResultStage('鍛鍊與蛻變', '體態與整體儀容顯著提升，面對高標準或追求魅力的對象時更有底氣了。', `✨ 外表 +2（目前 ${state.player.looks}）· EXP +15`);
     } else if (type === 'study') {
       if (changeHp(-6)) { renderAll(); return; }
       advanceTime(1);
       gainExp(28);
       playCue('good');
-      addLog('📜 研讀了《人際心理古卷》，獲得 28 EXP！', 'gold');
-      renderEventResultStage('研讀人際心理古卷', '你深入理解了人性中的脆弱、貪婪與偽裝。記住：真正的騙子前期往往比誰都溫柔體貼；而真愛有時反而帶著刺。', '📘 獲得 28 EXP');
+      addLog('📜 研讀了《社會生存與心理古卷》，獲得 28 EXP！', 'gold');
+      renderEventResultStage('研讀人際與社會生存古卷', '真正的陷阱不會在額頭寫著「詐騙」或「仙人跳」；當條件好到不合常理或急著把你帶離公開視野時，請先保留三分清醒與退路。', '📘 獲得 28 EXP');
     } else if (type === 'rest') {
       changeHp(45);
       advanceTime(1);
       playCue('good');
-      addLog('🔥 在營火旁休息，恢復了 45 點理智與體力。', 'good');
-      renderEventResultStage('營火點燃 BONFIRE LIT', '火光安撫了你疲憊的靈魂。注意：時間推演可能導致未聯繫的對象冷卻。', '❤️ 恢復 45 HP');
+      addLog('🔥 在營火旁休息，恢復了 45 點健康與理智。', 'good');
+      renderEventResultStage('營火點燃 BONFIRE LIT', '火光治癒了精神損耗。別忘了定期聯繫重要的人，以免關係在時間推移中降溫。', '❤️ 恢復 45 HP');
     }
     renderAll();
   };
 
   // ==========================================
-  // Character Interactions: Maintain, Date/Gift, Investigate, Stages, Breakup, Parry
+  // Character Interactions
   // ==========================================
   window.selectCharacter = function(id) {
     playCue('click');
     state.activeCharId = id;
     state.inDialogue = false;
+    state.inSoulboundEvent = null;
     renderAll();
     renderCharacterStage(id, false);
   };
 
   window.maintainContact = function(id) {
     const c = state.characters.find(x => x.id === id);
-    if (!c || !['active', 'dating', 'soulbound'].includes(c.status)) return;
+    if (!c || !['active', 'dating', 'soulbound', 'casual_bond'].includes(c.status)) return;
 
     playCue('click');
     if (changeHp(-4)) { renderAll(); return; }
@@ -2164,50 +2575,70 @@
     c.affinity = Math.min(100, c.affinity + gain);
     gainExp(8);
 
-    // If messaging an active girl while already dating someone else -> suspicion!
-    if (c.status === 'active' && getDatingGirls().length > 0) {
-      if (increaseSuspicion(16, `背著伴侶私下傳訊關心 ${c.name}`)) return;
+    // Reassure individual suspicion if she is your partner!
+    if ((c.status === 'dating' || c.status === 'soulbound') && c.suspicion > 0) {
+      c.suspicion = Math.max(0, c.suspicion - 10);
+    }
+
+    // Messaging another girl while having girlfriend(s) raises suspicion!
+    if ((c.status === 'active' || c.status === 'casual_bond') && getDatingGirls().length > 0) {
+      const amt = c.status === 'casual_bond' ? 24 : 16;
+      if (increaseIndividualSuspicion(amt, `私下傳訊給 ${c.name}`)) return;
     }
 
     addLog(`💬 與 ${c.name} 傳訊維繫感情，好感度 +${gain}（目前 ${c.affinity}）。`, 'good');
     playCue('good');
     checkDatingPromotion(c);
     renderAll();
-    renderCharacterStage(id, false, `你傳了一則貼心的近況分享。\n\n${c.name} 回覆：「謝謝你還記得跟我說這些，今天也辛苦了。」`);
+    renderCharacterStage(id, false, `你發送了一則自然溫暖的日常分享。\n\n${c.name} 回覆：「謝謝你還記得跟我說這些，今天也辛苦了。」`);
   };
 
   window.casualDateOrGift = function(id) {
     const c = state.characters.find(x => x.id === id);
-    if (!c || !['active', 'dating', 'soulbound'].includes(c.status)) return;
-    if (state.player.gold < 550) {
+    if (!c || !['active', 'dating', 'soulbound', 'casual_bond'].includes(c.status)) return;
+    const cost = c.status === 'casual_bond' ? 450 : 600;
+    if (state.player.gold < cost) {
       playCue('bad');
-      addLog('金錢不足 $550，無法安排約會或準備小禮物！', 'bad');
+      addLog(`金錢不足 $${cost}，無法安排約會與心意準備！`, 'bad');
       renderAll();
       return;
     }
 
     playCue('click');
-    if (changeHp(-8)) { renderAll(); return; }
-    state.player.gold -= 550;
+    const hpCost = c.status === 'casual_bond' ? -12 : -8;
+    if (changeHp(hpCost)) { renderAll(); return; }
+    state.player.gold -= cost;
     advanceTime(1);
 
     c.contactedToday = true;
     c.daysSinceContact = 0;
 
     let gain = c.archetype === 'chatter' ? 3 : 9;
-    if (c.archetype === 'chatter' && c.affinity > 70) gain = 1; // Chatter never reaches 90!
+    if (c.archetype === 'chatter' && c.affinity > 70) gain = 1;
     c.affinity = Math.min(100, c.affinity + gain);
-    gainExp(15);
+    gainExp(c.status === 'casual_bond' ? 22 : 16);
 
-    if (c.status === 'active' && getDatingGirls().length > 0) {
-      if (increaseSuspicion(26, `被目擊與 ${c.name} 私下單獨約會送禮`)) return;
+    if ((c.status === 'dating' || c.status === 'soulbound') && c.suspicion > 0) {
+      c.suspicion = Math.max(0, c.suspicion - 20);
     }
 
-    addLog(`🎁 安排了與 ${c.name} 的甜蜜約會與心意小禮（-$550），好感度 +${gain}！`, 'good');
+    if ((c.status === 'active' || c.status === 'casual_bond') && getDatingGirls().length > 0) {
+      const amt = c.status === 'casual_bond' ? 35 : 26;
+      if (increaseIndividualSuspicion(amt, `背著伴侶與 ${c.name} 單獨見面約會`)) return;
+    }
+
+    const actionMsg = c.status === 'casual_bond'
+      ? `🌙 與非排他伴侶 ${c.name} 共度深夜微醺夜晚（-$${cost}），好感度 +${gain}。`
+      : `🎁 安排了與 ${c.name} 的約會並準備心意小禮（-$${cost}），好感度 +${gain}！`;
+
+    addLog(actionMsg, 'good');
     playCue('good');
     checkDatingPromotion(c);
     renderAll();
-    renderCharacterStage(id, false, `你精挑細選了餐廳與一份小禮物送給 ${c.name}。\n\n她驚喜地收下，兩人度過了一段愉快的時光（好感度 +${gain}）。`);
+    const replyMsg = c.status === 'casual_bond'
+      ? `夜色與微醺讓你們度過了毫無負擔的親密時光，天亮前彼此默契道別。`
+      : `你用心安排了這場約會與小禮物。\n\n${c.name} 開心地收下，兩人的距離又拉近了一些（好感度 +${gain}）。`;
+    renderCharacterStage(id, false, replyMsg);
   };
 
   window.investigateCharacter = function(id) {
@@ -2231,16 +2662,61 @@
   window.startDeepDialogue = function(id) {
     const c = state.characters.find(x => x.id === id);
     if (!c) return;
-    if (c.status === 'active' && c.stage < c.stages.length) {
-      // Check suspicion BEFORE or AFTER? Let's check when choosing option so dialogue completes or triggers!
+    if ((c.status === 'active' && c.stage < c.stages.length) ||
+        (c.status === 'dating' && c.datingStages && c.datingStage < c.datingStages.length)) {
       playCue('click');
       state.inDialogue = true;
-      renderCharacterStage(id, true);
-    } else if (c.status === 'dating' && c.datingStages && c.datingStage < c.datingStages.length) {
-      playCue('click');
-      state.inDialogue = true;
+      state.inSoulboundEvent = null;
       renderCharacterStage(id, true);
     }
+  };
+
+  window.triggerSoulboundEvent = function(id) {
+    const c = state.characters.find(x => x.id === id);
+    if (!c || c.status !== 'soulbound') return;
+    playCue('click');
+    state.inSoulboundEvent = Math.floor(Math.random() * SOULBOUND_EVENTS.length);
+    state.inDialogue = false;
+    renderCharacterStage(id, false);
+  };
+
+  window.resolveSoulboundChoice = function(charId, evIdx, choiceIdx) {
+    const c = state.characters.find(x => x.id === charId);
+    const ev = SOULBOUND_EVENTS[evIdx];
+    const ch = ev.choices[choiceIdx];
+    if (!c || !ch) return;
+
+    if (ch.costGold && state.player.gold < ch.costGold) {
+      playCue('bad');
+      return;
+    }
+    if (ch.costGold) state.player.gold -= ch.costGold;
+
+    c.affinity = Math.max(0, Math.min(100, c.affinity + (ch.aff || 0)));
+    if (ch.susp) c.suspicion = Math.max(0, Math.min(100, c.suspicion + ch.susp));
+    c.contactedToday = true;
+    c.daysSinceContact = 0;
+
+    gainExp(ch.exp || 20);
+    advanceTime(1);
+    state.inSoulboundEvent = null;
+
+    const died = changeHp(ch.hp || -4);
+    if (died) { renderAll(); return; }
+
+    if (c.affinity < 75) {
+      c.status = 'dating';
+      addLog(`⚠️ 長期互動失當使 ${c.name} 心寒，永恆誓約退回一般交往狀態！`, 'bad');
+    } else if (ch.aff >= 0) {
+      playCue('good');
+      addLog(`💞 永恆誓約日常互動：與 ${c.name} 共度「${ev.title}」，好感度 +${ch.aff}。`, 'good');
+    } else {
+      playCue('bad');
+      addLog(`⚠️ 伴侶摩擦：在「${ev.title}」中處理失當，好感度 ${ch.aff}。`, 'bad');
+    }
+
+    renderAll();
+    renderCharacterStage(charId, false, ch.reply);
   };
 
   window.chooseDialogueOption = function(charId, choiceIdx) {
@@ -2258,7 +2734,31 @@
     if (ch.costGold) state.player.gold -= ch.costGold;
     if (ch.bonusGold) state.player.gold += ch.bonusGold;
 
-    // Scam Trap!
+    // Stat check for Parry / Defense (e.g. Michelle extortion police bluff)
+    if (ch.triggerParry && (ch.reqLevel || ch.reqLooks)) {
+      const lvlOk = !ch.reqLevel || state.player.level >= ch.reqLevel;
+      const looksOk = !ch.reqLooks || state.player.looks >= ch.reqLooks;
+      if (!lvlOk || !looksOk) {
+        // Failed defense in extortion trap!
+        const stolen = Math.min(state.player.gold, ch.failTrapGold || 1500);
+        state.player.gold -= stolen;
+        c.status = 'scammed';
+        c.revealed = true;
+        state.inDialogue = false;
+        advanceTime(1);
+        playCue('died');
+        addLog(`💀 你試圖強硬反抗卻氣勢不足，遭 ${c.name} 同夥威嚇搶走 $${stolen} 並挨了一頓打！`, 'bad');
+        const died = changeHp(-34);
+        renderAll();
+        if (!died) {
+          showOverlay('HUMANITY LOST', `臨場歷練不足（需更高戰力等級），你的反抗被現場壓制，損失 $${stolen} 並重傷逃離現場！`, 'red');
+          renderCharacterStage(charId, false, `對方幾名男子見你聲音發抖沒有真的撥出報警電話，一把搶過你的手機與現金 $${stolen} 後把你推倒在走廊！`);
+        }
+        return;
+      }
+    }
+
+    // Extortion / Scam Trap!
     if (ch.scamGold) {
       const stolen = Math.min(state.player.gold, ch.scamGold);
       state.player.gold -= stolen;
@@ -2267,17 +2767,17 @@
       state.inDialogue = false;
       advanceTime(1);
       playCue('died');
-      addLog(`💀 你徹底中計！落入 ${c.name}（${c.archetypeLabel}）的陷阱，損失 $${stolen}！`, 'bad');
-      const died = changeHp(ch.hp || -32);
+      addLog(`💀 悲劇！你落入 ${c.name}（${c.archetypeLabel}）的設局，損失 $${stolen}！`, 'bad');
+      const died = changeHp(ch.hp || -35);
       renderAll();
       if (!died) {
-        showOverlay('HUMANITY LOST', `騙局收網！對方真實身分是「${c.archetypeLabel}」，你損失了 $${stolen} 並遭到無情封鎖！`, 'red');
+        showOverlay('HUMANITY LOST', `設局收網！對方真實意圖是「${c.archetypeLabel}」，你損失了 $${stolen} 並被徹底封鎖！`, 'red');
         renderCharacterStage(charId, false, ch.reply);
       }
       return;
     }
 
-    // Parry via dialogue option!
+    // Successful Parry!
     if (ch.triggerParry) {
       c.status = 'cut_off';
       c.revealed = true;
@@ -2285,14 +2785,14 @@
       advanceTime(1);
       gainExp(ch.exp || 50);
       playCue('parry');
-      addLog(`🛡️ 漂亮盾反！你識破並斬斷了與 ${c.name}（${c.archetypeLabel}）的糾葛！`, 'parry');
+      addLog(`🛡️ 漂亮盾反！你識破並擺脫了 ${c.name}（${c.archetypeLabel}）！`, 'parry');
       renderAll();
-      showOverlay('ILLUSION PARRIED', `看破虛妄！${c.name} 的真實面目為「${c.archetypeLabel}」。獲得 ${ch.exp || 50} EXP！`, 'cyan');
+      showOverlay('ILLUSION PARRIED', `看破陷阱！${c.name} 的真實目的為「${c.archetypeLabel}」。獲得 ${ch.exp || 50} EXP！`, 'cyan');
       renderCharacterStage(charId, false, ch.reply);
       return;
     }
 
-    // Stat check calculation (Looks / Level)
+    // Stat check calculation for normal choices
     let affDelta = ch.aff || 0;
     let extraNote = '';
     if (ch.reqLooks || ch.reqLevel) {
@@ -2300,17 +2800,15 @@
       const levelOk = !ch.reqLevel || state.player.level >= ch.reqLevel;
       if (!looksOk || !levelOk) {
         affDelta = ch.failAff !== undefined ? ch.failAff : Math.floor(affDelta / 2);
-        extraNote = `\n\n（⚠️ 未達屬性建議值 [外表≥${ch.reqLooks || 0} / 等級≥${ch.reqLevel || 1}]，說服力與魅力表現打了折扣！）`;
-      } else {
-        extraNote = `\n\n（✨ 憑藉出眾的魅力與歷練，完美通過檢定！）`;
+        extraNote = `\n\n（對方的反應似乎比預期冷淡了幾分——或許你的外表魅力或歷練還不夠有說服力。）`;
       }
     }
 
-    // Yukino phone check special suspicion trigger!
-    if (ch.checkSuspicion && state.suspicion >= 25) {
+    // Yukino phone check individual suspicion trigger!
+    if (ch.checkSuspicion && c.suspicion >= 25) {
       state.inDialogue = false;
       advanceTime(1);
-      triggerCheatingCaught('雪乃檢查你手機時抓到了可疑跡象');
+      triggerCheatingCaught([c], '雪乃查勤手機時發現了可疑蛛絲馬跡');
       return;
     }
 
@@ -2318,9 +2816,8 @@
     c.contactedToday = true;
     c.daysSinceContact = 0;
 
-    // Chatter cap
-    if (c.archetype === 'chatter' && c.affinity > 72) {
-      c.affinity = 72;
+    if (c.archetype === 'chatter' && c.affinity > 70) {
+      c.affinity = 70;
     }
 
     if (ch.exp) gainExp(ch.exp);
@@ -2329,24 +2826,41 @@
     const died = changeHp(ch.hp || -5);
     if (died) { renderAll(); return; }
 
-    // Check cheating risk if interacting deeply with another active girl while already dating!
+    // Individual suspicion check when deeply dating another active girl while already partnered!
     if (!isPostDating && getDatingGirls().length > 0) {
-      if (increaseSuspicion(28, `與 ${c.name} 進行深入約會時被發現`)) return;
+      if (increaseIndividualSuspicion(28, `與 ${c.name} 深入單獨約會互動`)) return;
     }
 
     if (c.affinity <= 0) {
       c.status = 'blocked';
       state.inDialogue = false;
       playCue('bad');
-      addLog(`💔 與 ${c.name} 互動嚴重破局，好感度歸零遭封鎖分手！`, 'bad');
+      addLog(`💔 與 ${c.name} 互動破局，好感度歸零遭封鎖分手！`, 'bad');
       renderAll();
-      showOverlay('YOU WERE GHOSTED', `${c.name} 對你徹底失望，已封鎖並斷絕所有往來。`, 'red');
+      showOverlay('YOU WERE GHOSTED', `${c.name} 對你徹底失望，已封鎖並斷絕往來。`, 'red');
       renderCharacterStage(charId, false, ch.reply + extraNote);
+      return;
+    }
+
+    // Michelle special skip: if player refused private room in Stage 1, skip the room-ambush Stage 2 and cut off/fail cleanly or jump?
+    // Actually if Michelle Stage 1 didn't enterTrap, let's keep Stage 2 only if enterTrap is true! If not enterTrap at Stage 1, Michelle loses interest if affinity drops or tries once more!
+    if (c.id === 'michelle' && c.stage === 1 && !ch.enterTrap) {
+      // She didn't lure you into the room -> she cuts off/ghosts you because you're too cautious to scam!
+      c.status = 'cut_off';
+      c.revealed = true;
+      state.inDialogue = false;
+      gainExp(35);
+      playCue('parry');
+      addLog(`🛡️ 你堅持不去陌生私密套房，${c.name}（仙人跳設局）見無利可圖便主動消失了！`, 'parry');
+      renderAll();
+      showOverlay('TRAP AVOIDED', `因為你堅持約在公開場合，${c.name} 無法實施「仙人跳」設局而主動退場！獲得 35 EXP！`, 'cyan');
+      renderCharacterStage(charId, false, ch.reply);
       return;
     }
 
     if (isPostDating) {
       c.datingStage = Math.min(c.datingStages.length, c.datingStage + 1);
+      if (c.suspicion > 0 && affDelta > 0) c.suspicion = Math.max(0, c.suspicion - 10);
     } else {
       c.stage = Math.min(c.stages.length, c.stage + 1);
     }
@@ -2354,10 +2868,10 @@
 
     if (affDelta >= 0) {
       playCue('good');
-      addLog(`✨ ${isPostDating ? '交往劇情推進' : '深入交鋒'}：${c.name} 好感度 +${affDelta}（目前 ${c.affinity}）。`, 'good');
+      addLog(`✨ ${isPostDating ? '交往磨合' : '深入互動'}：${c.name} 好感度 +${affDelta}（目前 ${c.affinity}）。`, 'good');
     } else {
       playCue('bad');
-      addLog(`⚠️ 應對失當：${c.name} 好感度 ${affDelta}（目前 ${c.affinity}）。`, 'bad');
+      addLog(`⚠️ 應對失誤：${c.name} 好感度 ${affDelta}（目前 ${c.affinity}）。`, 'bad');
     }
 
     checkDatingPromotion(c);
@@ -2366,7 +2880,18 @@
   };
 
   function checkDatingPromotion(c) {
-    // Active -> Dating requires stage >= 4 AND affinity >= 90!
+    // Casual FWB promotion (Rena)
+    if (c.status === 'active' && c.archetype === 'casual' && c.stage >= c.stages.length && c.affinity >= 72) {
+      c.status = 'casual_bond';
+      c.revealed = true;
+      gainExp(50);
+      playCue('good');
+      addLog(`🔥 你與 ${c.name} 建立了「無承諾親密關係（肉體伴侶）」！小心別暈船也別被女友抓包。`, 'gold');
+      showOverlay('NIGHT PACT FORMED', `無承諾的夜間默契達成！${c.name} 成為你的非排他親密伴侶。切記規則：別談未來，別被正宮發現！`, 'purple');
+      return;
+    }
+
+    // Genuine Active -> Dating requires stage >= 4 AND affinity >= 90!
     if (c.status === 'active' && c.archetype === 'genuine' && c.stage >= c.stages.length && c.affinity >= 90) {
       c.status = 'dating';
       c.revealed = true;
@@ -2374,25 +2899,26 @@
       playCue('victory');
       const existingDating = getDatingGirls().length;
       if (existingDating >= 2) {
-        state.suspicion = Math.min(100, state.suspicion + 45);
-        addLog(`💍🔥 危險達成！你竟然同時與 ${c.name} 締結第二份戀愛誓約（劈腿修羅場風險暴增）！`, 'bad');
-        showOverlay('COVENANT FORMED?', `警告！你腳踏兩條船成功與 ${c.name} 交往！接下來每一天都可能東窗事發……`, 'red');
+        getDatingGirls().forEach(g => { g.suspicion = Math.min(100, g.suspicion + 40); });
+        addLog(`💍🔥 危險達成！你竟然同時與 ${c.name} 締結第二份交往誓約，眾女懷疑度狂飆！`, 'bad');
+        showOverlay('DOUBLE COVENANT!', `極度危險！你腳踏兩條船同時與 ${c.name} 交往，修羅場隨時可能爆發！`, 'red');
       } else {
-        addLog(`💍 戀愛誓約締結！你成功與 ${c.name} 正式交往！（已解鎖 3 段交往後專屬劇情）`, 'gold');
-        showOverlay('COVENANT FORMED', `恭喜！你通過嚴苛考驗與 ${c.name} 正式交往！請務必用心經營交往後的磨合劇情，並保持專情！`, 'gold');
+        addLog(`💍 戀愛誓約締結！你成功與 ${c.name} 正式交往！（解鎖 3 段交往磨合劇情）`, 'gold');
+        showOverlay('COVENANT FORMED', `恭喜！你通過嚴苛考驗與 ${c.name} 正式交往！請務必用心經歷交往後的磨合考驗。`, 'gold');
       }
     }
     // Dating -> Soulbound requires finishing all 3 datingStages AND affinity >= 90!
     else if (c.status === 'dating' && c.datingStages && c.datingStage >= c.datingStages.length && c.affinity >= 90) {
       c.status = 'soulbound';
       c.affinity = 100;
+      c.suspicion = 0;
       state.player.maxHp += 20;
       state.player.hp = Math.min(state.player.maxHp, state.player.hp + 30);
       state.player.looks += 2;
       gainExp(120);
       playCue('victory');
-      addLog(`👑 永恆誓約達成！你與 ${c.name} 克服了交往後的所有考驗，HP上限+20，外表+2！`, 'gold');
-      showOverlay('SOULBOUND ETERNITY', `最高榮耀「永恆誓約」！你與 ${c.name} 走過所有懷疑、危機與現實考驗，靈魂徹底相依！`, 'purple');
+      addLog(`👑 永恆誓約達成！你與 ${c.name} 克服了所有磨合（HP上限+20，外表+2），未來仍須持續維繫！`, 'gold');
+      showOverlay('SOULBOUND ETERNITY', `最高榮耀「永恆誓約」！你與 ${c.name} 攜手跨越重重考驗。但愛需要一輩子經營，若疏於聯繫仍可能出現裂痕！`, 'purple');
     }
   }
 
@@ -2404,38 +2930,41 @@
     c.revealed = true;
     state.inDialogue = false;
 
-    if (c.archetype === 'scammer' || c.archetype === 'promoter' || c.archetype === 'chatter') {
-      const expReward = c.archetype === 'scammer' ? 50 : 40;
+    if (['scammer', 'promoter', 'chatter', 'extortion', 'casual'].includes(c.archetype)) {
+      const expReward = (c.archetype === 'extortion' || c.archetype === 'scammer') ? 55 : 40;
       gainExp(expReward);
       playCue('parry');
-      addLog(`🛡️ 精準盾反！你識破並封鎖了 ${c.name}（真實意圖：${c.archetypeLabel}），獲得 ${expReward} EXP！`, 'parry');
+      addLog(`🛡️ 精準判斷！你識破並主動封鎖了 ${c.name}（真實目的：${c.archetypeLabel}），獲得 ${expReward} EXP！`, 'parry');
       renderAll();
-      showOverlay('ILLUSION PARRIED', `判斷神準！${c.name} 確實是「${c.archetypeLabel}」。及時抽身獲得 ${expReward} EXP！`, 'cyan');
-      renderCharacterStage(id, false, `你果斷斬斷了與 ${c.name} 的虛假連結。真相揭曉：${c.archetypeLabel}。`);
+      showOverlay('ILLUSION PARRIED', `判斷精準！${c.name} 的目的為「${c.archetypeLabel}」。及時止損獲得 ${expReward} EXP！`, 'cyan');
+      renderCharacterStage(id, false, `你果斷斬斷了與 ${c.name} 的聯繫。真相揭曉：${c.archetypeLabel}。`);
     } else {
       playCue('bad');
-      addLog(`💔 嚴重誤殺良人！你草率封鎖了真心尋愛的 ${c.name}，理智遭受強烈懊悔打擊 (-22 HP)！`, 'bad');
-      const died = changeHp(-22);
+      addLog(`💔 嚴重誤殺良人！你親手封鎖了真心尋愛的 ${c.name}，悔恨重創理智 (-24 HP)！`, 'bad');
+      const died = changeHp(-24);
       renderAll();
       if (!died) {
-        renderCharacterStage(id, false, `你封鎖了 ${c.name}，事後才驚覺她其實是少數「${c.archetypeLabel}」……愧疚與錯過的痛楚啃噬著你的理智。`);
+        renderCharacterStage(id, false, `你封鎖了 ${c.name}，事後才發現她其實是「${c.archetypeLabel}」……錯殺真心的愧疚刺痛著你的心。`);
       }
     }
   };
 
   window.peacefulBreakup = function(id) {
     const c = state.characters.find(x => x.id === id);
-    if (!c || (c.status !== 'dating' && c.status !== 'soulbound')) return;
-    if (!confirm(`確定要主動向 ${c.name} 提出分手嗎？這將解除你們的戀愛誓約。`)) return;
+    if (!c || !['dating', 'soulbound', 'casual_bond'].includes(c.status)) return;
+    const label = c.status === 'casual_bond' ? '結束這段無承諾關係' : '主動向她提出分手';
+    if (!confirm(`確定要${label}（對象：${c.name}）嗎？`)) return;
 
+    const wasCasual = c.status === 'casual_bond';
     c.status = 'cut_off';
+    c.suspicion = 0;
     state.inDialogue = false;
-    if (getDatingGirls().length === 0) state.suspicion = 0;
+    state.inSoulboundEvent = null;
     playCue('bad');
-    addLog(`💔 你主動向 ${c.name} 提出和平分手，雙方退回陌生人。`, 'bad');
-    const died = changeHp(-12);
+    addLog(`💔 你主動向 ${c.name} 結束了關係。`, 'bad');
+    const died = changeHp(wasCasual ? -4 : -12);
     renderAll();
-    if (!died) renderCharacterStage(id, false, `你向 ${c.name} 坦承想結束這段關係。她沉默許久後點了點頭，轉身離開了你的世界。`);
+    if (!died) renderCharacterStage(id, false, wasCasual ? `你傳訊息向 ${c.name} 說想收心退出這段夜間關係，她回了一個瀟灑的揮手貼圖。` : `你坦承無法繼續走下去，${c.name} 沉默許久後點了點頭，轉身離開。`);
   };
 
   // ==========================================
@@ -2465,19 +2994,7 @@
     const totalPartners = datingList.length + soulList.length;
 
     document.getElementById('victory-counter').textContent = `交往: ${totalPartners} · 永恆誓約: ${soulList.length}`;
-
-    // Suspicion HUD
-    const suspBox = document.getElementById('hud-suspicion-box');
-    const exploreWarn = document.getElementById('explore-cheating-warn');
-    if (totalPartners > 0) {
-      suspBox.classList.add('active');
-      exploreWarn.style.display = 'block';
-      document.getElementById('hud-suspicion-text').textContent = `${state.suspicion}%`;
-      document.getElementById('hud-suspicion-bar').style.width = `${state.suspicion}%`;
-    } else {
-      suspBox.classList.remove('active');
-      exploreWarn.style.display = 'none';
-    }
+    document.getElementById('explore-cheating-warn').style.display = totalPartners > 0 ? 'block' : 'none';
   }
 
   function renderContacts() {
@@ -2492,18 +3009,19 @@
       return;
     }
 
-    const order = { soulbound: 1, dating: 2, active: 3, cut_off: 4, blocked: 5, scammed: 6 };
+    const order = { soulbound: 1, dating: 2, casual_bond: 3, active: 4, cut_off: 5, blocked: 6, scammed: 7 };
     const sorted = [...met].sort((a, b) => order[a.status] - order[b.status]);
 
     listEl.innerHTML = sorted.map(c => {
       let tagClass = 'tag-active';
-      let tagText = '曖昧中';
+      let tagText = '試探中';
       const isDead = ['blocked', 'cut_off', 'scammed'].includes(c.status);
 
       if (c.status === 'soulbound') { tagClass = 'tag-soulbound'; tagText = '👑 永恆誓約'; }
-      else if (c.status === 'dating') { tagClass = 'tag-dating'; tagText = `💍 交往中 (${c.datingStage}/3)`; }
+      else if (c.status === 'dating') { tagClass = 'tag-dating'; tagText = `💍 交往 (${c.datingStage}/3)`; }
+      else if (c.status === 'casual_bond') { tagClass = 'tag-casual'; tagText = '🔥 肉體伴侶'; }
       else if (c.status === 'blocked') { tagClass = 'tag-blocked'; tagText = '🚫 遭封鎖'; }
-      else if (c.status === 'scammed') { tagClass = 'tag-blocked'; tagText = '💀 遭詐騙破財'; }
+      else if (c.status === 'scammed') { tagClass = 'tag-blocked'; tagText = '💀 中計破財'; }
       else if (c.status === 'cut_off') { tagClass = 'tag-parried'; tagText = '🛡️ 已斬斷'; }
       else if (c.daysSinceContact >= 1 && !c.contactedToday) {
         tagClass = 'tag-warning';
@@ -2512,19 +3030,25 @@
 
       const selectedClass = state.activeCharId === c.id ? 'selected' : '';
       const deadClass = isDead ? 'dead' : '';
+      const suspText = (c.status === 'dating' || c.status === 'soulbound')
+        ? `<span style="color:${c.suspicion >= 40 ? '#f27979' : '#998f82'};">懷疑度:${c.suspicion}%</span>`
+        : `<span>來源:${c.metVia}</span>`;
 
       return `
         <div class="contact-card ${selectedClass} ${deadClass}" onclick="selectCharacter('${c.id}')">
-          <div class="contact-top">
-            <span class="contact-name">${c.name}</span>
-            <span class="status-tag ${tagClass}">${tagText}</span>
-          </div>
-          <div class="contact-meta">
-            <span>來源：${c.metVia}</span>
-            <span>好感度：${c.affinity} / 100</span>
-          </div>
-          <div class="bar-track" style="height: 6px;">
-            <div class="bar-fill-affinity" style="width: ${c.affinity}%;"></div>
+          <div class="contact-thumb">${c.portrait}</div>
+          <div class="contact-body">
+            <div class="contact-top">
+              <span class="contact-name">${c.name}</span>
+              <span class="status-tag ${tagClass}">${tagText}</span>
+            </div>
+            <div class="contact-meta">
+              ${suspText}
+              <span>好感度：${c.affinity}/100</span>
+            </div>
+            <div class="bar-track" style="height: 5px;">
+              <div class="bar-fill-affinity" style="width: ${c.affinity}%;"></div>
+            </div>
           </div>
         </div>
       `;
@@ -2546,14 +3070,14 @@
           <path d="M50,35 C65,48 66,68 50,76 C34,68 35,48 50,35 Z" fill="#e05a2b" opacity="0.88"/>
           <path d="M50,45 C58,54 58,68 50,74 C42,68 42,54 50,45 Z" fill="#f5b841"/>
         </svg>
-        <h2>深淵與假面交織的戀愛戰場</h2>
-        <p>這座城市的每位旅人都戴著面具。騙子前期也會展現體貼，真愛在壓力下也可能顯得尖銳冷漠。</p>
+        <h2>深淵與真實交織的情感試煉場</h2>
+        <p>這座城市裡沒有免費的奇蹟。有人真心尋伴，有人只想釋放慾望，也有人設好私人房間等你自投羅網。</p>
         <div class="lore-tip">
-          <strong>⚔️ 高難度生存守則（II代新增）：</strong><br>
-          1. <b>嚴苛攻略：</b>須通過 <b>4 階段考驗</b> 且 <b>好感度 ≥ 90</b> 才能正式交往。<br>
-          2. <b>暗中試探：</b>別僅憑第一印象！善用「暗中調查」觀察細節，誤殺良人將重創理智。<br>
-          3. <b>交往後磨合：</b>交往並非終點！必須完成 <b>3 段交往後專屬劇情</b> 才能達成「永恆誓約」。<br>
-          4. <b>修羅場警告：</b>有伴侶後若繼續滑軟體或與其他女生曖昧，將累積「懷疑度」引爆東窗事發！
+          <strong>⚔️ III代生存法則：</strong><br>
+          1. <b>高思考選項：</b>選項不再標示檢定與反擊提示，請讀懂對方性格與案例細節再決定進退。<br>
+          2. <b>識別真實動機：</b>12位對象包含「真心尋愛」、「肉體關係」、「仙人跳設局」、「長線殺豬盤」等。<br>
+          3. <b>個別懷疑度：</b>每位正式女友皆有獨立懷疑值！在交往後若與他人曖昧或進軟體，可能遭到抓包審判。<br>
+          4. <b>永恆誓約經營：</b>達成永恆誓約並非終點，仍須透過伴侶日常互動維繫關係，疏於經營依然會產生裂痕！
         </div>
       </div>
     `;
@@ -2562,6 +3086,7 @@
   function renderEventResultStage(title, body, footerNote) {
     state.activeCharId = null;
     state.inDialogue = false;
+    state.inSoulboundEvent = null;
     document.getElementById('stage-panel').innerHTML = `
       <div>
         <div class="char-header">
@@ -2588,25 +3113,22 @@
             <div class="char-name-row">
               <h2 style="color:#ef5350;">⚠️ 東窗事發：${gf.name} 的審判</h2>
             </div>
-            <div class="char-bio">證據擺在眼前（${triggerSource}），空氣彷彿凝結成了刀刃。</div>
+            <div class="char-bio">證據攤在眼前（${triggerSource} · 她對你的懷疑度已達 ${gf.suspicion}%）。</div>
           </div>
         </div>
         <div class="dialogue-box" style="border-color:#8a2222;">
-          <div class="dialogue-speaker" style="color:#f28888;">${gf.name}（極度憤怒）</div>
-          <div class="dialogue-text">「我以為我們已經確立誓約了……原來你背著我還在外面跟別的女生來往？給我一個解釋，現在！」</div>
+          <div class="dialogue-speaker" style="color:#f28888;">${gf.name}（情緒瀕臨爆發）</div>
+          <div class="dialogue-text">「我都看在眼裡了……原來我們確立關係後，你背地裡還在跟別的女生來往？現在給我一個交代！」</div>
         </div>
         <div class="choices-area">
           <button class="choice-btn" onclick="resolveCheatingCrisis('${gf.id}', 'apologize')">
-            <span>🙇 誠懇認錯並當場斬斷所有曖昧對象，乞求最後一次機會</span>
-            <span class="choice-req" style="color:#f29b9b;">大幅扣好感與理智</span>
+            <span>🙇 誠懇認錯並當場刪光所有曖昧對象，懇求最後一次機會</span>
           </button>
           <button class="choice-btn" onclick="resolveCheatingCrisis('${gf.id}', 'lie')">
-            <span>🎭 硬著頭皮狡辯：「那只是普通朋友／工作客戶而已，你誤會了！」</span>
-            <span class="choice-req" style="color:#f5a642;">高機率拆穿分手</span>
+            <span>🎭 硬著頭皮狡辯：「那只是普通工作客戶／老朋友，你真的誤會了！」</span>
           </button>
           <button class="choice-btn" onclick="resolveCheatingCrisis('${gf.id}', 'breakup')">
-            <span>💔 坦白承認不再拖累彼此，主動提出分手</span>
-            <span class="choice-req">解除關係 · -18 HP</span>
+            <span>💔 不再找藉口，坦承過錯並主動解除關係</span>
           </button>
         </div>
       </div>
@@ -2617,6 +3139,7 @@
     playCue('click');
     state.activeCharId = null;
     state.inDialogue = false;
+    state.inSoulboundEvent = null;
     renderAll();
     renderIdleStage();
   };
@@ -2628,20 +3151,36 @@
 
     const stage = document.getElementById('stage-panel');
     const intentDisplay = c.revealed
-      ? `真實意圖：${c.archetypeLabel}`
-      : `真實意圖：未知（已調查 ${c.investigated}/${c.investigateHints.length} 次）`;
+      ? `真實目的：${c.archetypeLabel}`
+      : `真實目的：未知（已試探 ${c.investigated}/${c.investigateHints.length} 次）`;
 
-    const decayWarn = (['active', 'dating'].includes(c.status) && c.daysSinceContact >= 1 && !c.contactedToday)
-      ? `<span style="color:#f5a642; font-size:0.77rem;">⚠️ 已 ${c.daysSinceContact} 天未聯繫</span>`
-      : `<span style="color:#998f82; font-size:0.77rem;">每日冷卻：-${c.status === 'active' ? c.decayRate : (c.id === 'yukino' ? 8 : 5)}</span>`;
+    const decayRateVal = c.status === 'active' || c.status === 'casual_bond'
+      ? c.decayRate
+      : (c.status === 'soulbound' ? (c.id === 'yukino' ? 6 : 4) : (c.id === 'yukino' ? 8 : 5));
+
+    const decayWarn = (['active', 'dating', 'soulbound', 'casual_bond'].includes(c.status) && c.daysSinceContact >= 1 && !c.contactedToday)
+      ? `<span style="color:#f5a642; font-size:0.76rem;">⚠️ 已 ${c.daysSinceContact} 天未聯繫</span>`
+      : `<span style="color:#998f82; font-size:0.76rem;">每日冷卻：-${decayRateVal}</span>`;
+
+    const suspicionHtml = (c.status === 'dating' || c.status === 'soulbound')
+      ? `
+        <div>
+          <div style="display:flex; justify-content:space-between; font-size:0.74rem; color:${c.suspicion >= 45 ? '#f28888' : 'var(--text-muted)'};">
+            <span>她對你的懷疑度 (${c.suspicion}%)</span>
+            <span>敏感度 ×${c.suspicionSens}</span>
+          </div>
+          <div class="bar-track" style="height: 6px; border-color:${c.suspicion >= 45 ? '#8a2222' : '#594834'};">
+            <div class="bar-fill-suspicion" style="width:${c.suspicion}%;"></div>
+          </div>
+        </div>
+      ` : '';
 
     let middleHtml = '';
     let bottomHtml = '';
-
     const isResolvedDead = ['blocked', 'cut_off', 'scammed'].includes(c.status);
 
     if (isResolvedDead) {
-      const narration = customNarration || `你們的關係已經劃下句點（狀態：${c.status === 'blocked' ? '遭對方封鎖／分手' : c.status === 'scammed' ? '遭詐騙／破財' : '已主動斬斷'}）。對方真實身分為「${c.archetypeLabel}」。`;
+      const narration = customNarration || `你們的關係已經劃下句點（狀態：${c.status === 'blocked' ? '遭對方封鎖／分手' : c.status === 'scammed' ? '中計遭詐騙勒索' : '已主動斷絕往來'}）。她的真實目的為「${c.archetypeLabel}」。`;
       middleHtml = `
         <div class="dialogue-box">
           <div class="dialogue-speaker">終局紀錄</div>
@@ -2653,23 +3192,39 @@
           <button class="tactical-btn" onclick="returnToCampfire()">🔥 返回營火視角</button>
         </div>
       `;
+    } else if (state.inSoulboundEvent !== null && c.status === 'soulbound') {
+      // Soulbound Ongoing Interactive Event!
+      const ev = SOULBOUND_EVENTS[state.inSoulboundEvent];
+      const choicesHtml = ev.choices.map((ch, idx) => {
+        const disabled = (ch.costGold && state.player.gold < ch.costGold) ? 'disabled' : '';
+        const costTag = ch.costGold ? `<span class="choice-req">-$${ch.costGold}</span>` : '';
+        return `<button class="choice-btn" ${disabled} onclick="resolveSoulboundChoice('${c.id}', ${state.inSoulboundEvent}, ${idx})"><span>${ch.text}</span>${costTag}</button>`;
+      }).join('');
+
+      middleHtml = `
+        <div class="dialogue-box">
+          <div class="dialogue-speaker">👑 永恆誓約日常 · ${ev.title}</div>
+          <div class="dialogue-text">${ev.prompt}</div>
+        </div>
+        <div class="choices-area">${choicesHtml}</div>
+      `;
+      bottomHtml = `
+        <div class="tactical-bar">
+          <button class="tactical-btn" onclick="selectCharacter('${c.id}')">暫時退後</button>
+        </div>
+      `;
     } else if (openDialogue && ((c.status === 'active' && c.stage < c.stages.length) || (c.status === 'dating' && c.datingStages && c.datingStage < c.datingStages.length))) {
-      // Active Story Dialogue (Pre-dating OR Post-dating!)
+      // Story Dialogue (No spoilers on choices!)
       const isPost = c.status === 'dating';
       const node = isPost ? c.datingStages[c.datingStage] : c.stages[c.stage];
       const stageHeader = isPost
-        ? `${c.name} · 交往後磨合劇情 (${c.datingStage + 1}/${c.datingStages.length})`
+        ? `${c.name} · 交往磨合考驗 (${c.datingStage + 1}/${c.datingStages.length})`
         : `${c.name} · 第 ${c.stage + 1}/${c.stages.length} 階段交鋒`;
 
       const choicesHtml = node.choices.map((ch, idx) => {
         const disabled = (ch.costGold && state.player.gold < ch.costGold) ? 'disabled' : '';
-        let tags = [];
-        if (ch.costGold) tags.push(`花費 $${ch.costGold}`);
-        if (ch.reqLooks) tags.push(`魅力檢定(建議≥${ch.reqLooks})`);
-        if (ch.reqLevel) tags.push(`歷練檢定(建議Lv.${ch.reqLevel})`);
-        if (ch.triggerParry) tags.push(`⚔️ 識破反擊`);
-        const reqTag = tags.length ? `<span class="choice-req">${tags.join(' · ')}</span>` : '';
-
+        // Only reveal explicit money cost; keep checks and parries hidden to reward player thought!
+        const reqTag = ch.costGold ? `<span class="choice-req">-$${ch.costGold}</span>` : '';
         return `
           <button class="choice-btn" ${disabled} onclick="chooseDialogueOption('${c.id}', ${idx})">
             <span>${ch.text}</span>
@@ -2688,25 +3243,31 @@
       `;
       bottomHtml = `
         <div class="tactical-bar">
-          ${c.status === 'active' ? `<button class="tactical-btn parry" onclick="parryCharacter('${c.id}')">🛡️ 主動識破並封鎖對方</button>` : ''}
+          ${c.status === 'active' ? `<button class="tactical-btn parry" onclick="parryCharacter('${c.id}')">🛡️ 覺得事有蹊蹺：主動封鎖抽身</button>` : ''}
           <button class="tactical-btn" onclick="selectCharacter('${c.id}')">暫時退後</button>
         </div>
       `;
     } else {
       // Hub View
-      let defaultNarration = `你正與 ${c.name} 保持聯繫。需完成全部 4 階段交鋒且好感度 ≥ 90 才有機會正式交往。`;
+      let defaultNarration = `你正與 ${c.name} 保持聯繫。請謹慎觀察每次對話推進中的線索與細節。`;
       if (c.status === 'active' && c.stage >= c.stages.length && c.affinity < 90) {
-        defaultNarration = `你們已經歷了 4 個階段的試探，${c.name} 對你有不錯的印象，但好感度尚未達到交往門檻（需 ≥ 90，目前 ${c.affinity}）。請透過約會送禮或持續維繫來打動她！`;
+        defaultNarration = `你們已經歷所有試探階段，但好感度尚未達到成為正式戀人的門檻（需 ≥ 90，目前 ${c.affinity}）。可透過約會或日常維繫來培養感情。`;
       } else if (c.status === 'dating') {
-        defaultNarration = `你與 ${c.name} 正在交往中！請務必推進「交往後磨合劇情」並維持好感度，小心別讓其他曖昧對象毀了這份誓約。`;
+        defaultNarration = `你與 ${c.name} 正在交往中！請推進「交往磨合劇情」並照顧好她的心情與懷疑度。`;
       } else if (c.status === 'soulbound') {
-        defaultNarration = `👑 你與 ${c.name} 已克服所有難關，締結了無可撼動的「永恆誓約」！`;
+        defaultNarration = `👑 你與 ${c.name} 已締結「永恆誓約」！真正的愛情仍需在柴米油鹽與日常相處中持續維繫，否則誓約仍會出現裂痕。`;
+      } else if (c.status === 'casual_bond') {
+        defaultNarration = `🔥 你與 ${c.name} 維持著「無承諾親密關係」。這段關係沒有未來責任，只享受夜間的激情與陪伴（小心被正宮發現）。`;
       }
 
       const narration = customNarration || defaultNarration;
       const canPreAdvance = c.status === 'active' && c.stage < c.stages.length;
       const canPostAdvance = c.status === 'dating' && c.datingStages && c.datingStage < c.datingStages.length;
       const canInvestigate = c.status === 'active' && c.investigated < c.investigateHints.length;
+      const dateCost = c.status === 'casual_bond' ? 450 : 600;
+      const dateLabel = c.status === 'casual_bond'
+        ? '🌙 深夜微醺見面（享受無承諾親密時光）'
+        : '🎁 安排約會並準備心意小禮（大幅升溫＋降低懷疑）';
 
       middleHtml = `
         <div class="dialogue-box">
@@ -2716,23 +3277,29 @@
         <div class="choices-area">
           ${canPreAdvance ? `
             <button class="choice-btn" onclick="startDeepDialogue('${c.id}')">
-              <span style="color: var(--text-gold); font-weight:700;">⚔️ 進行第 ${c.stage + 1}/${c.stages.length} 階段深入對話／邀約</span>
-              <span class="choice-req">1 時段 · 高風險關鍵劇情</span>
+              <span style="color: var(--text-gold); font-weight:700;">⚔️ 推進關係：第 ${c.stage + 1}/${c.stages.length} 階段互動</span>
+              <span class="choice-req">1 時段 · 關鍵抉擇</span>
             </button>
           ` : ''}
           ${canPostAdvance ? `
             <button class="choice-btn" onclick="startDeepDialogue('${c.id}')">
-              <span style="color: #6ee7a0; font-weight:700;">💞 觸發交往後劇情 (${c.datingStage + 1}/${c.datingStages.length})</span>
+              <span style="color: #6ee7a0; font-weight:700;">💞 觸發交往後磨合劇情 (${c.datingStage + 1}/${c.datingStages.length})</span>
               <span class="choice-req">1 時段 · 感情考驗</span>
             </button>
           ` : ''}
-          <button class="choice-btn" onclick="casualDateOrGift('${c.id}')" ${state.player.gold < 550 ? 'disabled' : ''}>
-            <span>🎁 安排約會並準備心意小禮</span>
-            <span class="choice-req">-$550 · -8 HP · 大幅提升好感</span>
+          ${c.status === 'soulbound' ? `
+            <button class="choice-btn" onclick="triggerSoulboundEvent('${c.id}')">
+              <span style="color: #d8a6ff; font-weight:700;">👑 觸發永恆誓約日常小劇場（維繫與經營）</span>
+              <span class="choice-req">1 時段 · 隨機伴侶事件</span>
+            </button>
+          ` : ''}
+          <button class="choice-btn" onclick="casualDateOrGift('${c.id}')" ${state.player.gold < dateCost ? 'disabled' : ''}>
+            <span>${dateLabel}</span>
+            <span class="choice-req">-$${dateCost} · 1 時段</span>
           </button>
           <button class="choice-btn" onclick="maintainContact('${c.id}')">
-            <span>💬 傳送日常問候訊息（重置冷卻）</span>
-            <span class="choice-req">-4 HP · 1 時段 · 小幅提升好感</span>
+            <span>💬 傳送日常問候訊息（重置冷卻＋微降懷疑）</span>
+            <span class="choice-req">-4 HP · 1 時段</span>
           </button>
         </div>
       `;
@@ -2740,8 +3307,8 @@
       bottomHtml = `
         <div class="tactical-bar">
           ${canInvestigate ? `<button class="tactical-btn" onclick="investigateCharacter('${c.id}')">🔍 暗中試探與打聽背景 (-6 HP · 1 時段)</button>` : ''}
-          ${c.status === 'active' ? `<button class="tactical-btn parry" onclick="parryCharacter('${c.id}')">🛡️ 懷疑不軌：識破並封鎖對方</button>` : ''}
-          ${(c.status === 'dating' || c.status === 'soulbound') ? `<button class="tactical-btn danger" onclick="peacefulBreakup('${c.id}')">💔 主動提出分手</button>` : ''}
+          ${c.status === 'active' ? `<button class="tactical-btn parry" onclick="parryCharacter('${c.id}')">🛡️ 察覺不軌：主動封鎖對方</button>` : ''}
+          ${['dating', 'soulbound', 'casual_bond'].includes(c.status) ? `<button class="tactical-btn danger" onclick="peacefulBreakup('${c.id}')">💔 主動結束這段關係</button>` : ''}
           <button class="tactical-btn" onclick="returnToCampfire()">🔥 返回營火視角</button>
         </div>
       `;
@@ -2758,16 +3325,19 @@
             </div>
             <div class="char-bio">${c.bio}</div>
             <div class="char-meters">
-              <div>
-                <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted);">
-                  <span>好感度 (${c.affinity}/100${c.status === 'active' ? ' · 需≥90交往' : ''})</span>
-                  ${decayWarn}
+              <div class="meter-row">
+                <div>
+                  <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted);">
+                    <span>好感度 (${c.affinity}/100${c.status === 'active' ? ' · 需≥90交往' : ''})</span>
+                    ${decayWarn}
+                  </div>
+                  <div class="bar-track" style="height: 8px;">
+                    <div class="bar-fill-affinity" style="width:${c.affinity}%;"></div>
+                  </div>
                 </div>
-                <div class="bar-track" style="height: 8px;">
-                  <div class="bar-fill-affinity" style="width:${c.affinity}%;"></div>
-                </div>
+                <div class="intent-pill">${intentDisplay}</div>
               </div>
-              <div class="intent-pill">${intentDisplay}</div>
+              ${suspicionHtml}
             </div>
           </div>
         </div>
